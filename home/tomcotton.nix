@@ -296,6 +296,7 @@ in {
       export EMAIL=thomaswileycotton@gmail.com
       export GOPATH=$HOME/go
       export PATH=$GOPATH/bin:$PATH
+      export PATH=$HOME/.local/bin:$PATH
 
       export EXA_COLORS="da=1;35"
       export BAT_THEME="Visual Studio Dark+"
