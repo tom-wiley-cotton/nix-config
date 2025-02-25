@@ -125,8 +125,8 @@
     group = "paperless";
   };
 
-  # age.secrets."bcotton-atuin-key" = lib.mkIf config.services.clubcotton.atuin.enable {
-  age.secrets."bcotton-atuin-key" = {
+  age.secrets."bcotton-atuin-key" = lib.mkIf config.services.clubcotton.atuin.enable {
+  # age.secrets."bcotton-atuin-key" = {
     file = ./bcotton-atuin-key.age;
     owner = "bcotton";
     group = "users";

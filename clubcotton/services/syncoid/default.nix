@@ -17,6 +17,10 @@ in {
     services.${service} = {
       enable = true;
       commands = {
+        var_lib = {
+          source = "rpool/local/lib";
+          target = "backuppool/local/nas-01/var-lib";
+        };
         database = {
           source = "ssdpool/local/database";
           target = "backuppool/local/nas-01/database";
