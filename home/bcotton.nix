@@ -461,6 +461,7 @@ in {
     kubectx
     kubectl
     llm
+    nodejs_22
     unstablePkgs.sesh
     unstablePkgs.uv
     # TODO: write an overlay for this or use the flake

@@ -34,6 +34,7 @@
     roon-server.enable = true;
     sabnzbd.enable = true;
     sonarr.enable = true;
+    syncoid.enable = true;
     tailscale.enable = true;
     webdav.enable = true;
   };
@@ -299,6 +300,18 @@
   services.sanoid = {
     datasets."ssdpool/local/database" = {
       useTemplate = ["backup"];
+    };
+    datasets."mediapool/local/photos" = {
+      useTemplate = ["media"];
+    };
+    datasets."mediapool/local/documents" = {
+      useTemplate = ["media"];
+    };
+    datasets."mediapool/local/tomcotton/data" = {
+      useTemplate = ["media"];
+    };
+    datasets."mediapool/local/tomcotton/audio-library" = {
+      useTemplate = ["media"];
     };
   };
 

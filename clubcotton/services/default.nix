@@ -17,6 +17,7 @@
     ./paperless
     ./roon-server
     ./sabnzbd
+    ./syncoid
     ./webdav
   ];
 }
