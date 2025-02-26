@@ -14,7 +14,6 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-
     power.ups = {
       enable = true;
       mode = "netclient"; # This will be overridden by mkForce "netserver" on the actual server

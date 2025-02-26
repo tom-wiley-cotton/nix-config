@@ -1,13 +1,15 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   # from https://github.com/VTimofeenko/monorepo-machine-config/blob/a17cdb10087c3a5be6c28beacd07152fdf8933a9/nixosModules/services/nut-client/upssched.nix
-  
   # How many seconds the system should wait for the server/UPS to come back
   systemGraceTime = "120";
 
   upssched-dispatch = pkgs.writeShellApplication {
     name = "upssched-dispatch";
-    runtimeInputs = [ pkgs.logger ];
+    runtimeInputs = [pkgs.logger];
     text =
       # bash
       ''
@@ -24,53 +26,51 @@ let
         esac
       '';
   };
-in
-{
+in {
   power.ups.schedulerRules =
     lib.pipe
-      # help:
-      # https://networkupstools.org/docs/man/upssched.conf.html
-      ''
-        CMDSCRIPT ${lib.getExe upssched-dispatch}
+    # help:
+    # https://networkupstools.org/docs/man/upssched.conf.html
+    ''
+      CMDSCRIPT ${lib.getExe upssched-dispatch}
 
-        PIPEFN /var/state/ups/upssched.pipe
-        LOCKFN /var/state/ups/upssched.lock
-        # Syntax:
-        # AT <notifyType> <upsName> <command>
-        AT ONLINE * CANCEL-TIMER halt
+      PIPEFN /var/state/ups/upssched.pipe
+      LOCKFN /var/state/ups/upssched.lock
+      # Syntax:
+      # AT <notifyType> <upsName> <command>
+      AT ONLINE * CANCEL-TIMER halt
 
-        # If UPS is on battery -- start countdown timer and die
-        AT ONBATT * START-TIMER halt ${systemGraceTime}
-        # Just halt on low battery
-        AT LOWBATT * EXECUTE halt
-        # Halt on forced shutdown
-        AT FSD * EXECUTE halt
+      # If UPS is on battery -- start countdown timer and die
+      AT ONBATT * START-TIMER halt ${systemGraceTime}
+      # Just halt on low battery
+      AT LOWBATT * EXECUTE halt
+      # Halt on forced shutdown
+      AT FSD * EXECUTE halt
 
-        # Comms restored -- cancel the timer just in case
-        AT COMMOK * CANCEL-TIMER halt
-        # If communication to the server is lost -- start countdown timer and die
-        AT COMMBAD * START-TIMER halt ${systemGraceTime}
+      # Comms restored -- cancel the timer just in case
+      AT COMMOK * CANCEL-TIMER halt
+      # If communication to the server is lost -- start countdown timer and die
+      AT COMMBAD * START-TIMER halt ${systemGraceTime}
 
-        # Do nothing, this will be caught by monitoring
-        AT REPLBATT * EXECUTE REPLBATT
+      # Do nothing, this will be caught by monitoring
+      AT REPLBATT * EXECUTE REPLBATT
 
-        AT NOCOMM * START-TIMER halt ${systemGraceTime}
+      AT NOCOMM * START-TIMER halt ${systemGraceTime}
 
-        # This will log the state as unknown command
-        # I might want to catch this using monitoring
-        AT NOPARENT * EXECUTE NOPARENT
-        AT CAL * EXECUTE CAL
-        AT NOTCAL * EXECUTE NOTCAL
-        AT OFF * EXECUTE OFF
-        AT NOTOFF * EXECUTE NOTOFF
-        AT BYPASS * EXECUTE BYPASS
-        AT NOTBYPASS * EXECUTE NOTBYPASS
-        AT SUSPEND_STARTING * EXECUTE SUSPEND_STARTING
-        AT SUSPEND_FINISHED * EXECUTE SUSPEND_FINISHED
-      ''
-      [
-        (pkgs.writeText "upssched.conf")
-        toString
-      ];
-
+      # This will log the state as unknown command
+      # I might want to catch this using monitoring
+      AT NOPARENT * EXECUTE NOPARENT
+      AT CAL * EXECUTE CAL
+      AT NOTCAL * EXECUTE NOTCAL
+      AT OFF * EXECUTE OFF
+      AT NOTOFF * EXECUTE NOTOFF
+      AT BYPASS * EXECUTE BYPASS
+      AT NOTBYPASS * EXECUTE NOTBYPASS
+      AT SUSPEND_STARTING * EXECUTE SUSPEND_STARTING
+      AT SUSPEND_FINISHED * EXECUTE SUSPEND_FINISHED
+    ''
+    [
+      (pkgs.writeText "upssched.conf")
+      toString
+    ];
 }

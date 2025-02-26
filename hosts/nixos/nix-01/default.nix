@@ -15,12 +15,11 @@
     ../../../modules/node-exporter
     ../../../modules/nfs
     ../../../modules/k3s-agent
-    # ../../../modules/docker/minecraft
-    # ../../../modules/docker/audiobookshelf
   ];
 
   services.clubcotton = {
     code-server.enable = true;
+    nut-client.enable = true;
   };
 
   virtualisation.containers.enable = true;

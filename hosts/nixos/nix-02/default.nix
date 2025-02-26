@@ -19,6 +19,7 @@
   services.clubcotton = {
     # vnc.enable = true;
     tailscale.enable = true;
+    nut-client.enable = true;
   };
 
   virtualisation.containers.enable = true;

@@ -154,7 +154,8 @@
     group = "freshrss";
   };
 
-  age.secrets."nut-client-password" = lib.mkIf config.services.clubcotton."nut-server".enable {
+  age.secrets."nut-client-password" = lib.mkIf (config.services.clubcotton."nut-server".enable
+    || config.services.clubcotton."nut-client".enable) {
     file = ./nut-client.age;
   };
 }
