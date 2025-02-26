@@ -28,6 +28,8 @@
 
   services.clubcotton = {
     code-server.enable = true;
+    nut-server.enable = true;
+    nut-client.enable = true;
   };
 
   boot.loader.systemd-boot.enable = true;
@@ -124,6 +126,12 @@
   virtualisation.docker.enable = true;
 
   programs.zsh.enable = true;
+
+  users.users.root = {
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA51nSUvq7WevwvTYzD1S2xSr9QU7DVuYu3k/BGZ7vJ0 bob.cotton@gmail.com"
+    ];
+  };
 
   # List services that you want to enable:
   services.openssh.enable = true;

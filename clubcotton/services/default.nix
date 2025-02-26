@@ -13,6 +13,8 @@
     ./jellyfin
     ./kavita
     ./navidrome
+    ./nut-client
+    ./nut-server
     ./open-webui
     ./paperless
     ./roon-server

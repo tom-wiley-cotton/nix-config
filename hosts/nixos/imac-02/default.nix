@@ -14,9 +14,6 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
-    # ../../../modules/k3s-agent
-    # ../../../modules/docker/minecraft
-    # ../../../modules/docker/audiobookshelf
   ];
 
   services.xserver.enable = true;
@@ -24,6 +21,8 @@
   services.desktopManager.plasma6.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+  hardware.sane.enable = true;
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
@@ -54,12 +53,6 @@
     hostId = "95c41ddc";
     defaultGateway = "192.168.5.1";
     nameservers = ["192.168.5.220"];
-#    interfaces.enp4s0f0.ipv4.addresses = [
-#      {
-#        address = "192.168.5.125";
-#        prefixLength = 24;
-#      }
-#    ];
     wireless.enable = true;
     wireless.userControlled.enable = true;
     wireless.secretsFile = config.age.secrets.wireless-config.path;
@@ -93,6 +86,7 @@
   environment.systemPackages = with pkgs; [
     firefox
     code-cursor
+    scanbd
   ];
 
   system.stateVersion = "24.11"; # Did you read the comment?

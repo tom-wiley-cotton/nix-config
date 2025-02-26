@@ -5,7 +5,7 @@
 192.168.5.49 octoprint
 192.168.5.62 kvm
 192.168.5.125 imac-01.lan
-192.168.5.176 imac-02.lan
+192.168.5.153 imac-02.lan
 192.168.5.143 nas-01-kvm.lan
 192.168.5.192 fireplace-led
 192.168.5.210 nix-01.lan
