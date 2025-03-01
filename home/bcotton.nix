@@ -467,6 +467,7 @@ in {
     # TODO: write an overlay for this or use the flake
     # unstablePkgs.ghostty
     tldr
+    unstablePkgs.spotdl
     unstablePkgs.zed-editor
   ];
 }

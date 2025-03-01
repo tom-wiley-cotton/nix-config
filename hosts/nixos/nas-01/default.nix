@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/samba
+    ../../../modules/scanner
   ];
 
   services.clubcotton = {
@@ -33,6 +34,7 @@
     readarr.enable = true;
     roon-server.enable = true;
     sabnzbd.enable = true;
+    scanner.enable = true;
     sonarr.enable = true;
     syncoid.enable = true;
     tailscale.enable = true;

@@ -44,6 +44,7 @@ in {
   "paperless-database-raw.age".publicKeys = users ++ systems;
   "pushover-key.age".publicKeys = users ++ systems;
   "pushover-token.age".publicKeys = users ++ systems;
+  "scanner-user-private-ssh-key.age".publicKeys = users ++ systems;
   "tailscale-keys.env".publicKeys = users ++ systems;
   "tailscale-keys.raw".publicKeys = users ++ systems;
   "unpoller.age".publicKeys = users ++ systems;

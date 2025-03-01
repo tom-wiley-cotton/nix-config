@@ -14,15 +14,19 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
+    ../../../modules/scanner
   ];
+
+  services.clubcotton = {
+    scanner.enable = true;
+    tailscale.enable = true;
+  };
 
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  hardware.sane.enable = true;
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
@@ -32,6 +36,7 @@
     # Required for containers under podman-compose to be able to talk to each other.
     defaultNetwork.settings.dns_enabled = true;
   };
+  virtualisation.libvirtd.enable = true;
 
   clubcotton.zfs_single_root = {
     enable = true;
@@ -63,8 +68,6 @@
     };
   };
 
-  services.tailscale.enable = true;
-
   # Set your time zone.
   time.timeZone = "America/Denver";
 
@@ -81,12 +84,9 @@
 
   networking.firewall.enable = false;
 
-  virtualisation.libvirtd.enable = true;
-
   environment.systemPackages = with pkgs; [
     firefox
     code-cursor
-    scanbd
   ];
 
   system.stateVersion = "24.11"; # Did you read the comment?
