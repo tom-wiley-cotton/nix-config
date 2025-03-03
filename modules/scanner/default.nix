@@ -10,11 +10,10 @@ with lib; let
   clubcotton = config.clubcotton;
 
   scanScript =
-    pkgs.writeScript "scanbd_scan.script"
+    pkgs.writeShellScriptBin "scanbd_scan.script"
     ''
-      #! ${pkgs.bash}/bin/bash
-      export PATH=${lib.makeBinPath [pkgs.coreutils pkgs.sane-frontends pkgs.sane-backends pkgs.ghostscript pkgs.imagemagick]}
-      user=$(1:-bcotton)
+      export PATH=${lib.makeBinPath [pkgs.coreutils pkgs.sane-frontends pkgs.sane-backends pkgs.ghostscript pkgs.imagemagick pkgs.openssh]}
+      user=''${1:-bcotton}
 
       set -x
       date="$(date --iso-8601=seconds)"
@@ -30,7 +29,7 @@ with lib; let
       # Remove temporary PNM images
       rm --verbose out*
 
-      scp -o 'StrictHostKeyChecking=no' -i ${config.age.secrets.scanner-user-private-ssh-key.path} $filename scanner@nas-01:/var/lib/paperless/consume/$user
+      scp -o 'StrictHostKeyChecking=no' -i ${config.age.secrets.scanner-user-private-ssh-key.path} "''${tmpdir}/''${filename}" scanner@nas-01:/var/lib/paperless/consume/''${user}
 
       rm -r "$tmpdir"
     '';
