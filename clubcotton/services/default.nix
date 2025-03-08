@@ -19,6 +19,7 @@
     ./paperless
     ./roon-server
     ./sabnzbd
+    ./scanner
     ./syncoid
     ./webdav
   ];
