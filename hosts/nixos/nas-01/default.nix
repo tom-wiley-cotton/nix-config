@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/samba
-    ../../../modules/scanner
   ];
 
   services.clubcotton = {

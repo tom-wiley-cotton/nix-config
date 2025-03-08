@@ -14,7 +14,6 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
-    ../../../modules/scanner
   ];
 
   services.clubcotton = {
