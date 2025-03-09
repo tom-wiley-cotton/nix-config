@@ -40,6 +40,10 @@
     webdav.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    beets-unstable
+  ];
+
   networking = {
     hostName = "nas-01";
     defaultGateway = "192.168.5.1";
