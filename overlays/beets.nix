@@ -24,6 +24,10 @@
             enable = true;
             propagatedBuildInputs = [(pkgs.python3.pkgs.callPackage ../pkgs/lap {})];
           };
+          beets_id3extract = {
+            enable = true;
+            propagatedBuildInputs = [(pkgs.python3.pkgs.callPackage ../pkgs/beets_id3extract {})];
+          };
         };
         pluginOverrides = {
           _typing = {

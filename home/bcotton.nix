@@ -16,9 +16,11 @@ in {
     "${nixVsCodeServer}/modules/vscode-server/home.nix"
     ./modules/atuin.nix
     ./modules/tmux-plugins.nix
+    ./modules/beets.nix
     # ./modules/sesh.nix
   ];
 
+  programs.beets-cli.enable = true;
   programs.tmux-plugins.enable = true;
 
   # programs.sesh-config = {
