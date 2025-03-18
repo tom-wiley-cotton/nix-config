@@ -44,6 +44,10 @@
     beets-unstable
   ];
 
+  nix.extraOptions = ''
+    trusted-users = root bcotton
+  '';
+
   networking = {
     hostName = "nas-01";
     defaultGateway = "192.168.5.1";

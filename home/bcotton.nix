@@ -458,6 +458,7 @@ in {
 
   home.packages = with pkgs; [
     unstablePkgs.aider-chat
+    devenv
     fx
     kubernetes-helm
     kubectx
