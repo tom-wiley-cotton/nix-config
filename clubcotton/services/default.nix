@@ -6,6 +6,7 @@
   imports = [
     ./arr
     ./atuin
+    ./bonob
     ./calibre
     ./calibre-web
     ./filebrowser
