@@ -6,6 +6,7 @@
   imports = [
     ./arr
     ./atuin
+    ./bonob
     ./calibre
     ./calibre-web
     ./filebrowser
@@ -13,10 +14,14 @@
     ./jellyfin
     ./kavita
     ./navidrome
+    ./nut-client
+    ./nut-server
     ./open-webui
     ./paperless
     ./roon-server
     ./sabnzbd
+    ./scanner
+    ./syncoid
     ./webdav
   ];
 }

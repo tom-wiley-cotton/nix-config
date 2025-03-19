@@ -153,4 +153,15 @@
     owner = "freshrss";
     group = "freshrss";
   };
+
+  age.secrets."nut-client-password" = lib.mkIf (config.services.clubcotton."nut-server".enable
+    || config.services.clubcotton."nut-client".enable) {
+    file = ./nut-client.age;
+  };
+
+  age.secrets."scanner-user-private-ssh-key" = lib.mkIf config.services.clubcotton.scanner.enable {
+    file = ./scanner-user-private-ssh-key.age;
+    owner = "scanner";
+    group = "users";
+  };
 }

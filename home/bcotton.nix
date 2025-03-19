@@ -16,9 +16,11 @@ in {
     "${nixVsCodeServer}/modules/vscode-server/home.nix"
     ./modules/atuin.nix
     ./modules/tmux-plugins.nix
+    ./modules/beets.nix
     # ./modules/sesh.nix
   ];
 
+  programs.beets-cli.enable = true;
   programs.tmux-plugins.enable = true;
 
   # programs.sesh-config = {
@@ -456,16 +458,19 @@ in {
 
   home.packages = with pkgs; [
     unstablePkgs.aider-chat
+    devenv
     fx
     kubernetes-helm
     kubectx
     kubectl
     llm
+    nodejs_22
     unstablePkgs.sesh
     unstablePkgs.uv
     # TODO: write an overlay for this or use the flake
     # unstablePkgs.ghostty
     tldr
+    unstablePkgs.spotdl
     unstablePkgs.zed-editor
   ];
 }

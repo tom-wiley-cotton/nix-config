@@ -19,6 +19,13 @@
       autoprune = true;
       autosnap = true;
     };
+    templates.media = {
+      hourly = 0;
+      daily = 30;
+      monthly = 6;
+      autoprune = true;
+      autosnap = true;
+    };
   };
 
   services.prometheus.exporters =

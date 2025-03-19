@@ -33,10 +33,20 @@
     readarr.enable = true;
     roon-server.enable = true;
     sabnzbd.enable = true;
+    scanner.enable = true;
     sonarr.enable = true;
+    syncoid.enable = true;
     tailscale.enable = true;
     webdav.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    beets-unstable
+  ];
+
+  nix.extraOptions = ''
+    trusted-users = root bcotton
+  '';
 
   networking = {
     hostName = "nas-01";
@@ -193,6 +203,11 @@
           }
         ];
       };
+      paperless-bcotton = {
+        password = "{env}BCOTTON_PAPERLESS_PASSWORD";
+        directory = "/var/lib/paperless/consume/bcotton";
+        permissions = "CRUD";
+      };
     };
   };
 
@@ -294,6 +309,18 @@
   services.sanoid = {
     datasets."ssdpool/local/database" = {
       useTemplate = ["backup"];
+    };
+    datasets."mediapool/local/photos" = {
+      useTemplate = ["media"];
+    };
+    datasets."mediapool/local/documents" = {
+      useTemplate = ["media"];
+    };
+    datasets."mediapool/local/tomcotton/data" = {
+      useTemplate = ["media"];
+    };
+    datasets."mediapool/local/tomcotton/audio-library" = {
+      useTemplate = ["media"];
     };
   };
 

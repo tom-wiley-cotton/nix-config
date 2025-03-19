@@ -15,12 +15,12 @@
     ../../../modules/node-exporter
     ../../../modules/nfs
     ../../../modules/k3s-agent
-    # ../../../modules/docker/minecraft
-    # ../../../modules/docker/audiobookshelf
   ];
 
   services.clubcotton = {
     code-server.enable = true;
+    nut-client.enable = true;
+    bonob.enable = true;
   };
 
   virtualisation.containers.enable = true;
@@ -79,6 +79,13 @@
     tailnetHostname = "nix-01-vscode";
     user = "bcotton";
   };
+
+  services.clubcotton.bonob = {
+    sonosSeedHost = "192.168.5.96";
+    url = "http://192.168.5.210:3000/";
+    subsonicUrl = "http://nas-01.lan:${toString config.services.navidrome.settings.Port}/";
+  };
+
 
   # Set your time zone.
   time.timeZone = "America/Denver";
