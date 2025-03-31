@@ -53,6 +53,10 @@ build-host hostname:
 nix-all:
   for i in `(nix flake show --json | jq -r '.nixosConfigurations |keys[]' | grep -v admin ) 2>/dev/null `; do nix run ".#apps.nixinate.$i" ; done
 
+build-all:
+  for i in `(nix flake show --json | jq -r '.nixosConfigurations |keys[]' | grep -v admin ) 2>/dev/null `; do echo $i; nix build ".#nixosConfigurations.$i.config.system.build.toplevel"; done
+  
+
 vm:
   nix run '.#nixosConfigurations.nixos.config.system.build.nixos-shell'
 
