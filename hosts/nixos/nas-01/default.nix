@@ -32,7 +32,7 @@
     prowlarr.enable = true;
     radarr.enable = true;
     readarr.enable = true;
-    roon-server.enable = true;
+    roon-server.enable = false;
     sabnzbd.enable = true;
     scanner.enable = true;
     sonarr.enable = true;
@@ -59,17 +59,6 @@
         prefixLength = 24;
       }
     ];
-  };
-
-  users = {
-    groups.share = {
-      gid = 993;
-    };
-    users.share = {
-      uid = 994;
-      isSystemUser = true;
-      group = "share";
-    };
   };
 
   services.nfs.server = {
