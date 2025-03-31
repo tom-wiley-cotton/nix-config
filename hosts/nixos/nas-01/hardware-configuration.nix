@@ -17,19 +17,42 @@
   # Intel A390
   boot.initrd.kernelModules = ["i915"];
   hardware.enableRedistributableFirmware = true;
+  boot.kernelParams = [
+    "i915.fastboot=1"
+    "i915.enable_guc=3"
+    #"i915.force_probe=4e71"  # For Raptor Lake
+  ];
+  hardware.firmware = [pkgs.linux-firmware];
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver # For Broadwell (2014) or newer processors. LIBVA_DRIVER_NAME=iHD
-      intel-media-sdk
-      onevpl-intel-gpu
-      intel-compute-runtime
-
       # intel-vaapi-driver # For older processors. LIBVA_DRIVER_NAME=i965
+
+      # VA-API drivers
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver
+      libvdpau-va-gl
+
+      # OpenCL and compute support
+      intel-compute-runtime
+      intel-gmmlib
+      onevpl-intel-gpu
+
+      # VA-API utilities and libraries
+      libva
+      libva-utils
+
+      # Diagnostic tools
+      glxinfo
+      pciutils
     ];
   };
-  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Optionally, set the environment variable
-  # environment.variables = {
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
+    LIBVA_MESSAGING_LEVEL = "1";
+    GST_VAAPI_ALL_DRIVERS = "1";
+  }; # environment.variables = {
   #   VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
   # };
 
