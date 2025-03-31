@@ -12,8 +12,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "bcotton";
           repo = "beets";
-          rev = "4a2647590375e684aa21fbf0732df0ebd5ba0671";
-          hash = "sha256-g9r+pehlSoN0oz7e+bc9WbYrH9+GVwwqgZ/Iu89lSx8=";
+          rev = "aa265b4fc8716666aef82f035787ecc22a4e0403";
+          hash = "sha256-eUtAtYxkhEViifyKZT4t0T16hp8zatdvcKPsMSDCqaA=";
         };
         extraPatches = [
           # Bash completion fix for Nix
