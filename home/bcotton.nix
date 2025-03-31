@@ -465,6 +465,7 @@ in {
     kubectl
     llm
     nodejs_22
+    opentofu
     unstablePkgs.sesh
     unstablePkgs.uv
     # TODO: write an overlay for this or use the flake
