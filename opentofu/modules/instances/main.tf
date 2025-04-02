@@ -1,9 +1,10 @@
-# Test container instance
+# Test container instance - only created when enable_test_instances is true
 resource "incus_instance" "test_container" {
-  name      = "test-container"
+  count     = var.enable_test_instances ? 1 : 0
+  name      = "${var.environment}-test-container"
   image     = "images:ubuntu/jammy"
   type      = "container"
-  profiles  = ["container-base"]
+  profiles  = [var.container_profile]
   project   = "default"
 
   config = {
@@ -35,10 +36,10 @@ resource "incus_instance" "test_container" {
 
 # Home Assistant OS instance with bridged networking
 resource "incus_instance" "homeassistant" {
-  name      = "homeassistant"
+  name      = "${var.environment}-homeassistant"
   image     = "haos"
   type      = "virtual-machine"
-  profiles  = ["haos"]
+  profiles  = [var.haos_profile]
   project   = "default"
 
   device {
@@ -48,17 +49,18 @@ resource "incus_instance" "homeassistant" {
     properties = {
       nictype = "bridged"
       parent  = var.network_bridge
-      hwaddr  = "00:16:3e:3d:95:f0"
+      hwaddr  = var.haos_mac_address
     }
   }
 }
 
-# Test Home Assistant OS instance with macvlan networking
+# Home Assistant OS instance with macvlan networking - only created when enable_test_instances is true
 resource "incus_instance" "homeassistant_macvlan" {
-  name      = "homeassistant-macvlan"
+  count     = var.enable_test_instances ? 1 : 0
+  name      = "${var.environment}-homeassistant-macvlan"
   image     = "haos"
   type      = "virtual-machine"
-  profiles  = ["haos-macvlan"]
+  profiles  = [var.haos_macvlan_profile]
   project   = "default"
 
   device {
@@ -68,7 +70,7 @@ resource "incus_instance" "homeassistant_macvlan" {
     properties = {
       nictype = "macvlan"
       parent  = var.host_interface
-      hwaddr  = "00:16:3e:3d:95:f1"  # Different MAC address from the bridged instance
+      hwaddr  = var.haos_macvlan_mac_address
     }
   }
 }

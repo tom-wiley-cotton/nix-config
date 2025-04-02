@@ -1,10 +1,10 @@
 # Base profile for all instances
 resource "incus_profile" "base" {
-  name = "base"
+  name = "${var.environment}-base"
 
   config = {
-    "limits.cpu"    = local.base_config.limits_cpu
-    "limits.memory" = local.base_config.limits_memory
+    "limits.cpu"    = var.base_config.limits_cpu
+    "limits.memory" = var.base_config.limits_memory
   }
 
   device {
@@ -30,7 +30,7 @@ resource "incus_profile" "base" {
 
 # Profile for virtual machines
 resource "incus_profile" "vm" {
-  name = "vm-base"
+  name = "${var.environment}-vm-base"
 
   config = var.vm_config
 
@@ -58,7 +58,7 @@ resource "incus_profile" "vm" {
 
 # Profile for containers
 resource "incus_profile" "container" {
-  name = "container-base"
+  name = "${var.environment}-container-base"
 
   config = var.container_config
 
@@ -86,7 +86,7 @@ resource "incus_profile" "container" {
 
 # Profile for Home Assistant OS with bridged networking
 resource "incus_profile" "haos" {
-  name = "haos"
+  name = "${var.environment}-haos"
 
   config = {
     "limits.cpu"          = "2"
@@ -120,7 +120,7 @@ resource "incus_profile" "haos" {
 
 # Profile for Home Assistant OS with macvlan networking
 resource "incus_profile" "haos_macvlan" {
-  name = "haos-macvlan"
+  name = "${var.environment}-haos-macvlan"
 
   config = {
     "limits.cpu"          = "2"
