@@ -27,7 +27,6 @@ module "instances" {
   enable_test_instances = var.enable_test_instances
 
   depends_on = [
-    module.profiles,
-    incus_image.haos
+    module.profiles
   ]
 }
