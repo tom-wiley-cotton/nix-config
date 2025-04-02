@@ -65,3 +65,9 @@ variable "enable_test_instances" {
   type        = bool
   default     = true  # Enable test instances in dev environment
 }
+
+variable "environment" {
+  description = "Environment name (dev/prod)"
+  type        = string
+  default     = "dev"
+}

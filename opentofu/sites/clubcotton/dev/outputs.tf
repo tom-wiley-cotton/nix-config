@@ -1,16 +1,16 @@
 output "homeassistant_ip" {
   description = "IP address of the Home Assistant instance"
-  value       = module.instances.homeassistant_ipv4
+  value       = incus_instance.homeassistant.ipv4_address
 }
 
 output "homeassistant_macvlan_ip" {
   description = "IP address of the Home Assistant macvlan instance"
-  value       = var.enable_test_instances ? module.instances.homeassistant_macvlan_ipv4 : null
+  value       = var.enable_test_instances ? incus_instance.homeassistant_macvlan[0].ipv4_address : null
 }
 
 output "test_container_ip" {
   description = "IP address of the test container"
-  value       = var.enable_test_instances ? module.instances.test_container_ipv4 : null
+  value       = var.enable_test_instances ? incus_instance.test_container[0].ipv4_address : null
 }
 
 output "profiles" {
