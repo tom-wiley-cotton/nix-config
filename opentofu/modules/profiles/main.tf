@@ -32,7 +32,9 @@ resource "incus_profile" "base" {
 resource "incus_profile" "vm" {
   name = "${var.environment}-vm-base"
 
-  config = var.vm_config
+  config = merge(var.vm_config, {
+    "migration.stateful" = "true"  # Enable stateful snapshots
+  })
 
   device {
     name = "eth0"
@@ -60,7 +62,9 @@ resource "incus_profile" "vm" {
 resource "incus_profile" "container" {
   name = "${var.environment}-container-base"
 
-  config = var.container_config
+  config = merge(var.container_config, {
+    "migration.stateful" = "true"  # Enable stateful snapshots
+  })
 
   device {
     name = "eth0"
