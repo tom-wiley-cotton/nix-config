@@ -8,7 +8,7 @@ locals {
       status   = incus_instance.homeassistant.status
       location = incus_instance.homeassistant.target
       ip       = incus_instance.homeassistant.ipv4_address
-      profile  = "prod-haos"
+      profile  = module.profiles.haos_profile_name
       resources = {
         cpu    = "2"
         memory = "4GB"
@@ -63,7 +63,6 @@ output "environment_summary" {
     "Network Bridge"  = var.network_bridge
     "Host Interface" = var.host_interface
     "Storage Pool"   = var.storage_pool
-    "Test Mode"      = var.enable_test_instances ? "Enabled" : "Disabled"
     "Instance Count" = length(local.instances)
     "Total Resources" = {
       "CPU Cores"    = "${local.total_resources.cpu} cores"
