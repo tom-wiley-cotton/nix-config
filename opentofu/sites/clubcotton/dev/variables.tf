@@ -4,6 +4,12 @@ variable "network_bridge" {
   default     = "br0"
 }
 
+variable "host_interface" {
+  description = "Name of the host network interface"
+  type        = string
+  default     = "enp3s0"
+}
+
 variable "vm_config" {
   description = "Default configuration for virtual machines"
   type        = map(string)
