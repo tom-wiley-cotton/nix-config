@@ -18,9 +18,8 @@ resource "incus_instance" "homeassistant" {
   }
 }
 
-# Home Assistant OS instance with macvlan networking - only in dev
+# Home Assistant OS instance with macvlan networking
 resource "incus_instance" "homeassistant_macvlan" {
-  count     = var.enable_test_instances ? 1 : 0
   name      = "${var.environment}-homeassistant-macvlan"
   image     = "haos"
   type      = "virtual-machine"
@@ -39,10 +38,9 @@ resource "incus_instance" "homeassistant_macvlan" {
   }
 }
 
-# Test container instance - only in dev
-resource "incus_instance" "test_container" {
-  count     = var.enable_test_instances ? 1 : 0
-  name      = "${var.environment}-test-container"
+# Development container instance
+resource "incus_instance" "dev_container" {
+  name      = "${var.environment}-container"
   image     = "images:ubuntu/jammy"
   type      = "container"
   profiles  = [module.profiles.container_profile_name]

@@ -60,12 +60,6 @@ variable "base_config" {
   }
 }
 
-variable "enable_test_instances" {
-  description = "Whether to create test instances"
-  type        = bool
-  default     = true  # Enable test instances in dev environment
-}
-
 variable "environment" {
   description = "Environment name (dev/prod)"
   type        = string
