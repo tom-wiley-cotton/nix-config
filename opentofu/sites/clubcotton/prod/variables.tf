@@ -65,3 +65,9 @@ variable "enable_test_instances" {
   type        = bool
   default     = false  # No test instances in prod
 }
+
+variable "environment" {
+  description = "Environment name (dev/prod)"
+  type        = string
+  default     = "prod"
+}

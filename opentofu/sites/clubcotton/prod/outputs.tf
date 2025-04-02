@@ -1,6 +1,6 @@
 output "homeassistant_ip" {
   description = "IP address of the Home Assistant instance"
-  value       = module.instances.homeassistant_ipv4
+  value       = incus_instance.homeassistant.ipv4_address
 }
 
 output "profiles" {
