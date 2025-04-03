@@ -4,6 +4,12 @@ variable "network_bridge" {
   default     = "br0"
 }
 
+variable "host_interface" {
+  description = "Name of the host network interface"
+  type        = string
+  default     = "eno1"
+}
+
 variable "storage_pool" {
   description = "Name of the storage pool to use"
   type        = string
@@ -17,6 +23,18 @@ variable "vm_config" {
     "limits.cpu"          = "2"
     "limits.memory"       = "4GB"
     "security.secureboot" = "false"
+    "boot.autostart"      = "true"
+  }
+}
+
+variable "container_config" {
+  description = "Default configuration for containers"
+  type        = map(string)
+  default     = {
+    "limits.cpu"          = "1"
+    "limits.memory"       = "2GB"
+    "security.nesting"    = "false"
+    "security.privileged" = "false"
     "boot.autostart"      = "true"
   }
 }
