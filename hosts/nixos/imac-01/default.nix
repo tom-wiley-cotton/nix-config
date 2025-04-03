@@ -48,17 +48,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    useDHCP = true;
+    useDHCP = false;
+    interfaces = {
+      wlp3s0.useDHCP = true;
+      enp4s0f0.useDHCP = false;
+    };
     hostName = "imac-01";
     hostId = "238f8e1e";
-    defaultGateway = "192.168.5.1";
+    defaultGateway = {
+      interface = "wlp3s0";
+      address = "192.168.5.1";
+    };
     nameservers = ["192.168.5.220"];
-    #    interfaces.enp4s0f0.ipv4.addresses = [
-    #      {
-    #        address = "192.168.5.125";
-    #        prefixLength = 24;
-    #      }
-    #    ];
     wireless.enable = true;
     wireless.userControlled.enable = true;
     wireless.secretsFile = config.age.secrets.wireless-config.path;
