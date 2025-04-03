@@ -14,6 +14,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../../modules/incus
   ];
 
   services.clubcotton = {
@@ -22,18 +23,6 @@
     filebrowser.enable = false;
     tailscale.enable = true;
   };
-
-  users = {
-    groups.share = {
-      gid = 993;
-    };
-    users.share = {
-      uid = 994;
-      isSystemUser = true;
-      group = "share";
-    };
-  };
-
   # services.clubcotton.services.tailscale.enable = true;
 
   clubcotton.zfs_single_root.enable = true;
@@ -64,6 +53,7 @@
   users.users.root = {
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKW08oClThlF1YJ+ey3y8XKm9yX/45EtaM/W7hx5Yvzb tomcotton@Toms-MacBook-Pro.local"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA51nSUvq7WevwvTYzD1S2xSr9QU7DVuYu3k/BGZ7vJ0 bob.cotton@gmail.com"
     ];
   };
 
@@ -88,7 +78,9 @@
     hostName = "nix-04";
     defaultGateway = "192.168.5.1";
     nameservers = ["192.168.5.220"];
-    interfaces.eno1.ipv4.addresses = [
+    useDHCP = false;
+    bridges."br0".interfaces = ["eno1"];
+    interfaces."br0".ipv4.addresses = [
       {
         address = "192.168.5.54";
         prefixLength = 24;
