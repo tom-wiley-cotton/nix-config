@@ -43,7 +43,8 @@ variable "storage_sizes" {
   description = "Storage sizes for different instance types"
   type        = map(string)
   default     = {
-    "vm" = "20GB"
+    "vm"        = "20GB"
+    "container" = "10GB"
   }
 }
 
