@@ -378,6 +378,9 @@ in {
       unsetopt bgnice
 
 
+      export PATH=$PATH:/Library/TeX/texbin
+
+
     '';
 
     #initExtra = (builtins.readFile ../mac-dot-zshrc);
