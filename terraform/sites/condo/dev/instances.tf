@@ -1,7 +1,7 @@
 # Home Assistant OS instance with bridged networking
 resource "incus_instance" "homeassistant" {
   name      = "${var.environment}-homeassistant"
-  image     = incus_image.haos.aliases[0]
+  image     = incus_image.haos.fingerprint
   type      = "virtual-machine"
   profiles  = [module.profiles.haos_profile_name]
   project   = "default"
