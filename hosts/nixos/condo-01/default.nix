@@ -18,17 +18,23 @@
   ];
 
   services.clubcotton = {
-    freshrss.enable = false;
-    paperless.enable = false;
-    filebrowser.enable = false;
     tailscale.enable = true;
   };
+
   clubcotton.zfs_single_root.enable = true;
   virtualisation.podman.enable = true;
   virtualisation.libvirtd.enable = true;
 
   programs.zsh.enable = true;
   services.openssh.enable = true;
+
+  services.clubcotton.tailscale = {
+    useRoutingFeatures = "server";
+    extraSetFlags = [
+      "--advertise-routes=192.168.5.0/24"
+      "--accept-routes"
+    ];
+  };
 
   users.users.root = {
     openssh.authorizedKeys.keys = [

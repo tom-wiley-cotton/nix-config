@@ -38,8 +38,8 @@ resource "incus_instance" "homeassistant" {
     type = "usb"
     
     properties = {
-      vendorid  = "152d"
-      productid = "1561"
+      vendorid  = "10c4"
+      productid = "ea60"
     }
   }
 }
