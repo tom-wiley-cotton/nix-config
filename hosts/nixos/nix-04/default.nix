@@ -76,16 +76,17 @@
   networking = {
     hostId = "3fa4e0cb";
     hostName = "nix-04";
-    defaultGateway = "192.168.5.1";
-    nameservers = ["192.168.5.220"];
+    defaultGateway = "192.168.12.1";
+    nameservers = ["192.168.12.1"];
     useDHCP = false;
     bridges."br0".interfaces = ["eno1"];
-    interfaces."br0".ipv4.addresses = [
-      {
-        address = "192.168.5.54";
-        prefixLength = 24;
-      }
-    ];
+    interfaces."br0".useDHCP = true;
+    #interfaces."br0".ipv4.addresses = [
+    #  {
+    #    address = "192.168.12.54";
+    #    prefixLength = 24;
+    #  }
+    #];
   };
 
   # Pick only one of the below networking options.

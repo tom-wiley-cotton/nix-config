@@ -7,18 +7,18 @@ let
   just_bob = [bcotton];
 
   admin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMjeiDeFxI7BcbjDxtPyeWfsUWBW2HKTyjT8/X0719+p root@nixos";
+  condo-01 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINIpIbNwuXjaydV3NuE7+sb+jnSM3jsCb/+lCV+X6MYX root@nix-04";
   dns-01 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBD6tjNNrFlFu0PqKg3bQc2BiUJpsqVVv3nESGno4ahn root@dns-01";
   imac-01 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKs1khAuSbZNVI31+oO2IwO/9Q2p6AAfylhAJP9DpW2 root@imac-01";
   imac-02 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDytO1fpZ+i2QPXjg+XuNYLVjLJv6c0snq2OO5q6rxN0 root@imac-02";
   nix-01 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDEJMkba6F8w5b1nDZ3meKEb7PNcWbErBtofbejrIh+ root@nix-01";
   nix-02 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFP84qqvaOkowcYY3B1b96AJ3TPBo0EOlIJuqYQF/AfM root@nix-02";
   nix-03 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQtcczbSCjUK0NH1M6fTIG21Ta5XcvygsFimfNDMqXz root@nix-03";
-  nix-04 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINIpIbNwuXjaydV3NuE7+sb+jnSM3jsCb/+lCV+X6MYX root@nix-04";
   nas-01 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4/K8BbFVT/V5SRlWwjBb2vowBQjCiReOeNRw+C+/c4 root@nas-01";
   octoprint = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtxU4yWKvKtZUV82nISi21UCnZ8D2ua8mPMkhk1flNH root@octoprint";
   frigate-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL7E24JIWthIHIyTnqjdmJPeGUw8UreinxDNfVq9N2AP root@frigate-host";
 
-  systems = [admin dns-01 imac-01 imac-02 nix-01 nix-02 nix-03 nix-04 nas-01 octoprint frigate-host];
+  systems = [admin condo-01 dns-01 imac-01 imac-02 nix-01 nix-02 nix-03 nas-01 octoprint frigate-host];
 in {
   "atuin.age".publicKeys = users ++ systems;
   "atuin-database.age".publicKeys = users ++ systems;
