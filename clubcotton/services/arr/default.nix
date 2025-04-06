@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./jellyseerr
     ./lidarr
     ./prowlarr
     ./radarr

@@ -22,6 +22,7 @@
     freshrss.enable = true;
     immich.enable = true;
     jellyfin.enable = true;
+    jellyseerr.enable = true;
     kavita.enable = false;
     lidarr.enable = true;
     navidrome.enable = true;
