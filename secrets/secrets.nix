@@ -47,6 +47,8 @@ in {
   "scanner-user-private-ssh-key.age".publicKeys = users ++ systems;
   "tailscale-keys.env".publicKeys = users ++ systems;
   "tailscale-keys.raw".publicKeys = users ++ systems;
+  "tfstate-database.age".publicKeys = users ++ systems;
+  "tfstate-database-raw.age".publicKeys = users ++ systems;
   "unpoller.age".publicKeys = users ++ systems;
   "webdav.age".publicKeys = users ++ systems;
   "wireless-config.age".publicKeys = users ++ systems;

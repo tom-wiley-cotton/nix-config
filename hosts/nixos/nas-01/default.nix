@@ -114,6 +114,10 @@
       enable = true;
       passwordFile = config.age.secrets."paperless-database".path;
     };
+    tfstate = {
+      enable = true;
+      passwordFile = config.age.secrets."tfstate-database".path;
+    };
   };
 
   services.clubcotton.filebrowser = {
