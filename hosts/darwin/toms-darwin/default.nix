@@ -132,6 +132,7 @@ in {
         "steam"
         "tailscale"
         "qmk-toolbox"
+        "ghostty"
       ];
       masApps = {
         #   "Amphetamine" = 937984704;

@@ -262,6 +262,9 @@ in {
     configFile."atuin/config.toml" = {
       source = ./tomcotton.config/atuin/config.toml;
     };
+    configFile."ghostty/config" = {
+      source = ./tomcotton.config/ghostty/config;
+    };
   };
 
   programs.zsh = {
@@ -408,6 +411,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    # unstablePkgs.ghostty
     (pkgs.python311.withPackages (ppkgs: [
       ppkgs.numpy
       ppkgs.libtmux
