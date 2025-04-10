@@ -8,7 +8,7 @@
   beetsPackages =
     super.beetsPackages
     // {
-      beets-unstable = super.beetsPackages.beets-unstable.override {
+      beets-stable = super.beetsPackages.beets-unstable.override {
         src = pkgs.fetchFromGitHub {
           owner = "bcotton";
           repo = "beets";

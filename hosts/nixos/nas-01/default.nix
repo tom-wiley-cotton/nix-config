@@ -22,6 +22,7 @@
     freshrss.enable = true;
     immich.enable = true;
     jellyfin.enable = true;
+    jellyseerr.enable = true;
     kavita.enable = false;
     lidarr.enable = true;
     navidrome.enable = true;
@@ -112,6 +113,10 @@
     paperless = {
       enable = true;
       passwordFile = config.age.secrets."paperless-database".path;
+    };
+    tfstate = {
+      enable = true;
+      passwordFile = config.age.secrets."tfstate-database".path;
     };
   };
 

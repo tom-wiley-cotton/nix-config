@@ -23,6 +23,13 @@ in {
         When set to `server` or `both`, IP forwarding will be enabled.
       '';
     };
+    extraSetFlags = mkOption {
+      description = "Extra flags to pass to {command}`tailscale set`.";
+      type = types.listOf types.str;
+      default = [];
+      example = ["--advertise-exit-node"];
+    };
+
   };
 
   config = mkIf cfg.enable {
@@ -34,6 +41,7 @@ in {
       package = pkgs.tailscale;
       authKeyFile = config.age.secrets.tailscale-keys.path;
       useRoutingFeatures = cfg.useRoutingFeatures;
+      extraSetFlags = cfg.extraSetFlags;
     };
 
     # Add oneshot service to enable webclient

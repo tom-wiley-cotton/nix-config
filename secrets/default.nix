@@ -91,6 +91,18 @@
     group = "postgres";
   };
 
+  age.secrets."tfstate-database" = lib.mkIf config.services.clubcotton.postgresql.tfstate.enable {
+    file = ./tfstate-database.age;
+    owner = "postgres";
+    group = "postgres";
+  };
+
+  age.secrets."tfstate-database-raw" = {
+    file = ./tfstate-database-raw.age;
+    owner = "bcotton";
+    group = "users";
+  };
+
   age.secrets."atuin" = lib.mkIf config.services.clubcotton.atuin.enable {
     file = ./atuin.age;
     owner = "atuin";

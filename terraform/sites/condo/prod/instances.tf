@@ -6,6 +6,10 @@ resource "incus_instance" "homeassistant" {
   profiles  = [module.profiles.haos_profile_name]
   project   = "default"
 
+  config = {
+    "migration.stateful" = "false"
+  }
+
   depends_on = [incus_image.haos]
 
   device {
@@ -15,6 +19,7 @@ resource "incus_instance" "homeassistant" {
     properties = {
       nictype = "bridged"
       parent  = var.network_bridge
+      # hwaddr = "00:23:24:ae:eb:f1"
     }
   }
 
@@ -26,6 +31,15 @@ resource "incus_instance" "homeassistant" {
       pool = var.storage_pool
       path = "/"
       size = var.storage_sizes["vm"]
+    }
+  }
+  device {
+    name = "usb"
+    type = "usb"
+    
+    properties = {
+      vendorid  = "10c4"
+      productid = "ea60"
     }
   }
 }

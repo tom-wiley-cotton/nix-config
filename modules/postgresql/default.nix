@@ -13,6 +13,7 @@ in {
     ./immich.nix
     ./open-webui.nix
     ./paperless.nix
+    ./tfstate.nix
   ];
 
   options.services.clubcotton.postgresql = {

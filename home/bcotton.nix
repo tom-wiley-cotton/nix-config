@@ -7,7 +7,7 @@
 }: let
   nixVsCodeServer = fetchTarball {
     url = "https://github.com/zeyugao/nixos-vscode-server/tarball/master";
-    sha256 = "sha256:0p0dz0q1rbccncjgw4na680a5i40w59nbk5ip34zcac8rg8qx381";
+    sha256 = "sha256:1l77kybmghws3y834b1agb69vs6h4l746ga5xccvz4p1y8wc67h7";
   };
 in {
   home.stateVersion = "23.05";
@@ -273,6 +273,9 @@ in {
       executable = true;
       source = ./bcotton.config/tmux/cp-kubeconfig;
     };
+    configFile."nix/registry.json" = {
+      source = ./bcotton.config/nix/registry.json;
+    };
   };
 
   programs.zsh = {
@@ -305,7 +308,7 @@ in {
       export EMAIL=bob.cotton@gmail.com
       export EXA_COLORS="da=1;35"
       export FULLNAME='Bob Cotton'
-      export GOPATH=$HOME/go
+      export GOPATH=$HOME/projects/go
       export GOPRIVATE="github.com/grafana/*"
       export LESS="-iMSx4 -FXR"
       export OKTA_MFA_OPTION=1
@@ -328,20 +331,6 @@ in {
          export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
          export DOCKER_BUILDKIT=0
       fi
-
-      if [ -n "$TMUX" ]; then
-        function refresh {
-          export $(tmux show-environment | grep "^SSH_AUTH_SOCK") > /dev/null
-          export $(tmux show-environment | grep "^DISPLAY") > /dev/null
-          export $(tmux show-environment | grep "^KUBECONFIG") > /dev/null
-        }
-      else
-        function refresh { }
-      fi
-
-      function preexec {
-         refresh
-      }
 
 
 
@@ -427,9 +416,57 @@ in {
       bindkey -s "^Z" "^[Qls ^D^U^[G"
       bindkey -s "^X^F" "e "
 
-      setopt autocd autopushd autoresume cdablevars correct correctall extendedglob globdots histignoredups longlistjobs mailwarning  notify pushdminus pushdsilent pushdtohome rcquotes recexact sunkeyboardhack menucomplete always_to_end hist_allow_clobber no_share_history
-      unsetopt bgnice
+      # This is the environment injection for sesh. Extract the env from the running
+      # tmux prior to running any command.
+      if [ -n "$TMUX" ]; then
+        function refresh {
+          export $(tmux show-environment | grep "^SSH_AUTH_SOCK") > /dev/null
+          export $(tmux show-environment | grep "^DISPLAY") > /dev/null
+          export $(tmux show-environment | grep "^KUBECONFIG") > /dev/null
+        }
+      else
+        function refresh { }
+      fi
 
+      function preexec {
+         refresh
+      }
+
+
+
+      # Advanced customization of fzf options via _fzf_comprun function
+      # - The first argument to the function is the name of the command.
+      # - You should make sure to pass the rest of the arguments ($@) to fzf.
+      _fzf_comprun() {
+        local command=$1
+        shift
+
+        case "$command" in
+          cd)           fzf --preview 'exa -Tl --color=always {}'  "$@" ;;
+          z)            fzf --preview 'exa -Tl --color=always {}'  "$@" ;;
+          export|unset) fzf --preview "eval 'echo \$'{}"           "$@" ;;
+          ssh)          fzf --preview 'dig {}'                     "$@" ;;
+          *)            fzf --preview 'bat -n --color=always {}'   "$@" ;;
+        esac
+      }
+
+      # nix shell nixpkgs#pacakge and 'nix run' and the proper channel-less way to bring in a program
+      function nix-run () {
+        program="$1"
+        shift
+        nix run "nixpkgs#$program" -- "$@"
+      }
+
+      function nix-run-unstable () {
+        program="$1"
+        shift
+        nix run "nixpkgs-unstable#$program" -- "$@"
+      }
+
+      setopt autocd autopushd autoresume cdablevars correct correctall extendedglob histignoredups longlistjobs mailwarning  notify pushdminus pushdsilent pushdtohome rcquotes recexact sunkeyboardhack always_to_end hist_allow_clobber no_share_history
+      unsetopt menucomplete
+      unset globdots
+      unsetopt bgnice
 
     '';
   };

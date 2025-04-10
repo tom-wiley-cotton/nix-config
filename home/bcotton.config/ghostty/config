@@ -11,4 +11,7 @@ cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
-theme = Desert
+keybind = cmd+k=text:\x1b\x6b
+
+# theme = Desert
+theme = tokyonight
