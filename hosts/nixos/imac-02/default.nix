@@ -51,11 +51,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    useDHCP = true;
+    useDHCP = false;
+    interfaces = {
+      wlp3s0.useDHCP = true;
+      enp4s0f0.useDHCP = false;
+    };
     hostName = "imac-02";
     # head -c4 /dev/urandom | od -A none -t x4
     hostId = "95c41ddc";
-    defaultGateway = "192.168.5.1";
+    defaultGateway = {
+      interface = "wlp3s0";
+      address = "192.168.5.1";
+    };
     nameservers = ["192.168.5.220"];
     wireless.enable = true;
     wireless.userControlled.enable = true;
