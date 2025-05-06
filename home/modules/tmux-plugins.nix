@@ -57,7 +57,6 @@
       };
     };
 
-
   cfg = config.programs.tmux-plugins;
 in {
   options.programs.tmux-plugins = {
@@ -76,7 +75,6 @@ in {
         fzf-tmux-url
         tmux-fzf-head
         tmux-thumbs
-        tmux-fuzzback
         {
           plugin = tmux-window-name;
         }
@@ -84,6 +82,7 @@ in {
       extraConfig = lib.mkAfter ''
         bind-key "C-f" run-shell -b "${tmux-fzf-head}/share/tmux-plugins/tmux-fzf/scripts/session.sh switch"
         run-shell ${tmux-nested}/share/tmux-plugins/tmux-nested/nested.tmux
+        run-shell ${tmux-fuzzback}/share/tmux-plugins/tmux-fuzzback/fuzzback.tmux
       '';
     };
 
