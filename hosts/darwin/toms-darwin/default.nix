@@ -133,6 +133,7 @@ in {
         "tailscale"
         "qmk-toolbox"
         "ghostty"
+        "sonic-visualiser"
       ];
       masApps = {
         "Xcode" = 497799835;
