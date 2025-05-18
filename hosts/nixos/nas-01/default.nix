@@ -26,6 +26,7 @@
     kavita.enable = false;
     lidarr.enable = true;
     navidrome.enable = true;
+    nut-client.enable = true;
     open-webui.enable = true;
     paperless.enable = true;
     pinchflat.enable = true;
