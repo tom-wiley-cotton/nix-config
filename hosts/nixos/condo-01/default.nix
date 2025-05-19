@@ -105,6 +105,14 @@
     ];
   };
 
+  services.caddy = {
+    enable = true;
+    virtualHosts.":8096".extraConfig = ''
+      bind 0.0.0.0
+      reverse_proxy http://192.168.5.42:8096
+    '';
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
