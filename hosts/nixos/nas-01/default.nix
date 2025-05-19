@@ -138,6 +138,7 @@
     configDir = "/var/lib/paperless";
     consumptionDir = "/var/lib/paperless/consume";
     passwordFile = config.age.secrets."paperless".path;
+    environmentFile = config.age.secrets."paperless-database-raw".path;
     database.createLocally = false;
     tailnetHostname = "paperless";
   };
