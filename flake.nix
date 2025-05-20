@@ -326,6 +326,7 @@
     nixosConfigurations = {
       admin = nixosSystem "x86_64-linux" "admin" ["bcotton"];
       condo-01 = nixosSystem "x86_64-linux" "condo-01" ["bcotton"];
+      natalya-01 = nixosSystem "x86_64-linux" "natalya-01" ["bcotton"];
       nas-01 = nixosSystem "x86_64-linux" "nas-01" ["bcotton" "tomcotton"];
       nix-01 = nixosSystem "x86_64-linux" "nix-01" ["bcotton" "tomcotton"];
       nix-02 = nixosSystem "x86_64-linux" "nix-02" ["bcotton" "tomcotton"];
