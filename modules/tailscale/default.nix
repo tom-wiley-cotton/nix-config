@@ -9,6 +9,26 @@ with lib; let
 in {
   options.services.clubcotton.tailscale = {
     enable = mkEnableOption "tailscale service";
+
+    useRoutingFeatures = mkOption {
+      type = types.enum ["none" "client" "server" "both"];
+      default = "none";
+      example = "server";
+      description = ''
+        Enables settings required for Tailscale's routing features like subnet routers and exit nodes.
+
+        To use these these features, you will still need to call `sudo tailscale up` with the relevant flags like `--advertise-exit-node` and `--exit-node`.
+
+        When set to `client` or `both`, reverse path filtering will be set to loose instead of strict.
+        When set to `server` or `both`, IP forwarding will be enabled.
+      '';
+    };
+    extraSetFlags = mkOption {
+      description = "Extra flags to pass to {command}`tailscale set`.";
+      type = types.listOf types.str;
+      default = [];
+      example = ["--advertise-exit-node"];
+    };
   };
 
   config = mkIf cfg.enable {
@@ -19,6 +39,8 @@ in {
       enable = true;
       package = pkgs.tailscale;
       authKeyFile = config.age.secrets.tailscale-keys.path;
+      useRoutingFeatures = cfg.useRoutingFeatures;
+      extraSetFlags = cfg.extraSetFlags;
     };
 
     # Add oneshot service to enable webclient

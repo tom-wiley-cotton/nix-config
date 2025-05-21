@@ -6,6 +6,7 @@
   networking.nftables.enable = true;
 
   virtualisation.incus.enable = true;
+  virtualisation.incus.package = pkgs.incus;
   virtualisation.incus.ui.enable = true;
 
   virtualisation.incus.preseed = {};

@@ -30,6 +30,7 @@
     code-server.enable = true;
     nut-server.enable = true;
     nut-client.enable = true;
+    tailscale.enable = true;
   };
 
   boot.loader.systemd-boot.enable = true;
@@ -46,7 +47,8 @@
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "admin"; # Define your hostname.
-  services.tailscale.enable = true;
+
+  services.clubcotton.tailscale.useRoutingFeatures = "server";
 
   services.clubcotton.code-server = {
     tailnetHostname = "admin-vscode";

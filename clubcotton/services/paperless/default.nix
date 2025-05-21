@@ -3,6 +3,7 @@
   lib,
   pkgs,
   unstablePkgs,
+  inputs,
   ...
 }:
 with lib; let
@@ -10,6 +11,9 @@ with lib; let
   cfg = config.services.clubcotton.paperless;
   clubcotton = config.clubcotton;
 in {
+  disabledModules = ["services/misc/paperless.nix"];
+  imports = ["${inputs.nixpkgs-unstable}/nixos/modules/services/misc/paperless.nix"];
+
   options.services.clubcotton.paperless = {
     enable = mkEnableOption "PDF reader and archiver for documents.";
     user = mkOption {
@@ -35,6 +39,9 @@ in {
     passwordFile = lib.mkOption {
       type = lib.types.path;
     };
+    environmentFile = lib.mkOption {
+      type = lib.types.path;
+    };
     database.createLocally = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -56,27 +63,11 @@ in {
       "d '${cfg.consumptionDir}' 0777 ${cfg.user} ${cfg.user} - -"
     ];
 
-    systemd.services = builtins.listToAttrs (map (serviceName: {
-        name = serviceName;
-        value = {
-          serviceConfig = {
-            StateDirectory = "paperless";
-            EnvironmentFile = config.age.secrets."paperless-database-raw".path;
-            PrivateNetwork = lib.mkForce false;
-          };
-        };
-      }) [
-        "paperless"
-        "paperless-consumer"
-        "paperless-scheduler"
-        "paperless-task-queue"
-        "paperless-web"
-      ]);
-
     services.paperless = {
       enable = true;
       package = unstablePkgs.paperless-ngx;
       passwordFile = cfg.passwordFile;
+      environmentFile = cfg.environmentFile;
       user = cfg.user;
       mediaDir = cfg.mediaDir;
       consumptionDir = cfg.consumptionDir;
@@ -98,6 +89,7 @@ in {
         PAPERLESS_CONSUMER_RECURSIVE = "true";
         PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS = "true";
         PAPERLESS_TASK_WORKERS = "10";
+        PAPERLESS_URL = "https://paperless.bobtail-clownfish.ts.net";
       };
     };
 

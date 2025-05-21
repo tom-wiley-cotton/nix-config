@@ -44,6 +44,19 @@
       };
     };
 
+  tmux-fuzzback =
+    pkgs.tmuxPlugins.mkTmuxPlugin
+    {
+      pluginName = "tmux-fuzzback";
+      version = "target-style-head";
+      src = pkgs.fetchFromGitHub {
+        owner = "roosta";
+        repo = "tmux-fuzzback";
+        rev = "48fa13a2422bab9832543df1c6b4e9c6393e647c";
+        sha256 = "sha256-T3rHudl9o4AP13Q4poccfXiDg41LRWThFW0r5IZxGjw=";
+      };
+    };
+
   cfg = config.programs.tmux-plugins;
 in {
   options.programs.tmux-plugins = {
@@ -52,7 +65,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     _module.args = {
-      inherit tmux-window-name tmux-fzf-head tmux-nested;
+      inherit tmux-window-name tmux-fzf-head tmux-nested tmux-fuzzback;
     };
 
     programs.tmux = {
@@ -69,6 +82,7 @@ in {
       extraConfig = lib.mkAfter ''
         bind-key "C-f" run-shell -b "${tmux-fzf-head}/share/tmux-plugins/tmux-fzf/scripts/session.sh switch"
         run-shell ${tmux-nested}/share/tmux-plugins/tmux-nested/nested.tmux
+        run-shell ${tmux-fuzzback}/share/tmux-plugins/tmux-fuzzback/fuzzback.tmux
       '';
     };
 

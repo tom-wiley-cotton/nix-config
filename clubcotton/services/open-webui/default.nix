@@ -37,7 +37,7 @@ in {
       type = types.package;
       # default value comes from unstable package set for newer features
       default = unstablePkgs.open-webui.override {
-        python312 = pkgs.python312;
+        python312 = unstablePkgs.python312;
       };
       description = "Open WebUI package to use.";
     };

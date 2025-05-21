@@ -42,6 +42,9 @@ in {
           show_failures = "on";
           tiebreak = "first";
         };
+
+        ignored = ["missing_tracks" "track_length" "unmatched_tracks" "track_index"];
+
         musicbrainz = {
           enabled = true;
           host = "musicbrainz.org";

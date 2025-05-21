@@ -7,6 +7,19 @@
     ./services
   ];
 
+  config = {
+    users = {
+      groups.share = {
+        gid = 1100;
+      };
+      users.share = {
+        uid = 1100;
+        isSystemUser = true;
+        group = "share";
+      };
+    };
+  };
+
   options.clubcotton = {
     user = lib.mkOption {
       default = "share";

@@ -22,9 +22,11 @@
     freshrss.enable = true;
     immich.enable = true;
     jellyfin.enable = true;
+    jellyseerr.enable = true;
     kavita.enable = false;
     lidarr.enable = true;
     navidrome.enable = true;
+    nut-client.enable = true;
     open-webui.enable = true;
     paperless.enable = true;
     pinchflat.enable = true;
@@ -32,7 +34,7 @@
     prowlarr.enable = true;
     radarr.enable = true;
     readarr.enable = true;
-    roon-server.enable = true;
+    roon-server.enable = false;
     sabnzbd.enable = true;
     scanner.enable = true;
     sonarr.enable = true;
@@ -59,17 +61,6 @@
         prefixLength = 24;
       }
     ];
-  };
-
-  users = {
-    groups.share = {
-      gid = 993;
-    };
-    users.share = {
-      uid = 994;
-      isSystemUser = true;
-      group = "share";
-    };
   };
 
   services.nfs.server = {
@@ -124,6 +115,10 @@
       enable = true;
       passwordFile = config.age.secrets."paperless-database".path;
     };
+    tfstate = {
+      enable = true;
+      passwordFile = config.age.secrets."tfstate-database".path;
+    };
   };
 
   services.clubcotton.filebrowser = {
@@ -143,6 +138,7 @@
     configDir = "/var/lib/paperless";
     consumptionDir = "/var/lib/paperless/consume";
     passwordFile = config.age.secrets."paperless".path;
+    environmentFile = config.age.secrets."paperless-database-raw".path;
     database.createLocally = false;
     tailnetHostname = "paperless";
   };
