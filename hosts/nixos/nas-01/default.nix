@@ -26,6 +26,7 @@
     kavita.enable = false;
     lidarr.enable = true;
     navidrome.enable = true;
+    nut-client.enable = true;
     open-webui.enable = true;
     paperless.enable = true;
     pinchflat.enable = true;
@@ -137,6 +138,7 @@
     configDir = "/var/lib/paperless";
     consumptionDir = "/var/lib/paperless/consume";
     passwordFile = config.age.secrets."paperless".path;
+    environmentFile = config.age.secrets."paperless-database-raw".path;
     database.createLocally = false;
     tailnetHostname = "paperless";
   };

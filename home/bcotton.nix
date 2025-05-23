@@ -243,6 +243,8 @@ in {
       bind-key C-j display-popup -E -d "#{pane_current_path}" -xC -yC -w 80% -h 75% "pbpaste | jq -C '.' | less -R"
       # btop as a popup
       bind-key C-b display-popup -E -d "#{pane_current_path}" -xC -yC -w 80% -h 75% "btop"
+
+
     '';
   };
 
@@ -494,6 +496,9 @@ in {
   };
 
   home.packages = with pkgs; [
+    (pkgs.python312.withPackages (ppkgs: [
+      ppkgs.libtmux
+    ]))
     unstablePkgs.aider-chat
     devenv
     fx
@@ -505,8 +510,6 @@ in {
     opentofu
     unstablePkgs.sesh
     unstablePkgs.uv
-    # TODO: write an overlay for this or use the flake
-    # unstablePkgs.ghostty
     tldr
     unstablePkgs.spotdl
     unstablePkgs.zed-editor

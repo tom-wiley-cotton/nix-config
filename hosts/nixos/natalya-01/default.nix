@@ -53,16 +53,16 @@
   clubcotton.zfs_single_root = {
     poolname = "rpool";
     swapSize = "4G"; # 1/4 of 16G
-    disk = "/dev/disk/by-id/ata-X12_SSD_256GB_KT2023000020001117";
+    disk = "/dev/disk/by-id/ata-PNY_CS900_250GB_SSD_PNY22412210130107127";
     useStandardRootFilesystems = true;
     reservedSize = "50GiB"; #0.20 of 256G
   };
 
   networking = {
-    hostId = "3fa4e0cb";
-    hostName = "condo-01";
-    defaultGateway = "192.168.12.1";
-    nameservers = ["192.168.12.1"];
+    hostId = "8fb0eda8";
+    hostName = "natalya-01";
+    defaultGateway = "192.168.5.1";
+    nameservers = ["192.168.5.1"];
     useDHCP = false;
     bridges."br0".interfaces = ["eno1"];
     interfaces."br0".useDHCP = true;

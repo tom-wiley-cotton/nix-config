@@ -326,6 +326,7 @@
     nixosConfigurations = {
       admin = nixosSystem "x86_64-linux" "admin" ["bcotton"];
       condo-01 = nixosSystem "x86_64-linux" "condo-01" ["bcotton"];
+      natalya-01 = nixosSystem "x86_64-linux" "natalya-01" ["bcotton"];
       nas-01 = nixosSystem "x86_64-linux" "nas-01" ["bcotton" "tomcotton"];
       nix-01 = nixosSystem "x86_64-linux" "nix-01" ["bcotton" "tomcotton"];
       nix-02 = nixosSystem "x86_64-linux" "nix-02" ["bcotton" "tomcotton"];
@@ -337,9 +338,9 @@
       octoprint = nixosSystem "x86_64-linux" "octoprint" ["bcotton" "tomcotton"];
       frigate-host = nixosSystem "x86_64-linux" "frigate-host" ["bcotton"];
       # nixos = nixosSystem "x86_64-linux" "nixos" ["bcotton" "tomcotton"];
-      k3s-01 = nixosSystem "x86_64-linux" "k3s-01" ["bcotton"];
-      k3s-02 = nixosSystem "x86_64-linux" "k3s-02" ["bcotton"];
-      k3s-03 = nixosSystem "x86_64-linux" "k3s-03" ["bcotton"];
+      # k3s-01 = nixosSystem "x86_64-linux" "k3s-01" ["bcotton"];
+      # k3s-02 = nixosSystem "x86_64-linux" "k3s-02" ["bcotton"];
+      # k3s-03 = nixosSystem "x86_64-linux" "k3s-03" ["bcotton"];
       # nixbox = nixosSystem "x86_64-linux" "nixbox" ["bcotton" "tomcotton"];
       # incus = nixosMinimalSystem "x86_64-linux" "incus" ["bcotton"];
       # nas-test = nixosMinimalSystem "x86_64-linux" "nas-test" ["bcotton"];

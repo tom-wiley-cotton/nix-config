@@ -29,7 +29,6 @@ in {
       default = [];
       example = ["--advertise-exit-node"];
     };
-
   };
 
   config = mkIf cfg.enable {

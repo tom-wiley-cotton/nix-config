@@ -20,7 +20,7 @@ with lib; let
       filename="Scan_$date.pdf"
       tmpdir="$(mktemp -d)"
       pushd "$tmpdir"
-      scanimage -b --format png -d 'fujitsu:ScanSnap iX500:355763' --source 'ADF Duplex' --resolution 300 --mode Color
+      scanimage -b --format png -d 'fujitsu:ScanSnap iX500:355763' --source 'ADF Duplex' --resolution 300 --mode Lineart
 
       # Convert any PNM images produced by the scan into a PDF with the date as a name
       magick out* -density 300 "$filename"
