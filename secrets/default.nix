@@ -176,4 +176,10 @@
     owner = "scanner";
     group = "users";
   };
+
+  age.secrets."wallabag" = lib.mkIf config.services.clubcotton.wallabag.enable {
+    file = ./wallabag.age;
+    owner = "wallabag";
+    group = "wallabag";
+  };
 }

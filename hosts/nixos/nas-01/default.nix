@@ -213,6 +213,11 @@
     };
   };
 
+  services.clubcotton.wallabag = {
+    dataDir = "/media/documents/wallabag";
+  
+  };
+
   services.clubcotton.kavita = {
     user = "share";
     port = 8085;
