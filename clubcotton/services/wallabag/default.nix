@@ -67,12 +67,13 @@ in {
       image = "wallabag/wallabag";
       autoStart = true;
       environment = {
-        SYMFONY__ENV__DOMAIN_NAME = "http://localhost:${toString cfg.port}";
+        SYMFONY__ENV__DOMAIN_NAME = "https://wallabag.bobtail-clownfish.ts.net";
         SYMFONY__ENV__DATABASE_DRIVER = "pdo_sqlite";
         SYMFONY__ENV__SECRET = cfg.secret;
         PHP_MEMORY_LIMIT = cfg.memoryLimit;
         POPULATE_DATABASE = "True";
         SYMFONY__ENV__DATABASE_TABLE_PREFIX = "wallabag_";
+        SYMFONY__ENV__FOSUSER_REGISTRATION = "True";
       };
       volumes = [
         "${cfg.dataDir}/data:/var/www/wallabag/data"
