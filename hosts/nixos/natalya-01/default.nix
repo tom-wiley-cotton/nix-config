@@ -61,8 +61,8 @@
   networking = {
     hostId = "8fb0eda8";
     hostName = "natalya-01";
-    defaultGateway = "192.168.5.1";
-    nameservers = ["192.168.5.1"];
+    defaultGateway = "10.0.0.1";
+    nameservers = ["10.0.0.1"];
     useDHCP = false;
     bridges."br0".interfaces = ["eno1"];
     interfaces."br0".useDHCP = true;
