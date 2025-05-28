@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/samba
+    ../../../users/cheryl.nix
   ];
 
   services.clubcotton = {
@@ -215,7 +216,6 @@
 
   services.clubcotton.wallabag = {
     dataDir = "/media/documents/wallabag";
-  
   };
 
   services.clubcotton.kavita = {
