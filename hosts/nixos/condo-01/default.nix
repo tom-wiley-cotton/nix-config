@@ -111,6 +111,10 @@
       bind 0.0.0.0
       reverse_proxy http://100.88.184.98:8096
     '';
+    virtualHosts.":8112".extraConfig = ''
+      bind 0.0.0.0
+      reverse_proxy http://100.88.184.98:8112
+    '';
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
