@@ -61,8 +61,8 @@
   networking = {
     hostId = "8fb0eda8";
     hostName = "natalya-01";
-    defaultGateway = "192.168.5.1";
-    nameservers = ["192.168.5.1"];
+    defaultGateway = "10.0.0.1";
+    nameservers = ["10.0.0.1"];
     useDHCP = false;
     bridges."br0".interfaces = ["eno1"];
     interfaces."br0".useDHCP = true;
@@ -109,7 +109,11 @@
     enable = true;
     virtualHosts.":8096".extraConfig = ''
       bind 0.0.0.0
-      reverse_proxy http://192.168.5.42:8096
+      reverse_proxy http://100.88.184.98:8096
+    '';
+    virtualHosts.":8112".extraConfig = ''
+      bind 0.0.0.0
+      reverse_proxy http://100.88.184.98:8112
     '';
   };
 

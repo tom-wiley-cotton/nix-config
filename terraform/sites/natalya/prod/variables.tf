@@ -13,7 +13,7 @@ variable "host_interface" {
 variable "storage_pool" {
   description = "Name of the storage pool to use"
   type        = string
-  default     = "local"
+  default     = "default"
 }
 
 variable "vm_config" {

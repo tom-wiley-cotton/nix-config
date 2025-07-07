@@ -109,7 +109,11 @@
     enable = true;
     virtualHosts.":8096".extraConfig = ''
       bind 0.0.0.0
-      reverse_proxy http://192.168.5.42:8096
+      reverse_proxy http://100.88.184.98:8096
+    '';
+    virtualHosts.":8112".extraConfig = ''
+      bind 0.0.0.0
+      reverse_proxy http://100.88.184.98:8112
     '';
   };
 

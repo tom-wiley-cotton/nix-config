@@ -51,6 +51,7 @@ in {
   "tfstate-database.age".publicKeys = users ++ systems;
   "tfstate-database-raw.age".publicKeys = users ++ systems;
   "unpoller.age".publicKeys = users ++ systems;
+  "wallabag.age".publicKeys = users ++ systems;
   "webdav.age".publicKeys = users ++ systems;
   "wireless-config.age".publicKeys = users ++ systems;
 }

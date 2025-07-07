@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/samba
+    ../../../users/cheryl.nix
   ];
 
   services.clubcotton = {
@@ -40,6 +41,7 @@
     sonarr.enable = true;
     syncoid.enable = true;
     tailscale.enable = true;
+    wallabag.enable = true;
     webdav.enable = true;
   };
 
@@ -210,6 +212,10 @@
         permissions = "CRUD";
       };
     };
+  };
+
+  services.clubcotton.wallabag = {
+    dataDir = "/media/documents/wallabag";
   };
 
   services.clubcotton.kavita = {
