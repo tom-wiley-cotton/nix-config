@@ -315,7 +315,7 @@ in {
       export LESS="-iMSx4 -FXR"
       export OKTA_MFA_OPTION=1
       export PAGER=less
-      export PATH=$GOPATH/bin:/opt/homebrew/share/google-cloud-sdk/bin:~/projects/deployment_tools/scripts/gcom:~/projects/grafana-app-sdk/target:$PATH
+      export PATH=$GOPATH/bin:/opt/homebrew/sbin:/opt/homebrew/share/google-cloud-sdk/bin:~/projects/deployment_tools/scripts/gcom:~/projects/grafana-app-sdk/target:$PATH
       export QMK_HOME=~/projects/qmk_firmware
       export TMPDIR=/tmp/
       export XDG_CONFIG_HOME="$HOME/.config"
@@ -464,6 +464,12 @@ in {
         shift
         nix run "nixpkgs-unstable#$program" -- "$@"
       }
+
+      if [[ "$TERM_PROGRAM" != "vscode" ]]; then
+        RPROMPT=$RED'[%~]'$DEFAULT
+        DISABLE_AUTO_UPDATE="true"
+        DISABLE_UPDATE_PROMPT="true"
+      fi
 
       setopt autocd autopushd autoresume cdablevars correct correctall extendedglob histignoredups longlistjobs mailwarning  notify pushdminus pushdsilent pushdtohome rcquotes recexact sunkeyboardhack always_to_end hist_allow_clobber no_share_history
       unsetopt menucomplete
