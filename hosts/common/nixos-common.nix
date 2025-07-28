@@ -40,6 +40,7 @@ in {
     qemu
     quickemu
     inputs.ghostty.packages."${system}".default
+    zstd
   ];
 
   ## pins to stable as unstable updates very often
