@@ -41,7 +41,7 @@
     enable = true;
     poolname = "rpool";
     swapSize = "4G";
-    disk = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S59CNM0R836896T";
+    disk = "/dev/disk/by-id/ata-WDC_WD10SPZX-60Z10T0_WD-WXS1A9855YLP";
     useStandardRootFilesystems = true;
     reservedSize = "20GiB";
   };
