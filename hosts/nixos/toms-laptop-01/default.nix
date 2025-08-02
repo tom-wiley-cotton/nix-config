@@ -52,7 +52,7 @@
 
   networking = {
     hostName = "toms-laptop-01";
-    # hostId = "95c41ddc";
+    hostId = "a8c01005";
 
     useDHCP = false;
     defaultGateway = "192.168.5.1";
