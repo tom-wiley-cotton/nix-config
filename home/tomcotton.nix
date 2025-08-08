@@ -357,7 +357,7 @@ in {
       py3 = "python3";
     };
 
-    initExtra = ''
+    initContent = ''
       tmux-window-name() {
         (${builtins.toString tmux-window-name}/share/tmux-plugins/tmux-window-name/scripts/rename_session_windows.py &)
       }
@@ -386,7 +386,7 @@ in {
 
     '';
 
-    #initExtra = (builtins.readFile ../mac-dot-zshrc);
+    #initContent = (builtins.readFile ../mac-dot-zshrc);
   };
 
   programs.eza.enable = true;
