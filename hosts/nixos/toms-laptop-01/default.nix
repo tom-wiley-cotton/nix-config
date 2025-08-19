@@ -50,6 +50,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Required ZFS support
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.allowHibernation = true;
+  boot.initrd.supportedFilesystems = ["zfs"];
+  boot.kernelModules = ["zfs"];
+  boot.initrd.kernelModules = ["zfs"];
+
   networking = {
     hostName = "toms-laptop-01";
     hostId = "a8c01005";
