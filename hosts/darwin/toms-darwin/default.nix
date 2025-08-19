@@ -138,7 +138,7 @@ in {
         "sonic-visualiser"
       ];
       masApps = {
-        "Xcode" = 497799835;
+        # "Xcode" = 497799835;
         #   "Amphetamine" = 937984704;
         # "Bitwarden" = 1352778147;
         #   "Creator's Best Friend" = 1524172135;
