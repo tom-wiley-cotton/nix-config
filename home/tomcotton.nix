@@ -420,7 +420,7 @@ in {
     rsync
     rhash
     restic
-    claude-code
+    # claude-code
     # python3Packages.libtmux
     # kubernetes-helm
     # kubectx

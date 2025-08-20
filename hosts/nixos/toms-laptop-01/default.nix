@@ -58,6 +58,11 @@
   boot.kernelModules = ["zfs"];
   boot.initrd.kernelModules = ["zfs"];
 
+	nixpkgs.config.permittedInsecurePackages = [
+                "broadcom-sta-6.30.223.271-57-6.12.40"
+              ];
+
+
   networking = {
     hostName = "toms-laptop-01";
     hostId = "a8c01005";
