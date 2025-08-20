@@ -67,15 +67,17 @@
     hostName = "toms-laptop-01";
     hostId = "a8c01005";
 
-    useDHCP = false;
-    defaultGateway = "192.168.5.1";
-    nameservers = ["192.168.5.220"];
-    interfaces.qlp0s20f0u1.ipv4.addresses = [
-      {
-        address = "192.168.5.16";
-        prefixLength = 24;
-      }
-    ];
+    networkmanager.enable = true;
+
+    # useDHCP = false;
+    # defaultGateway = "192.168.5.1";
+    # nameservers = ["192.168.5.220"];
+    # interfaces.wlp0s20f0u1.ipv4.addresses = [
+    #   {
+    #     address = "192.168.5.16";
+    #     prefixLength = 24;
+    #   }
+    # ];
   };
 
   # Set your time zone.
