@@ -17,7 +17,6 @@
   ];
 
   services.clubcotton = {
-    scanner.enable = true;
     tailscale.enable = true;
   };
 
@@ -49,14 +48,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Required ZFS support
-  boot.supportedFilesystems = ["zfs"];
-  boot.zfs.forceImportRoot = false;
-  boot.zfs.allowHibernation = true;
-  boot.initrd.supportedFilesystems = ["zfs"];
-  boot.kernelModules = ["zfs"];
-  boot.initrd.kernelModules = ["zfs"];
 
 	nixpkgs.config.permittedInsecurePackages = [
                 "broadcom-sta-6.30.223.271-57-6.12.40"
