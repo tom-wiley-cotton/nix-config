@@ -62,7 +62,7 @@
     vscode-server,
     disko,
     isd,
-    costmic-manager,
+    cosmic-manager,
     ...
   }: let
     localPackages = system: let
