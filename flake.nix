@@ -191,7 +191,7 @@
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
             {
-              home-manager.users.${username} = {  
+              home-manager.users.tomcotton = {  
                 imports = [
                   # ./home.nix  
                   cosmic-manager.homeManagerModules.cosmic-manager
