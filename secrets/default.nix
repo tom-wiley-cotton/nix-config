@@ -143,7 +143,7 @@
     owner = "bcotton";
     group = "users";
   };
-  }
+  };
 
   age.secrets."navidrome" = lib.mkIf config.services.clubcotton.navidrome.enable {
     file = ./navidrome.age;
