@@ -254,6 +254,18 @@ in {
     target = ".config/karabiner/karabiner.json";
   };
 
+  home.file.".config/hypr" = {
+    enable = true;
+    source = tomcotton.config/hypr;
+    target = ".config/hypr";
+  };
+  
+  home.file.".config/waybar" = {
+    enable = true;
+    source = tomcotton.config/waybar;
+    target = ".config/waybar";
+  };
+
   xdg = {
     enable = true;
     configFile."containers/registries.conf" = {

@@ -12,16 +12,5 @@ in {
   ];
 
   programs.hyprland.enable = true;
-
-  home.file.".config/hypr" = {
-    enable = true;
-    source = "../../home/tomcotton.config/hypr";
-    target = ".config/hypr";
-  };
-  
-  home.file.".config/waybar" = {
-    enable = true;
-    source = "../../home/tomcotton.config/waybar";
-    target = ".config/waybar";
-  };
+  programs.waybar.enable = true;
 }
