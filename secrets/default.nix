@@ -97,7 +97,7 @@
     group = "postgres";
   };
 
-  age.secrets."tfstate-database-raw" = {
+  age.secrets."tfstate-database-raw" = lib.mkIf config.services.clubcotton.postgresql.tfstate.enable {
     file = ./tfstate-database-raw.age;
     owner = "bcotton";
     group = "users";
