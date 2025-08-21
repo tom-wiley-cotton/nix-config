@@ -37,6 +37,14 @@
     nixpkgs.follows = "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
 
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs = inputs @ {
@@ -54,6 +62,7 @@
     vscode-server,
     disko,
     isd,
+    costmic-manager,
     ...
   }: let
     localPackages = system: let
@@ -181,6 +190,14 @@
             ./hosts/nixos/${hostName} # ip address, host specific stuff
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
+            {
+              home-manager.users.${username} = {  
+                imports = [
+                  # ./home.nix  
+                  cosmic-manager.homeManagerModules.cosmic-manager
+                ];
+              };
+            }
             {
               networking.hostName = hostName;
               home-manager.useGlobalPkgs = true;
