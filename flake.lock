@@ -612,7 +612,7 @@
         "nixos-shell": "nixos-shell",
         "nixpkgs": [
           "nixos-cosmic",
-          "nixpkgs"
+          "nixpkgs-stable"
         ],
         "nixpkgs-unstable": "nixpkgs-unstable",
         "tsnsrv": "tsnsrv",
