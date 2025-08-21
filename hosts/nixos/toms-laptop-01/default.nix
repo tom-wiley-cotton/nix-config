@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
-    ../../common/toms-nixbooks.nix
+    ../../../home/toms-nixbooks.nix
   ];
 
   services.clubcotton = {
