@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
+    ../../common/toms-nixbooks.nix
   ];
 
   services.clubcotton = {
@@ -22,7 +23,7 @@
 
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
@@ -50,8 +51,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 	nixpkgs.config.permittedInsecurePackages = [
-                "broadcom-sta-6.30.223.271-57-6.12.40"
-              ];
+    "broadcom-sta-6.30.223.271-57-6.12.40"
+  ];
 
 
   networking = {
