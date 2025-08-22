@@ -17,16 +17,16 @@
         "on-click": "activate"
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "", 
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "", 
         "max-length": 50,
         "on-click": "kitty -e 'nmtui'"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
+            "activated": "",
             "deactivated": ""
         }
     },
@@ -63,9 +63,9 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "0% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "0% {icon}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -77,18 +77,20 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "scroll-step": 1.0,
+        "scroll-step": 5.0,
         "max-volume": 100,
         "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "tooltip": true,
-        "tooltip-format": "{desc}"
+        "tooltip-format": "{desc}",
+        "smooth-scrolling-threshold": 1.0
     },
 	"custom/power": {
 		"format": "{icon}⏻",
 		"on-click": "wlogout"
 	},
 	"custom/menu": {
-		"format": "{icon}",
+		"format": "{icon}",
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
     "custom/scratchpad-indicator": {
