@@ -241,30 +241,36 @@ in {
   # TODO: add ~/bin
   # code --remote ssh-remote+<remoteHost> <remotePath>
 
-  home.file."oh-my-zsh-custom" = {
+  home.file."dotfiles" = {
     enable = true;
-    source = ./oh-my-zsh-custom;
-    target = ".oh-my-zsh-custom";
+    source = ./tomcotton.config;
+    target = "";
   };
 
-  home.file.".config/karabiner" = {
-    enable = true;
-    force = true;
-    source = tomcotton.config/karabiner.json;
-    target = ".config/karabiner/karabiner.json";
-  };
+  # home.file."oh-my-zsh-custom" = {
+  #   enable = true;
+  #   source = ./oh-my-zsh-custom;
+  #   target = ".oh-my-zsh-custom";
+  # };
 
-  home.file.".config/hypr" = {
-    enable = true;
-    source = tomcotton.config/hypr;
-    target = ".config/hypr";
-  };
+  # home.file.".config/karabiner" = {
+  #   enable = true;
+  #   force = true;
+  #   source = tomcotton.config/karabiner.json;
+  #   target = ".config/karabiner/karabiner.json";
+  # };
+
+  # home.file.".config/hypr" = {
+  #   enable = true;
+  #   source = tomcotton.config/hypr;
+  #   target = ".config/hypr";
+  # };
   
-  home.file.".config/waybar" = {
-    enable = true;
-    source = tomcotton.config/waybar;
-    target = ".config/waybar";
-  };
+  # home.file.".config/waybar" = {
+  #   enable = true;
+  #   source = tomcotton.config/waybar;
+  #   target = ".config/waybar";
+  # };
 
   xdg = {
     enable = true;
@@ -272,10 +278,10 @@ in {
       source = ./dot.config/containers/registries.conf;
     };
     configFile."atuin/config.toml" = {
-      source = ./tomcotton.config/atuin/config.toml;
+      source = ./tomcotton.config/.config/atuin/config.toml;
     };
     configFile."ghostty/config" = {
-      source = ./tomcotton.config/ghostty/config;
+      source = ./tomcotton.config/.config/ghostty/config;
     };
   };
 
