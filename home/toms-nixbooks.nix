@@ -18,6 +18,8 @@ in {
     grim
     slurp
     swappy
+    qt6.qtbase
+    qt6.qtwayland
   ];
 
   # services.dunst.enable = true;
