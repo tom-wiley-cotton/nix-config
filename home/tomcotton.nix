@@ -47,6 +47,13 @@
     url = "https://github.com/msteen/nixos-vscode-server/tarball/master";
     sha256 = "sha256:1rdn70jrg5mxmkkrpy2xk8lydmlc707sk0zb35426v1yxxka10by";
   };
+
+  rose-pine-hyprcursor = pkgs.fetchFromGitHub {
+    owner = "ndom91";
+    repo = "rose-pine-hyprcursor";
+    rev = "4b02963d0baf0bee18725cf7c5762b3b3c1392f1";
+    sha256 = "sha256-ouuA8LVBXzrbYwPW2vNjh7fC9H2UBud/1tUiIM5vPvM="; # Replace with the correct SHA256
+  };
 in {
   home.stateVersion = "24.05";
 
@@ -252,6 +259,11 @@ in {
     source = ./tomcotton.config/tmp/dummy;
     target = "tmp/dummy";
   };
+  # home.file."rose-pine-hyprcursor" = {
+  #   enable = true;
+  #   source = rose-pine-hyprcursor;
+  #   target = ".local/share/icons/rose-pine-hyprcursor";
+  # };
 
   # home.file."oh-my-zsh-custom" = {
   #   enable = true;

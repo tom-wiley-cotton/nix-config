@@ -68,6 +68,8 @@ in {
     # Drawing app
     drawing
     font-awesome
+    hyprcursor
+    rose-pine-hyprcursor
   ];
 
   # services.dunst.enable = true;
