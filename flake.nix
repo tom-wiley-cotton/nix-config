@@ -33,6 +33,15 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+      unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+      hyprland.url = "github:hyprwm/hyprland?ref=v0.36.0";
+
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
   };
 
   outputs = inputs @ {
