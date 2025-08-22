@@ -73,8 +73,8 @@ window#waybar {
 #custom-power {
     background-color: rgba(0,119,179,0.6);
     border-radius: 100px;
-    margin: 3px 5px;
-    padding: 3px 10px 3px 12px;
+    margin: 5px 5px;
+    padding: 1px 1px 1px 6px;
 }
 
 #custom-menu {
@@ -87,40 +87,8 @@ window#waybar {
 #idle_inhibitor.activated {
     color: #2dcc36;
 }
-#pulseaudio {
-    min-width: 100px;
-    padding-right: 85px;
-    position: relative;
-}
-
 #pulseaudio.muted {
     color: #cc3436;
-}
-
-/* Volume slider styling */
-#pulseaudio:after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 70px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-}
-
-#pulseaudio:before {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 5px;
-    background: #2dcc36;
-    border-radius: 3px;
-    width: calc(70px * var(--pulseaudio-volume) / 100);
-    z-index: 1;
 }
 #battery.charging {
     color: #2dcc36;
