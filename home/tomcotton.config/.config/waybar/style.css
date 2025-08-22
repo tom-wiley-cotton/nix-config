@@ -87,6 +87,15 @@ window#waybar {
 #idle_inhibitor.activated {
     color: #2dcc36;
 }
+#pulseaudio {
+    transition: all 0.3s ease;
+}
+
+#pulseaudio:hover {
+    background-color: rgba(0,153,153,0.6);
+    border-radius: 100px;
+}
+
 #pulseaudio.muted {
     color: #cc3436;
 }

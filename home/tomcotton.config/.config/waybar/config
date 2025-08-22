@@ -77,7 +77,11 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "scroll-step": 1.0,
+        "max-volume": 100,
+        "on-click": "pavucontrol",
+        "tooltip": true,
+        "tooltip-format": "{desc}"
     },
 	"custom/power": {
 		"format": "{icon}⏻",
