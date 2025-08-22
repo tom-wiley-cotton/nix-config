@@ -67,6 +67,7 @@ in {
     dialect
     # Drawing app
     drawing
+    font-awesome
   ];
 
   # services.dunst.enable = true;
