@@ -1,96 +1,92 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
-    min-height: 0;
+    font-family: Font Awesome, Roboto, Arial, sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    border-radius: 20px;
 }
 
+window {
+	/*font-weight: bold;*/
+}
 window#waybar {
-    background: rgba(21, 18, 27, 0.8);
-    border-radius: 15px;
-    color: #cdd6f4;
+    background: rgba(0, 0, 0, 0);
 }
-
+/*-----module groups----*/
+.modules-right {
+	background-color: rgba(0,43,51,0.85);
+    margin: 2px 10px 0 0;
+}
+.modules-center {
+	background-color: rgba(0,43,51,0.85);
+    margin: 2px 0 0 0;
+}
+.modules-left {
+    margin: 2px 0 0 5px;
+	background-color: rgba(0,119,179,0.6);
+}
+/*-----modules indv----*/
 #workspaces button {
-    padding: 5px;
-    color: #ff00ff;
-    margin-right: 5px;
+    padding: 1px 5px;
+    background-color: transparent;
 }
-
-#workspaces button.active {
-    color: #00ffff;
-    background: #11111b;
-    border-radius: 10px;
-}
-
-#workspaces button.urgent {
-    color: #11111b;
-    background: #f38ba8;
-    border-radius: 10px;
-}
-
 #workspaces button:hover {
-    background: #11111b;
-    color: #ff00ff;
-    border-radius: 10px;
+    box-shadow: inherit;
+	background-color: rgba(0,153,153,1);
 }
 
-#taskbar button {
-    padding: 0 5px;
-    color: #cdd6f4;
-    border-radius: 10px;
-}
-
-#taskbar button.active {
-    color: #00ffff;
-    background: #11111b;
+#workspaces button.focused {
+	background-color: rgba(0,43,51,0.85);
 }
 
 #clock,
+#battery,
 #cpu,
 #memory,
-#custom-launcher {
-    background: #11111b;
-    padding: 0px 10px;
-    margin: 3px 0px;
-    border: 1px solid #00ffff;
-    border-radius: 10px;
-    color: #00ffff;
+#temperature,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#custom-menu,
+#idle_inhibitor {
+    padding: 0 10px;
 }
-
-#clock {
-    color: #ff00ff;
-    border-color: #ff00ff;
+#mode {
+    color: #cc3436;
+    font-weight: bold;
 }
-
-#custom-launcher {
-    color: #00ffff;
-    border-color: #00ffff;
-    margin-left: 5px;
+#custom-power {
+    background-color: rgba(0,119,179,0.6);
+    border-radius: 100px;
+    margin: 5px 5px;
+    padding: 1px 1px 1px 6px;
 }
-
-/* Neon glow effects */
-#workspaces button.active,
-#taskbar button.active {
-    box-shadow: 0 0 5px #00ffff;
+/*-----Indicators----*/
+#idle_inhibitor.activated {
+    color: #2dcc36;
 }
-
-#clock {
-    box-shadow: 0 0 5px #ff00ff;
+#pulseaudio.muted {
+    color: #cc3436;
 }
-
-#cpu,
-#memory,
-#custom-launcher {
-    box-shadow: 0 0 5px #00ffff;
+#battery.charging {
+    color: #2dcc36;
 }
-
-/* Hover effects */
-#clock:hover,
-#cpu:hover,
-#memory:hover,
-#custom-launcher:hover {
-    background: #1a1b26;
-    border-width: 2px;
+#battery.warning:not(.charging) {
+	color: #e6e600;
 }
+#battery.critical:not(.charging) {
+    color: #cc3436;
+}
+#temperature.critical {
+    color: #cc3436;
+}
+/*-----Colors----*/
+/*
+ *rgba(0,85,102,1),#005566 --> Indigo(dye)
+ *rgba(0,43,51,1),#002B33 --> Dark Green 
+ *rgba(0,153,153,1),#009999 --> Persian Green 
+ *
+ */
