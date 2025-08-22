@@ -68,7 +68,6 @@ in {
     # Drawing app
     drawing
     font-awesome
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   # services.dunst.enable = true;
