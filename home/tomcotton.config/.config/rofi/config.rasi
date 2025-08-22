@@ -1,0 +1,60 @@
+* {
+    font: "Roboto 12";
+    background-color: rgba(0, 43, 51, 0.85);
+    text-color: #ffffff;
+    border-radius: 20px;
+}
+
+window {
+    background-color: rgba(0, 43, 51, 0.85);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+prompt {
+    background-color: transparent;
+    padding: 0px 10px 0px 0px;
+}
+
+entry {
+    background-color: transparent;
+    padding: 0px;
+}
+
+listview {
+    background-color: transparent;
+    border: 0;
+    padding: 10px 0px 0px 0px;
+    columns: 1;
+    lines: 8;
+    spacing: 5px;
+}
+
+element {
+    background-color: transparent;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+element selected {
+    background-color: rgba(0, 119, 179, 0.6);
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}

@@ -8,68 +8,66 @@
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in {
   environment.systemPackages = with pkgs; [
-    blueman
+    # Desktop Environment & Window Management
     dunst
-    hyprpaper
+    grim
+    hyprcursor
     hypridle
     hyprlock
+    hyprpaper
     hyprsunset
-    wofi
-    grim
+    mako
+    rofi-wayland
     slurp
     swappy
-    wf-recorder
-    wlroots
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-    xdg-utils
-    kdePackages.polkit-kde-agent-1
-    qt6.qtbase
-    qt6.qtwayland
-    wl-clipboard
-    cliphist
-    brightnessctl
-    playerctl
-    kdePackages.kwallet
-    kdePackages.kwallet-pam
-    kdePackages.kate
-    mako
     swaybg
     swayosd
-    rofi-wayland
-    qt6ct
-    pavucontrol
+    wf-recorder
+    wlroots
+    wofi
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xdg-utils
+
+    # System Utilities
+    blueman
+    brightnessctl
+    cliphist
+    kdePackages.kwallet
+    kdePackages.kwallet-pam
+    kdePackages.polkit-kde-agent-1
     networkmanagerapplet
-    tokyo-night-gtk
-    papirus-icon-theme
-    bibata-cursors
+    pavucontrol
+    playerctl
+    qt6.qtbase
+    qt6.qtwayland
+    qt6ct
+    wl-clipboard
+
+    # Desktop Applications
+    blanket          # Background sounds
+    celluloid        # Video player
+    dialect          # Translation app
+    drawing          # Drawing app
+    eog             # Image viewer
+    evince          # Document viewer
+    file-roller     # Archive manager
+    foliate         # Ebook reader
+    fragments       # Torrent client
+    gnome-calculator
+    kdePackages.kate
+    metadata-cleaner # Metadata cleaner
+
+    # Fonts & Theming
     adwaita-qt
     adwaita-qt6
-    # Document viewer
-    evince
-    # Image viewer
-    eog
-    # Calculator
-    gnome-calculator
-    # Archive manager
-    file-roller
-    # Video player
-    celluloid
-    # Torrent client
-    fragments
-    # Ebook reader
-    foliate
-    # Background sounds
-    blanket
-    # Metadata cleaner
-    metadata-cleaner
-    # Translation app
-    dialect
-    # Drawing app
-    drawing
+    bibata-cursors
     font-awesome
-    hyprcursor
+    font-awesome_5
+    nerdfonts
+    papirus-icon-theme
     rose-pine-hyprcursor
+    tokyo-night-gtk
   ];
 
   # services.dunst.enable = true;
