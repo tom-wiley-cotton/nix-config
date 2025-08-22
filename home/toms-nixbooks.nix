@@ -64,7 +64,11 @@ in {
     bibata-cursors
     font-awesome
     font-awesome_5
-    nerdfonts
+    nerd-fonts.fira-code           # Popular monospace font with good symbol support
+    nerd-fonts.jetbrains-mono     # Clear monospace font with excellent readability
+    nerd-fonts.noto-sans          # Clean sans-serif font with extensive unicode support
+    nerd-fonts.roboto-mono        # Google's monospace font with added symbols
+    nerd-fonts.ubuntu-mono        # Ubuntu's monospace font with added symbols
     papirus-icon-theme
     rose-pine-hyprcursor
     tokyo-night-gtk
