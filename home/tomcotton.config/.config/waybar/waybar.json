@@ -10,23 +10,19 @@
   "modules-left": ["hyprland/workspaces", "hyprland/window", "custom/mpris"],
   "modules-center": [],
   "modules-right": [
-    "custom/btc_price",
     "pulseaudio",
     
     "network",
     "custom/public_ip",
     "cpu",
     "memory",
-    "custom/amd_gpu",
     "gamemode",
-    "custom/weather",
     "tray",
     "bluetooth",
     "custom/dunst",
     "idle_inhibitor",
     "custom/brightness_menu",
-    "clock",
-    "custom/reboot"
+    "clock"
   ],
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -47,13 +43,6 @@
       "focused": "focused",
       "default": "default"
     }
-  },
-  "custom/btc_price": {
-    "return-type": "json",
-    "exec": "~/.config/waybar/scripts/waybar-btc-coingecko.sh",
-    "interval": 60,
-    "format": "{}",
-    "tooltip": true
   },
   "hyprland/window": {
     "format": "{}",
@@ -107,27 +96,12 @@
     "format": "🤖 {percentage}% ",
     "tooltip": false
   },
-  "custom/amd_gpu": {
-    "return-type": "json",
-    "exec": "~/.config/waybar/scripts/waybar-amd-gpu.sh",
-    "interval": 5,
-    "tooltip": true,
-    "format": "🎮 {}"
-  },
-  
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "☀️",
       "deactivated": "🌙"
     }
-  },
-  "custom/weather": {
-    "return-type": "json",
-    "exec": "~/.config/waybar/scripts/waybar-weather.sh",
-    "interval": 600,
-    "tooltip": true,
-    "format": "{}"
   },
   "gamemode": {
     "format": "GM {count}"
@@ -157,16 +131,6 @@
     "on-click": "~/.local/bin/rofi-brightness",
     "return-type": "json",
     "exec": "echo '{\"text\": \"🖥️\"}'",
-    "interval": 0
-  },
-  
-  "custom/reboot": {
-    "format": "⏻",
-    "tooltip": true,
-    "tooltip-format": "Reboot",
-    "on-click": "~/.config/waybar/scripts/waybar-reboot.sh",
-    "return-type": "json",
-    "exec": "echo '{\"text\": \"⏻\"}'",
     "interval": 0
   }
 } 

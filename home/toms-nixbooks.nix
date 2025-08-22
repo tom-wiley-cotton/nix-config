@@ -18,8 +18,55 @@ in {
     grim
     slurp
     swappy
+    wf-recorder
+    wlroots
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+    xdg-utils
+    kdePackages.polkit-kde-agent-1
     qt6.qtbase
     qt6.qtwayland
+    wl-clipboard
+    cliphist
+    brightnessctl
+    playerctl
+    kdePackages.kwallet
+    kdePackages.kwallet-pam
+    kdePackages.kate
+    mako
+    swaybg
+    swayosd
+    rofi-wayland
+    qt6ct
+    pavucontrol
+    networkmanagerapplet
+    tokyo-night-gtk
+    papirus-icon-theme
+    bibata-cursors
+    adwaita-qt
+    adwaita-qt6
+    # Document viewer
+    evince
+    # Image viewer
+    eog
+    # Calculator
+    gnome-calculator
+    # Archive manager
+    file-roller
+    # Video player
+    celluloid
+    # Torrent client
+    fragments
+    # Ebook reader
+    foliate
+    # Background sounds
+    blanket
+    # Metadata cleaner
+    metadata-cleaner
+    # Translation app
+    dialect
+    # Drawing app
+    drawing
   ];
 
   # services.dunst.enable = true;
