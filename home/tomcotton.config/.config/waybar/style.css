@@ -1,6 +1,6 @@
 * {
     border: none;
-    font-family: Font Awesome, Roboto, Arial, sans-serif;
+    font-family: JetBrainsMono Nerd Font, Font Awesome, Roboto, Arial, sans-serif;
     font-size: 13px;
     color: #ffffff;
     border-radius: 20px;
@@ -34,9 +34,6 @@ window#waybar {
     color: #ffffff;
     transition: all 0.3s ease;
     min-width: 25px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
 }
 
 #workspaces button:hover {

@@ -62,6 +62,10 @@ in {
     adwaita-qt
     adwaita-qt6
     bibata-cursors
+    rose-pine-hyprcursor
+    tokyo-night-gtk
+  ];
+  fonts.packages = with pkgs; [
     font-awesome
     font-awesome_5
     nerd-fonts.fira-code           # Popular monospace font with good symbol support
@@ -70,8 +74,6 @@ in {
     nerd-fonts.roboto-mono        # Google's monospace font with added symbols
     nerd-fonts.ubuntu-mono        # Ubuntu's monospace font with added symbols
     papirus-icon-theme
-    rose-pine-hyprcursor
-    tokyo-night-gtk
   ];
 
   # services.dunst.enable = true;
