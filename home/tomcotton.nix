@@ -243,8 +243,14 @@ in {
 
   home.file."dotfiles" = {
     enable = true;
+    recursive = true;
     source = ./tomcotton.config;
-    target = "";
+    target = "tmp/..";
+  };
+  home.file."dummy" = {
+    enable = true;
+    source = ./tomcotton.config/tmp/dummy;
+    target = "tmp/dummy";
   };
 
   # home.file."oh-my-zsh-custom" = {
