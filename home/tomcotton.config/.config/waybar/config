@@ -38,21 +38,20 @@
 		"on-click": "gnome-calendar"
     },
     "cpu": {
-        "format": " {usage}%",
+        "format": "{usage}% {icon}",
         "interval": 1
     },
     "memory": {
-        "format": " {percentage}%",
+        "format": "{percentage}% {icon}",
         "interval": 1
     },
     "disk": {
-        "format": " {percentage_used}%",
+        "format": "{percentage_used}% {icon}",
         "path": "/",
         "interval": 30
     },
     "battery": {
-        "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", ""],
+        "format": "{capacity}% {icon}",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "states": {
