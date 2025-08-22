@@ -25,8 +25,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "&#xf06e;",
+            "deactivated": "&#xf070;"
         }
     },
     "tray": {
@@ -38,28 +38,28 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon} ",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "&#xf026; {icon} {format_source}",
         "format-muted": "0% {icon} ",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source": "{volume}% ",
+        "format-source-muted": "&#xf131;",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": "&#xf025;",
+            "hands-free": "&#xf590;",
+            "headset": "&#xf590;",
+            "phone": "&#xf095;",
+            "portable": "&#xf3cd;",
+            "car": "&#xf1b9;",
+            "default": ["&#xf026;", "&#xf027;", "&#xf028;"]
         },
         "on-click": "pavucontrol"
     },
 	"custom/power": {
-		"format": " ",
+		"format": "&#xf011;",
 		"on-click": "wlogout"
 	},
 	"custom/menu": {
-		"format": " ",
+		"format": "&#xf0c9;",
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
     "custom/scratchpad-indicator": {
