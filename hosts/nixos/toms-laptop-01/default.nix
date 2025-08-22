@@ -15,6 +15,7 @@
     ../../../modules/node-exporter
     ../../../modules/nfs
     ../../../home/toms-nixbooks.nix
+    ../../../home/modules/kmonad.nix
   ];
 
   services.clubcotton = {
