@@ -18,14 +18,14 @@
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname} ",
-        "format-disconnected": "", 
+        "format-disconnected": "", 
         "max-length": 50,
         "on-click": "kitty -e 'nmtui'"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
+            "activated": "",
             "deactivated": ""
         }
     },
@@ -37,10 +37,10 @@
 		"on-click": "gnome-calendar"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} ",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "0% {icon} ",
+        "format-muted": "0% {icon}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -55,11 +55,11 @@
         "on-click": "pavucontrol"
     },
 	"custom/power": {
-		"format": " ",
+		"format": "{icon}⏻",
 		"on-click": "wlogout"
 	},
 	"custom/menu": {
-		"format": " ",
+		"format": "{icon}󰍜",
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
     "custom/scratchpad-indicator": {
