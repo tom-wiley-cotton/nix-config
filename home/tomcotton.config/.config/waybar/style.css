@@ -73,8 +73,8 @@ window#waybar {
 #custom-power {
     background-color: rgba(0,119,179,0.6);
     border-radius: 100px;
-    margin: 5px 5px;
-    padding: 1px 1px 1px 6px;
+    margin: 3px 5px;
+    padding: 3px 10px 3px 12px;
 }
 
 #custom-menu {

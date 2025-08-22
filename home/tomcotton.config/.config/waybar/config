@@ -2,7 +2,7 @@
     "font-family": ["JetBrainsMono Nerd Font", "Font Awesome", "Roboto"],
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["clock", "idle_inhibitor"],
-    "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"],
+    "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "cpu", "memory", "disk", "battery", "custom/power"],
 
     "hyprland/workspaces": {
         "format": "{name}",
@@ -36,6 +36,30 @@
     },
     "clock": {
 		"on-click": "gnome-calendar"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 1
+    },
+    "memory": {
+        "format": " {percentage}%",
+        "interval": 1
+    },
+    "disk": {
+        "format": " {percentage_used}%",
+        "path": "/",
+        "interval": 30
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "interval": 30
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
