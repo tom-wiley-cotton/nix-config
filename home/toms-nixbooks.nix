@@ -8,6 +8,9 @@
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in {
   environment.systemPackages = with pkgs; [
+    # ---------------------------------------
+    # hyprland Packages
+    # ---------------------------------------
     # Desktop Environment & Window Management
     dunst
     grim

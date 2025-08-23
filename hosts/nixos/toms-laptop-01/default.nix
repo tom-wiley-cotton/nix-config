@@ -15,13 +15,8 @@
     ../../../modules/node-exporter
     ../../../modules/nfs
     ../../../home/toms-nixbooks.nix
-    ../../../home/tomcotton.config/kmonad/kmonad.nix
+    ./kmonad.nix # enables kmonad and points to .kbd
   ];
-
-  services.kmonad = {
-    enable = true;
-    configfiles = [ ./toms-laptop-01.kbd ];
-  };
 
   services.clubcotton = {
     tailscale.enable = true;
@@ -100,4 +95,4 @@
   ];
 
   system.stateVersion = "24.11"; # Did you read the comment?
-}
+
