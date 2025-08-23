@@ -47,7 +47,7 @@
     },
     "disk": {
         "format": "{percentage_used}% {icon}",
-        "path": "/",
+        "path": "/dev/disk/by-id/ata-WDC_WD10SPZX-60Z10T0_WD-WXS1A9855YLP2",
         "interval": 30
     },
     "battery": {

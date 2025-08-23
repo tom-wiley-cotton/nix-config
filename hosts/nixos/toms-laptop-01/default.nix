@@ -15,8 +15,13 @@
     ../../../modules/node-exporter
     ../../../modules/nfs
     ../../../home/toms-nixbooks.nix
-    ../../../home/modules/kmonad.nix
+    ../../../home/tomcotton.config/kmonad/kmonad.nix
   ];
+
+  services.kmonad = {
+    enable = true;
+    configfiles = [ ./toms-laptop-01.kbd ];
+  };
 
   services.clubcotton = {
     tailscale.enable = true;
