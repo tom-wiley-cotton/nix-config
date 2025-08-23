@@ -13,6 +13,11 @@ in {
 
   services.kmonad = {
     enable = true;
-    configfiles = [ ./toms-laptop-01.kbd ];
+    keyboards = {
+      toms-laptop-01 = {
+        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+        config = builtins.readFile ./toms-laptop-01.kbd;
+      };
+    };
   };
 }
