@@ -15,20 +15,20 @@ window#waybar {
 /*-----module groups----*/
 .modules-right {
 	background-color: rgba(0,43,51,0.85);
-    margin: 2px 10px 0 0;
+    margin: 1px 10px 0 0;
 }
 .modules-center {
 	background-color: rgba(0,43,51,0.85);
-    margin: 2px 0 0 0;
+    margin: 1px 0 0 0;
 }
 .modules-left {
-    margin: 2px 0 0 5px;
+    margin: 1px 0 0 5px;
 	background-color: rgba(0,119,179,0.6);
 }
 /*-----modules indv----*/
 #workspaces button {
-    padding: 1px 8px;
-    margin: 4px 3px;
+    padding: 0px 8px;
+    margin: 3px 3px;
     background-color: rgba(0,43,51,0.85);
     border-radius: 100px;
     color: #ffffff;
@@ -78,14 +78,14 @@ window#waybar {
 #custom-power {
     background-color: rgba(0,119,179,0.6);
     border-radius: 100px;
-    margin: 3px 5px;
-    padding: 3px 10px 3px 12px;
+    margin: 2px 5px;
+    padding: 2px 10px 2px 12px;
 }
 
 #custom-menu {
     background-color: rgba(0,119,179,0.6);
     border-radius: 100px;
-    margin: 5px 5px;
+    margin: 2px 5px;
     padding: 1px 1px 1px 6px;
 }
 /*-----Indicators----*/
