@@ -35,7 +35,8 @@
         "spacing": 10
     },
     "clock": {
-		"on-click": "gnome-calendar"
+        "format": "{:%d %b %I:%M %p}",
+        "on-click": "gnome-calendar"
     },
     "cpu": {
         "format": "{usage}% {icon}",
