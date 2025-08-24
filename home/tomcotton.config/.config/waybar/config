@@ -2,7 +2,7 @@
     "font-family": ["JetBrainsMono Nerd Font", "Font Awesome", "Roboto"],
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["clock", "idle_inhibitor"],
-    "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "cpu", "memory", "disk", "battery", "custom/power"],
+    "modules-right": ["custom/notifications", "custom/copyq", "tray", "custom/scratchpad-indicator", "pulseaudio", "cpu", "memory", "disk", "battery", "custom/power"],
 
     "hyprland/workspaces": {
         "format": "{name}",
@@ -87,6 +87,17 @@
 		"format": "{icon}",
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
+    "custom/notifications": {
+        "format": "",
+        "on-click": "dunstctl history-pop",
+        "on-click-right": "dunstctl close-all",
+        "tooltip": false
+    },
+    "custom/copyq": {
+        "format": " ",
+        "on-click": "copyq toggle",
+        "tooltip": false
+    },
     "custom/scratchpad-indicator": {
         "format-text": "{}hi",
         "return-type": "json",
