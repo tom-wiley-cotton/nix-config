@@ -1,135 +1,60 @@
-configuration {
-    modi: "drun,run,filebrowser,window";
-    font: "JetBrainsMono Nerd Font 12";
-    show-icons: true;
-    icon-theme: "Papirus";
-    terminal: "ghostty";
-    drun-display-format: "{icon} {name}";
-    location: 0;
-    disable-history: false;
-    hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-filebrowser: "   Files ";
-    display-window: "   Windows ";
-    sidebar-mode: true;
+* {
+    font: "Roboto 12";
+    background-color: rgba(0, 43, 51, 0.85);
+    text-color: #ffffff;
+    border-radius: 20px;
 }
-
-@theme "theme"
 
 window {
-    transparency: "real";
-    background-color: #1a1b26aa;
-    text-color: #a9b1d6;
-    border: 2px;
-    border-color: #33ccffee;
-    border-radius: 6px;
-    width: 600px;
-    anchor: center;
-    x-offset: 0;
-    y-offset: 0;
-    animation: slideDown;
-    animation-duration: 0.3s;
-}
-
-@keyframes slideDown {
-    0% {
-        opacity: 0;
-        y-offset: -20px;
-    }
-    100% {
-        opacity: 1;
-        y-offset: 0;
-    }
+    background-color: rgba(0, 43, 51, 0.85);
+    border-radius: 20px;
+    padding: 20px;
 }
 
 mainbox {
-    background-color: transparent;
     border: 0;
     padding: 0;
-    spacing: 0;
+    background-color: transparent;
 }
 
 inputbar {
-    children: [prompt,entry];
+    children: [prompt, entry];
     background-color: transparent;
-    border-radius: 6px;
-    padding: 2px;
-    spacing: 8px;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 prompt {
-    background-color: #33ccffee;
-    padding: 6px;
-    text-color: #1a1b26;
-    border-radius: 4px;
-}
-
-textbox-prompt-colon {
-    expand: false;
-    str: ":";
+    background-color: transparent;
+    padding: 0px 10px 0px 0px;
 }
 
 entry {
-    padding: 6px;
-    text-color: #a9b1d6;
-    background-color: #1a1b2677;
-    border-radius: 4px;
+    background-color: transparent;
+    padding: 0px;
 }
 
 listview {
     background-color: transparent;
-    padding: 8px;
+    border: 0;
+    padding: 10px 0px 0px 0px;
     columns: 1;
     lines: 8;
-    spacing: 6px;
-    cycle: false;
-    dynamic: true;
-    layout: vertical;
-    scrollbar: false;
+    spacing: 5px;
 }
 
 element {
     background-color: transparent;
-    text-color: #a9b1d6;
-    orientation: horizontal;
-    border-radius: 4px;
-    padding: 6px;
-    spacing: 8px;
+    padding: 8px;
+    border-radius: 10px;
 }
 
 element selected {
-    background-color: #33ccffee;
-    text-color: #1a1b26;
-}
-
-element-icon {
-    size: 20px;
-    horizontal-align: 0.5;
-    vertical-align: 0.5;
+    background-color: rgba(0, 119, 179, 0.6);
 }
 
 element-text {
-    expand: true;
-    horizontal-align: 0;
+    background-color: transparent;
+    text-color: inherit;
     vertical-align: 0.5;
-    margin: 0 8px 0 0;
-}
-
-mode-switcher {
-    spacing: 0;
-}
-
-button {
-    padding: 8px;
-    background-color: #1a1b2677;
-    text-color: #a9b1d6;
-    vertical-align: 0.5;
-    horizontal-align: 0.5;
-}
-
-button selected {
-    background-color: #33ccffee;
-    text-color: #1a1b26;
-    border-radius: 4px;
 }
