@@ -67,9 +67,6 @@ window#waybar {
 #custom-menu,
 #idle_inhibitor,
 #custom-copyq,
-#custom-notifications {
-    padding: 0 10px;
-}
 
 #clock {
     padding: 0 6px;
@@ -98,15 +95,9 @@ window#waybar {
     background-color: rgba(0,119,179,0.6);
     border-radius: 100px;
     margin: 2px 5px;
-    padding: 1px 6px;
+    padding: 2px 12px;
 }
 
-#custom-notifications {
-    background-color: rgba(0,119,179,0.6);
-    border-radius: 100px;
-    margin: 2px 5px;
-    padding: 1px 6px;
-}
 /*-----Indicators----*/
 #idle_inhibitor.activated {
     color: #2dcc36;

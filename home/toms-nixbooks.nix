@@ -14,6 +14,7 @@ in {
     # Desktop Environment & Window Management
     copyq
     dunst
+    libnotify
     grim
     hyprcursor
     hypridle
