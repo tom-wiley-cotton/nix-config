@@ -84,17 +84,17 @@
 		"on-click": "hyprctl dispatch exit"
 	},
 	"custom/menu": {
-		"format": "{icon}",
+		"format": "{icon}",
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
     "custom/notifications": {
-        "format": "",
+        "format": "{icon}",
         "on-click": "dunstctl history-pop",
         "on-click-right": "dunstctl close-all",
         "tooltip": false
     },
     "custom/copyq": {
-        "format": " ",
+        "format": "{icon}",
         "on-click": "copyq toggle",
         "tooltip": false
     },

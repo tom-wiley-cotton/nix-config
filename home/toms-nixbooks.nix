@@ -12,6 +12,7 @@ in {
     # hyprland Packages
     # ---------------------------------------
     # Desktop Environment & Window Management
+    copyq
     dunst
     grim
     hyprcursor
