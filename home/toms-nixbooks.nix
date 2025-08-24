@@ -80,47 +80,7 @@ in {
     papirus-icon-theme
   ];
 
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        width = "(300, 450)";
-        height = 300;
-        offset = "10x10";
-        origin = "top-right";
-        transparency = 0;
-        padding = 8;
-        horizontal_padding = 8;
-        frame_width = 2;
-        frame_color = "#33ccffee";
-        separator_height = 2;
-        font = "JetBrainsMono Nerd Font 10";
-        line_height = 0;
-        corner_radius = 6;
-        icon_position = "left";
-        min_icon_size = 0;
-        max_icon_size = 32;
-      };
-      urgency_low = {
-        background = "#1a1b26";
-        foreground = "#a9b1d6";
-        frame_color = "#33ccffee";
-        timeout = 10;
-      };
-      urgency_normal = {
-        background = "#1a1b26";
-        foreground = "#a9b1d6";
-        frame_color = "#00ff99ee";
-        timeout = 10;
-      };
-      urgency_critical = {
-        background = "#1a1b26";
-        foreground = "#f7768e";
-        frame_color = "#f7768e";
-        timeout = 0;
-      };
-    };
-  };
+  # services.dunst.enable = true;
 
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
