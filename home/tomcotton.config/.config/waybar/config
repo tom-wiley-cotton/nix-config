@@ -39,11 +39,13 @@
         "on-click": "gnome-calendar"
     },
     "cpu": {
-        "format": "{usage}% {icon}",
+        "format": "{:>3}% {icon}",
+        "format-alt": "{:>3}% {icon}",
         "interval": 1
     },
     "memory": {
-        "format": "{percentage}% {icon}",
+        "format": "{:>3}% {icon}",
+        "format-alt": "{:>3}% {icon}",
         "interval": 1
     },
     "disk": {
@@ -52,9 +54,9 @@
         "interval": 30
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{capacity:>3}% {icon}",
+        "format-charging": " {capacity:>3}%",
+        "format-plugged": " {capacity:>3}%",
         "states": {
             "warning": 30,
             "critical": 15
@@ -62,7 +64,7 @@
         "interval": 30
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
+        "format": "{volume:>3}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": "0% {icon}",
