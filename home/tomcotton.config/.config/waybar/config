@@ -39,11 +39,13 @@
         "on-click": "gnome-calendar"
     },
     "cpu": {
-        "format": "{usage}% {icon}",
+        "format": "{:>03}% {icon}",
+        "format-alt": "{avg_frequency:>.1f}GHz {icon}",
         "interval": 1
     },
     "memory": {
-        "format": "{percentage}% {icon}",
+        "format": "{:>03}% {icon}",
+        "format-alt": "{used:>.1f}GB/{total:>.1f}GB {icon}",
         "interval": 1
     },
     "disk": {
@@ -52,9 +54,9 @@
         "interval": 30
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{capacity:>03}% {icon}",
+        "format-charging": " {capacity:>03}%",
+        "format-plugged": " {capacity:>03}%",
         "states": {
             "warning": 30,
             "critical": 15
@@ -88,9 +90,12 @@
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
     "custom/copyq": {
-        "format": "{icon}",
-        "on-click": "copyq toggle",
-        "tooltip": false
+        "format": " ",
+        "on-click": "copyq menu",
+        "tooltip": true,
+        "interval": 1,
+        "exec": "copyq clipboard | head -n 1",
+        "max-length": 50
     },
     "custom/scratchpad-indicator": {
         "format-text": "{}hi",
