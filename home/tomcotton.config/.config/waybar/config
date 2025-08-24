@@ -81,7 +81,7 @@
     },
 	"custom/power": {
 		"format": "{icon}⏻",
-		"on-click": "wlogout"
+		"on-click": "hyprctl dispatch exit"
 	},
 	"custom/menu": {
 		"format": "{icon}",
