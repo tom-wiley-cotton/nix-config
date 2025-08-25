@@ -1,8 +1,9 @@
 {
     "font-family": ["JetBrainsMono Nerd Font", "Font Awesome", "Roboto"],
+    "position": "top",
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["clock", "idle_inhibitor"],
-    "modules-right": ["custom/notifications", "custom/copyq", "tray", "custom/scratchpad-indicator", "pulseaudio", "cpu", "memory", "disk", "battery", "custom/power"],
+    "modules-right": ["custom/notifications", "custom/copyq", "tray", "custom/scratchpad-indicator", "pulseaudio", "cpu", "memory", "battery", "custom/power"],
 
     "hyprland/workspaces": {
         "format": "{name}",
@@ -39,20 +40,15 @@
         "on-click": "gnome-calendar"
     },
     "cpu": {
-        "format": "{usage}% {icon}",
+        "format": "{usage:3d}% {icon}",
         "interval": 1
     },
     "memory": {
-        "format": "{percentage}% {icon}",
+        "format": "{percentage:3d}% {icon}",
         "interval": 1
     },
-    "disk": {
-        "format": "{percentage_used}% {icon}",
-        "path": "/dev/disk/by-id/ata-WDC_WD10SPZX-60Z10T0_WD-WXS1A9855YLP2",
-        "interval": 30
-    },
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "{capacity:3d}% {icon}",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "states": {
@@ -62,7 +58,7 @@
         "interval": 30
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
+        "format": "{volume:3d}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": "0% {icon}",
@@ -87,17 +83,6 @@
 		"format": "{icon}",
 		"on-click": "rofi -show run -modi drun,run,filebrowser,keys -theme ~/.config/rofi/config.rasi"
 	},
-    "custom/notifications": {
-        "format": "{icon}",
-        "on-click": "dunstctl history-pop",
-        "on-click-right": "dunstctl close-all",
-        "tooltip": false
-    },
-    "custom/copyq": {
-        "format": "{icon}",
-        "on-click": "copyq toggle",
-        "tooltip": false
-    },
     "custom/scratchpad-indicator": {
         "format-text": "{}hi",
         "return-type": "json",

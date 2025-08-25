@@ -64,7 +64,6 @@ window#waybar {
 #tray,
 #mode,
 #custom-power,
-#custom-menu,
 #idle_inhibitor,
 #custom-copyq,
 #custom-notifications {
@@ -88,10 +87,10 @@ window#waybar {
 }
 
 #custom-menu {
-    background-color: rgba(0,119,179,0.6);
-    border-radius: 100px;
-    margin: 2px 5px;
-    padding: 1px 1px 1px 6px;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 6px;
 }
 
 #custom-copyq {
