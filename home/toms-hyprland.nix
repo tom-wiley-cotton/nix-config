@@ -59,6 +59,7 @@ in {
     foliate         # Ebook reader
     fragments       # Torrent client
     gnome-calculator
+    gnome-calendar
     kdePackages.kate
     metadata-cleaner # Metadata cleaner
 

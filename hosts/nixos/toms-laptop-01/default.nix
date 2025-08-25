@@ -14,7 +14,8 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
-    ../../../home/toms-nixbooks.nix
+    ../../../home/toms-hyprland.nix
+    ../../../home/toms-guipkgs.nix
     ./kmonad.nix # enables kmonad and points to .kbd
   ];
 
