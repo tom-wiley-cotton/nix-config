@@ -3,55 +3,55 @@
     font-family: JetBrainsMono Nerd Font, Font Awesome, Roboto, Arial, sans-serif;
     font-size: 13px;
     color: #ffffff;
-    border-radius: 16px;
+    border-radius: 0;
 }
 
 window {
 	/*font-weight: bold;*/
 }
 window#waybar {
-    background: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0.2);
 }
 /*-----module groups----*/
 .modules-right {
-	background-color: rgba(0,43,51,0.85);
-    margin: 2px 10px 0 0;
-    padding: 0 0;
+	background-color: transparent;
+    margin: 0;
+    padding: 0;
 }
 .modules-center {
-	background-color: rgba(0,43,51,0.85);
-    margin: 2px 0 0 0;
-    padding: 0 0;
+	background-color: transparent;
+    margin: 0;
+    padding: 0;
 }
 .modules-left {
-    margin: 2px 0 0 5px;
-	background-color: rgba(0,119,179,0.6);
-    padding: 0 0;
+    margin: 0;
+	background-color: transparent;
+    padding: 0;
 }
 /*-----modules indv----*/
 #workspaces button {
-    padding: 0px 8px;
-    margin: 2px 3px;
-    background-color: rgba(0,43,51,0.85);
-    border-radius: 100px;
+    padding: 4px 8px;
+    margin: 0 2px;
+    background-color: transparent;
+    border-radius: 0;
     color: #ffffff;
     transition: all 0.3s ease;
     min-width: 25px;
 }
 
 #workspaces button:hover {
-    background-color: rgba(0,153,153,1);
-    box-shadow: inherit;
+    background-color: rgba(0,153,153,0.3);
+    box-shadow: none;
 }
 
 #workspaces button.active {
-    background-color: rgba(0,153,153,1);
+    background-color: rgba(0,153,153,0.5);
     min-width: 30px;
     transition: all 0.3s ease;
 }
 
 #workspaces button.urgent {
-    background-color: #cc3436;
+    background-color: rgba(204, 52, 54, 0.5);
 }
 
 #battery,
@@ -67,44 +67,47 @@ window#waybar {
 #idle_inhibitor,
 #custom-copyq,
 #custom-notifications {
-    padding: 0 10px;
+    padding: 4px 8px;
+    background-color: transparent;
+    margin: 0 2px;
 }
 
 #clock {
-    padding: 0 6px;
-    margin: 0;
+    padding: 4px 8px;
+    margin: 0 2px;
     min-width: 120px;
+    background-color: transparent;
 }
 #mode {
     color: #cc3436;
     font-weight: bold;
 }
 #custom-power {
-    background-color: rgba(0,119,179,0.6);
-    border-radius: 100px;
-    margin: 2px 5px;
-    padding: 2px 12px;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0 2px;
+    padding: 4px 8px;
 }
 
 #custom-menu {
     background-color: transparent;
     border-radius: 0;
-    margin: 0;
-    padding: 0 6px;
+    margin: 0 2px;
+    padding: 4px 8px;
 }
 
 #custom-copyq {
-    background-color: rgba(0,119,179,0.6);
-    border-radius: 100px;
-    margin: 2px 5px;
-    padding: 1px 6px;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0 2px;
+    padding: 4px 8px;
 }
 
 #custom-notifications {
-    background-color: rgba(0,119,179,0.6);
-    border-radius: 100px;
-    margin: 2px 5px;
-    padding: 1px 6px;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0 2px;
+    padding: 4px 8px;
 }
 /*-----Indicators----*/
 #idle_inhibitor.activated {
