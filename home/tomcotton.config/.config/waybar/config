@@ -1,6 +1,6 @@
 {
     "font-family": ["JetBrainsMono Nerd Font", "Font Awesome", "Roboto"],
-    "position": "top",
+    "position": "bottom",
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["clock", "idle_inhibitor"],
     "modules-right": ["custom/notifications", "custom/copyq", "tray", "custom/scratchpad-indicator", "pulseaudio", "cpu", "memory", "battery", "custom/power"],
