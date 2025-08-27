@@ -26,7 +26,7 @@
 
   # === Audio Friendly Kernel Mods ===
   musnix.enable = true;
-  users.users.tomcotton.extraGroups = [ "audio" ];
+  users.users.tomcotton.extraGroups = [ "audio" "input" "uinput" ];
   boot.kernelPackages = pkgs.linuxPackages-rt;
 
   services.xserver.enable = true;
