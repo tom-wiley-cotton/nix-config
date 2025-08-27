@@ -16,12 +16,17 @@
     ../../../modules/nfs
     ../../../home/toms-hyprland.nix
     ../../../home/toms-guipkgs.nix
+    ../../../home/toms-proaudio.nix
     ./kmonad.nix # enables kmonad and points to .kbd
   ];
 
   services.clubcotton = {
     tailscale.enable = true;
   };
+
+  # === Audio Friendly Kernel Mods ===
+  musnix.enable = true; # Makes lots of system and kernel modifications for audio friendlyness
+  musnix.kernel.realtime = true; # Switches the kernel to a realtime kernel
 
   services.xserver.enable = true;
   # services.displayManager.sddm.enable = true;
@@ -54,6 +59,7 @@
 
 	nixpkgs.config.permittedInsecurePackages = [
     "broadcom-sta-6.30.223.271-57-6.12.40"
+    "broadcom-sta-6.30.223.271-57-6.6.30-rt30"
   ];
 
 
@@ -95,5 +101,5 @@
     vscode
   ];
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

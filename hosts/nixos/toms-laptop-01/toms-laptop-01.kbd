@@ -30,6 +30,10 @@
   allow-cmd false
 )
 
+;; (defalias
+;;   rse (layer-toggle raise)
+;; )
+
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins 
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc         home
@@ -40,12 +44,22 @@
                                                          left down rght
 )
 
-(deflayer somthn
+(deflayer main
   _     _     _     _     _     _     _     _     _     _     _     _     _     _  
   _     _     _     _     _     _     _     _     _     _     _     _     _     _         _  
   _     _     _     _     _     _     _     _     _     _     _     _     _     _         _  
   lctl  _     _     _     _     _     _     _     _     _     _     _     _               _  
   _     _     _     _     _     _     _     _     _     _     _     _                     _  
-  _     _     _                 _                 _     _     _           _  
+  lalt  _     _                 _                 _     _     _           _  
                                                                     _     _     _  
 )
+
+;; (deflayer raise
+;;   _     _     _     _     _     _     _     _     _     _     _     _     _     _  
+;;   _     _     _     _     _     _     _     _     _     _     _     _     _     _         _  
+;;   _     _     _     _     _     _     _     _     _     _     _     _     _     _         _  
+;;   _     _     _     _     _     _     left  down  up    rght  _     _     _               _  
+;;   _     _     _     _     _     =     -     _     _     _     _     _                     _  
+;;   _     _     _                 _                 _     _     _           _  
+;;                                                                     _     _     _  
+;; )
