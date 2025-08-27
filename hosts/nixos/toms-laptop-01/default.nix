@@ -17,7 +17,7 @@
     ../../../home/toms-hyprland.nix
     ../../../home/toms-guipkgs.nix
     ../../../home/toms-proaudio.nix
-    ./kmonad.nix # enables kmonad and points to .kbd
+    # ./kmonad.nix # enables kmonad and points to .kbd
   ];
 
   services.clubcotton = {
