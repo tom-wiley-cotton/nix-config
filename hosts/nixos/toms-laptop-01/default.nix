@@ -27,7 +27,7 @@
   # === Audio Friendly Kernel Mods ===
   musnix.enable = true;
   users.users.tomcotton.extraGroups = [ "audio" ];
-  boot.kernelPackages = pkgs.linuxPackages-rt;
+  boot.kernelPackages = pkgs.linuxPackages-rt_latest;
 
   services.xserver.enable = true;
   # services.displayManager.sddm.enable = true;
@@ -97,11 +97,6 @@
   services.openssh.enable = true;
 
   networking.firewall.enable = false;
-
-  environment.systemPackages = with pkgs; [
-    firefox
-    vscode
-  ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

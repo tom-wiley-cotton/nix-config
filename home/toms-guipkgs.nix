@@ -13,5 +13,7 @@ in {
     discord
     reaper
     zotero
+    firefox
+    vscode
   ];
 }
