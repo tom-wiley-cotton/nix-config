@@ -8,6 +8,7 @@
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in {
   environment.systemPackages = with pkgs; [
+    # Desktop Applications
     bitwarden-desktop
     obsidian
     discord
@@ -15,5 +16,8 @@ in {
     zotero
     firefox
     vscode
+
+    # Nixbook and Nixtop Packages
+    kmonad
   ];
 }

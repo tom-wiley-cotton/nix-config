@@ -17,7 +17,6 @@
     ../../../home/toms-hyprland.nix
     ../../../home/toms-guipkgs.nix
     ../../../home/toms-proaudio.nix
-    # ./kmonad.nix # enables kmonad and points to .kbd
   ];
 
   services.clubcotton = {
@@ -28,6 +27,16 @@
   musnix.enable = true;
   users.users.tomcotton.extraGroups = [ "audio" ];
   boot.kernelPackages = pkgs.linuxPackages-rt_latest;
+
+  services.kmonad = {
+    enable = true;
+    keyboards = {
+      toms-laptop-01 = {
+        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+        config = builtins.readFile ./toms-laptop-01.kbd;
+      };
+    };
+  };
 
   services.xserver.enable = true;
   # services.displayManager.sddm.enable = true;
