@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+# Edit this configurat ion file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
@@ -58,7 +58,7 @@
     enable = true;
     poolname = "rpool";
     swapSize = "4G";
-    disk = "/dev/disk/by-id/ata-WDC_WD10SPZX-60Z10T0_WD-WXS1A9855YLP";
+    disk = "/dev/disk/by-id/ata-PNY_120GB_SATA_SSD_PNF14222322460100851";
     useStandardRootFilesystems = true;
     reservedSize = "20GiB";
   };
@@ -77,7 +77,7 @@
 
   networking = {
     hostName = "toms-laptop-01";
-    hostId = "a8c01005";
+    hostId = "a8c01006";
 
     networkmanager.enable = true;
 
