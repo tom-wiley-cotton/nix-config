@@ -79,7 +79,8 @@
     hostName = "toms-laptop-01";
     hostId = "a8c01006";
 
-    networkmanager.enable = true;
+    wireless.enable = true;
+    wireless.userControlled.enable = true;
 
     # useDHCP = false;
     # defaultGateway = "192.168.5.1";
