@@ -28,15 +28,15 @@
   users.users.tomcotton.extraGroups = [ "audio" ];
   boot.kernelPackages = pkgs.linuxPackages-rt_latest;
 
-  services.kmonad = {
-    enable = true;
-    keyboards = {
-      toms-laptop-01 = {
-        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
-        config = builtins.readFile ./toms-laptop-01.kbd;
-      };
-    };
-  };
+  # services.kmonad = {
+  #   enable = true;
+  #   keyboards = {
+  #     nixbook-test = {
+  #       device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+  #       config = builtins.readFile ./toms-laptop-01.kbd;
+  #     };
+  #   };
+  # };
 
   services.xserver.enable = true;
   # services.displayManager.sddm.enable = true;
@@ -76,11 +76,9 @@
 
 
   networking = {
-    hostName = "toms-laptop-01";
+    hostName = "nixbook-test";
     hostId = "a8c01006";
-    networkManager = true;
-    wireless.enable = true;
-    wireless.userControlled.enable = true;
+    networkmanager.enable = true;
 
     # useDHCP = false;
     # defaultGateway = "192.168.5.1";
