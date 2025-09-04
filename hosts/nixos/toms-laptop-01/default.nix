@@ -78,7 +78,7 @@
   networking = {
     hostName = "toms-laptop-01";
     hostId = "a8c01006";
-
+    networkManager = true;
     wireless.enable = true;
     wireless.userControlled.enable = true;
 
