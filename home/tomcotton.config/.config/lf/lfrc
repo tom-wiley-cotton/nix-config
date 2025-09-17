@@ -107,6 +107,50 @@ cmd zip ${{
     rm -rf $1
 }}
 
+# eza file information
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
+
+# git stuff
+cmd git_branch ${{
+    git branch | fzf | xargs git checkout
+    pwd_shell="$(pwd | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id updir; cd \"$pwd_shell\""
+}}
+map gb :git_branch
+map gp $clear; git pull --rebase || true; echo "press ENTER"; read ENTER
+map gs $clear; git status; echo "press ENTER"; read ENTER
+map gl $clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+set info custom
+
+cmd on-load &{{
+    cd "$(dirname "$1")" || exit 1
+    [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" = false ] || exit 0
+
+    cmds=""
+
+    for file in "$@"; do
+        case "$file" in
+            */.git|*/.git/*) continue;;
+        esac
+
+        status=$(git status --porcelain --ignored -- "$file" | cut -c1-2 | head -n1)
+
+        if [ -n "$status" ]; then
+            cmds="${cmds}addcustominfo ${file} \"$status\"; "
+        else
+            cmds="${cmds}addcustominfo ${file} ''; "
+        fi
+    done
+
+    lf -remote "send $id :$cmds"
+}}
+
+# mac quick look
+map <space> &qlmanage -p "$f" 2>/dev/null 1>/dev/null
+
 # cmd copypaths ${{
 
 # }}
