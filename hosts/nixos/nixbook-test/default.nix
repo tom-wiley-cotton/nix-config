@@ -15,6 +15,7 @@
     ../../../modules/node-exporter
     ../../../modules/nfs
     # ../../../home/toms-hyprland.nix
+    ../../../home/toms-desktop.nix
     ../../../home/toms-guipkgs.nix
     ../../../home/toms-proaudio.nix
   ];
