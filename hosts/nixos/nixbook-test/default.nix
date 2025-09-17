@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
-    ../../../home/toms-hyprland.nix
+    # ../../../home/toms-hyprland.nix
     ../../../home/toms-guipkgs.nix
     ../../../home/toms-proaudio.nix
   ];
@@ -38,9 +38,6 @@
   #   };
   # };
 
-  services.xserver.enable = true;
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
