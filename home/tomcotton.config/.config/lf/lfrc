@@ -26,8 +26,12 @@ set cursorpreviewfmt "\033[7;2m"
 # Enable Borders
 set drawbox
 
+set icons "true"
+
 # Veiw hidden files
 set hidden "true"
+
+set mouse "true"
 
 map C :clear
 
