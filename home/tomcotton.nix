@@ -47,6 +47,13 @@
     url = "https://github.com/msteen/nixos-vscode-server/tarball/master";
     sha256 = "sha256:1rdn70jrg5mxmkkrpy2xk8lydmlc707sk0zb35426v1yxxka10by";
   };
+
+  rose-pine-hyprcursor = pkgs.fetchFromGitHub {
+    owner = "ndom91";
+    repo = "rose-pine-hyprcursor";
+    rev = "4b02963d0baf0bee18725cf7c5762b3b3c1392f1";
+    sha256 = "sha256-ouuA8LVBXzrbYwPW2vNjh7fC9H2UBud/1tUiIM5vPvM="; # Replace with the correct SHA256
+  };
 in {
   home.stateVersion = "25.05";
 
@@ -241,18 +248,47 @@ in {
   # TODO: add ~/bin
   # code --remote ssh-remote+<remoteHost> <remotePath>
 
-  home.file."oh-my-zsh-custom" = {
+  home.file."dotfiles" = {
     enable = true;
-    source = ./oh-my-zsh-custom;
-    target = ".oh-my-zsh-custom";
+    recursive = true;
+    source = ./tomcotton.config;
+    target = "tmp/..";
   };
+  home.file."dummy" = {
+    enable = true;
+    source = ./tomcotton.config/tmp/dummy;
+    target = "tmp/dummy";
+  };
+  # home.file."rose-pine-hyprcursor" = {
+  #   enable = true;
+  #   source = rose-pine-hyprcursor;
+  #   target = ".local/share/icons/rose-pine-hyprcursor";
+  # };
 
-  home.file.".config/karabiner" = {
-    enable = true;
-    force = true;
-    source = tomcotton.config/karabiner.json;
-    target = ".config/karabiner/karabiner.json";
-  };
+  # home.file."oh-my-zsh-custom" = {
+  #   enable = true;
+  #   source = ./oh-my-zsh-custom;
+  #   target = ".oh-my-zsh-custom";
+  # };
+
+  # home.file.".config/karabiner" = {
+  #   enable = true;
+  #   force = true;
+  #   source = tomcotton.config/karabiner.json;
+  #   target = ".config/karabiner/karabiner.json";
+  # };
+
+  # home.file.".config/hypr" = {
+  #   enable = true;
+  #   source = tomcotton.config/hypr;
+  #   target = ".config/hypr";
+  # };
+  
+  # home.file.".config/waybar" = {
+  #   enable = true;
+  #   source = tomcotton.config/waybar;
+  #   target = ".config/waybar";
+  # };
 
   xdg = {
     enable = true;
@@ -260,10 +296,10 @@ in {
       source = ./dot.config/containers/registries.conf;
     };
     configFile."atuin/config.toml" = {
-      source = ./tomcotton.config/atuin/config.toml;
+      source = ./tomcotton.config/.config/atuin/config.toml;
     };
     configFile."ghostty/config" = {
-      source = ./tomcotton.config/ghostty/config;
+      source = ./tomcotton.config/.config/ghostty/config;
     };
   };
 

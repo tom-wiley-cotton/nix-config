@@ -33,12 +33,15 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    musnix = { url = "github:musnix/musnix"; };
   };
 
   outputs = inputs @ {
     self,
     agenix,
     ghostty,
+    musnix,
     nixinate,
     nixpkgs,
     nixpkgs-unstable,
@@ -173,6 +176,8 @@
             ./modules/postgresql
             ./modules/tailscale
             ./modules/zfs
+
+            musnix.nixosModules.musnix
 
             ./hosts/nixos/${hostName} # ip address, host specific stuff
             vscode-server.nixosModules.default

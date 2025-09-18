@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+# Edit this configurat ion file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
@@ -14,15 +14,33 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
+    ../../../home/toms-hyprland.nix
+    ../../../home/toms-guipkgs.nix
+    ../../../home/toms-proaudio.nix
   ];
 
   services.clubcotton = {
     tailscale.enable = true;
   };
 
+  # === Audio Friendly Kernel Mods ===
+  musnix.enable = true;
+  users.users.tomcotton.extraGroups = [ "audio" ];
+  boot.kernelPackages = pkgs.linuxPackages-rt_latest;
+
+  services.kmonad = {
+    enable = true;
+    keyboards = {
+      toms-laptop-01 = {
+        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+        config = builtins.readFile ./toms-laptop-01.kbd;
+      };
+    };
+  };
+
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
@@ -40,7 +58,7 @@
     enable = true;
     poolname = "rpool";
     swapSize = "4G";
-    disk = "/dev/disk/by-id/ata-WDC_WD10SPZX-60Z10T0_WD-WXS1A9855YLP";
+    disk = "/dev/disk/by-id/ata-PNY_120GB_SATA_SSD_PNF14222322460100851";
     useStandardRootFilesystems = true;
     reservedSize = "20GiB";
   };
@@ -50,15 +68,19 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 	nixpkgs.config.permittedInsecurePackages = [
-                "broadcom-sta-6.30.223.271-57-6.12.40"
-              ];
+    "broadcom-sta-6.30.223.271-57-6.12.40"
+    "broadcom-sta-6.30.223.271-57-6.6.30-rt30"
+    "broadcom-sta-6.30.223.271-57-5.15.183-rt85"
+    "broadcom-sta-6.30.223.271-57-6.6.87-rt54"
+  ];
 
 
   networking = {
     hostName = "toms-laptop-01";
-    hostId = "a8c01005";
+    hostId = "a8c01006";
 
-    networkmanager.enable = true;
+    wireless.enable = true;
+    wireless.userControlled.enable = true;
 
     # useDHCP = false;
     # defaultGateway = "192.168.5.1";
@@ -87,10 +109,5 @@
 
   networking.firewall.enable = false;
 
-  environment.systemPackages = with pkgs; [
-    firefox
-    vscode
-  ];
-
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
