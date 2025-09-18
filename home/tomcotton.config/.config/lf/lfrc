@@ -29,7 +29,7 @@ set drawbox
 # Veiw hidden files
 set hidden "true"
 
-map x :clear
+map C :clear
 
 # Dynamically set column amount
 cmd on-init :{{
