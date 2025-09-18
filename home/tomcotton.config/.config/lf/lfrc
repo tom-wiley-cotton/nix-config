@@ -33,7 +33,7 @@ set hidden "true"
 
 set mouse "true"
 
-map C :clear
+map c :clear
 
 # Dynamically set column amount
 cmd on-init :{{
@@ -67,7 +67,7 @@ map x $$f
 map X !$f
 
 # dedicated keys for file opener actions
-map o &mimeopen $f
+# map o &mimeopen $f
 map O $mimeopen --ask $f
 
 # define a custom 'open' command
@@ -226,4 +226,4 @@ cmd yank-basename-without-extension %{{
     echo "Copied $fx"
 }}
 
-map c yank-paths
+map bc yank-paths
