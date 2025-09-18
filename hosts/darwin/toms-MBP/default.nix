@@ -14,6 +14,8 @@
     useP11KitOverlay = true;
   };
 
+  # stdenv.mkDerivation.NIX_LDFLAGS = "-headerpad_max_install_names";
+
   homebrew = {
     enable = true;
     # updates homebrew packages on activation,
