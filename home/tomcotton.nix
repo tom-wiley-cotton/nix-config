@@ -60,6 +60,7 @@ in {
   imports = [
     "${nixVsCodeServer}/modules/vscode-server/home.nix"
     ./modules/atuin.nix
+    ../hosts/common/toms-guinix/dconf.nix
   ];
 
   programs.atuin-config = {

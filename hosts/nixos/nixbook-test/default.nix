@@ -16,6 +16,7 @@
     ../../../modules/nfs
     # ../../common/toms-guinix/toms-hyprland.nix
     ../../common/toms-guinix/toms-desktop.nix
+    # ../../common/toms-guinix/dconf.nix
     ../../common/toms-guinix/toms-guipkgs.nix
     ../../common/toms-guinix/toms-proaudio.nix
   ];
