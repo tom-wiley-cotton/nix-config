@@ -14,10 +14,10 @@
     ./hardware-configuration.nix
     ../../../modules/node-exporter
     ../../../modules/nfs
-    # ../../../home/toms-hyprland.nix
-    ../../../home/toms-desktop.nix
-    ../../../home/toms-guipkgs.nix
-    ../../../home/toms-proaudio.nix
+    # ../../common/toms-guinix/toms-hyprland.nix
+    ../../common/toms-guinix/toms-desktop.nix
+    ../../common/toms-guinix/toms-guipkgs.nix
+    ../../common/toms-guinix/toms-proaudio.nix
   ];
 
   services.clubcotton = {
