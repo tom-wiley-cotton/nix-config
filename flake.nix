@@ -35,6 +35,11 @@
     };
 
     musnix = { url = "github:musnix/musnix"; };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -53,6 +58,7 @@
     vscode-server,
     disko,
     isd,
+    stylix,
     ...
   }: let
     localPackages = system: let
@@ -140,6 +146,8 @@
         specialArgs = {inherit self system inputs localPackages;};
         modules =
           [
+            stylix.nixosModules.stylix
+            
             # adds unstable to be available in top-level evals (like in common-packages)
             {
               _module.args = {

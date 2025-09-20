@@ -8,8 +8,10 @@
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in {
   environment.systemPackages = with pkgs; [
+    gnome-tweaks
     gnomeExtensions.tiling-shell
     dconf2nix # used to make a nix expression from the dconf bin
+    dconf-editor
   ];
   fonts.packages = with pkgs; [
     font-awesome
