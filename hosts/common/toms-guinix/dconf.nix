@@ -13,10 +13,15 @@ with lib.hm.gvariant;
       window-width = 1038;
     };
 
+    "org/gnome/Console" = {
+      last-window-maximised = false;
+      last-window-size = mkTuple [ 732 528 ];
+    };
+
     "org/gnome/Extensions" = {
-      window-height = 737;
+      window-height = 795;
       window-maximized = false;
-      window-width = 758;
+      window-width = 944;
     };
 
     "org/gnome/Geary" = {
@@ -36,8 +41,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "multitasking";
-      window-state = mkTuple [ 1244 891 false ];
+      last-panel = "keyboard";
+      window-state = mkTuple [ 999 1380 false ];
     };
 
     "org/gnome/desktop/app-folders" = {
@@ -188,6 +193,10 @@ with lib.hm.gvariant;
       last-folder-path = "/home/tomcotton/nix-config/hosts/common/toms-guinix";
     };
 
+    "org/gnome/portal/filechooser/org/gnome/tweaks" = {
+      last-folder-path = "/home/tomcotton/nix-config/hosts/common/toms-guinix";
+    };
+
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-schedule-automatic = false;
     };
@@ -207,6 +216,7 @@ with lib.hm.gvariant;
       command-history = [ "test" ];
       disabled-extensions = [];
       enabled-extensions = [ "tilingshell@ferrarodomenico.com" ];
+      favorite-apps = [ "com.mitchellh.ghostty.desktop" "firefox.desktop" "org.gnome.Nautilus.desktop" "code.desktop" "cockos-reaper.desktop" ];
       welcome-dialog-last-shown-version = "48.2";
     };
 
@@ -216,24 +226,26 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/tilingshell" = {
       enable-autotiling = false;
-      enable-tiling-system = false;
+      enable-tiling-system = true;
       enable-window-border = true;
       focus-window-down = [ "<Super>j" ];
       focus-window-left = [ "<Super>h" ];
       focus-window-right = [ "<Super>l" ];
       focus-window-up = [ "<Super>k" ];
-      inner-gaps = mkUint32 2;
+      inner-gaps = mkUint32 14;
       last-version-name-installed = "16.4";
-      layouts-json = "[{\"id\":\"Layout 1\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.22,\"height\":0.5,\"groups\":[1,2]},{\"x\":0,\"y\":0.5,\"width\":0.22,\"height\":0.5,\"groups\":[1,2]},{\"x\":0.22,\"y\":0,\"width\":0.56,\"height\":1,\"groups\":[2,3]},{\"x\":0.78,\"y\":0,\"width\":0.22,\"height\":0.5,\"groups\":[3,4]},{\"x\":0.78,\"y\":0.5,\"width\":0.22,\"height\":0.5,\"groups\":[3,4]}]},{\"id\":\"Layout 2\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.22,\"height\":1,\"groups\":[1]},{\"x\":0.22,\"y\":0,\"width\":0.56,\"height\":1,\"groups\":[1,2]},{\"x\":0.78,\"y\":0,\"width\":0.22,\"height\":1,\"groups\":[2]}]},{\"id\":\"Layout 3\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.33,\"height\":1,\"groups\":[1]},{\"x\":0.33,\"y\":0,\"width\":0.67,\"height\":1,\"groups\":[1]}]},{\"id\":\"Layout 4\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.62421875,\"height\":1,\"groups\":[1]},{\"x\":0.62421875,\"y\":0,\"width\":0.37578125,\"height\":1,\"groups\":[1]}]}]";
+      layouts-json = "[{\"id\":\"Layout 1\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.22,\"height\":0.5,\"groups\":[1,2]},{\"x\":0,\"y\":0.5,\"width\":0.22,\"height\":0.5,\"groups\":[1,2]},{\"x\":0.22,\"y\":0,\"width\":0.56,\"height\":1,\"groups\":[2,3]},{\"x\":0.78,\"y\":0,\"width\":0.22,\"height\":0.5,\"groups\":[3,4]},{\"x\":0.78,\"y\":0.5,\"width\":0.22,\"height\":0.5,\"groups\":[3,4]}]},{\"id\":\"Layout 2\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.22,\"height\":1,\"groups\":[1]},{\"x\":0.22,\"y\":0,\"width\":0.56,\"height\":1,\"groups\":[1,2]},{\"x\":0.78,\"y\":0,\"width\":0.22,\"height\":1,\"groups\":[2]}]},{\"id\":\"Layout 3\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.611328125,\"height\":1,\"groups\":[1]},{\"x\":0.611328125,\"y\":0,\"width\":0.38867187500000006,\"height\":1,\"groups\":[1]}]},{\"id\":\"Layout 4\",\"tiles\":[{\"x\":0,\"y\":0,\"width\":0.62421875,\"height\":1,\"groups\":[1]},{\"x\":0.62421875,\"y\":0,\"width\":0.37578125,\"height\":0.5809659090909091,\"groups\":[2,1]},{\"x\":0.62421875,\"y\":0.5809659090909091,\"width\":0.37578125,\"height\":0.4190340909090909,\"groups\":[2,1]}]}]";
       move-window-down = [ "<Shift><Super>j" ];
       move-window-left = [ "<Shift><Super>h" ];
       move-window-right = [ "<Shift><Super>l" ];
       move-window-up = [ "<Shift><Super>k" ];
-      outer-gaps = mkUint32 2;
+      outer-gaps = mkUint32 14;
       overridden-settings = "{\"org.gnome.mutter.keybindings\":{\"toggle-tiled-right\":\"['<Super>Right']\",\"toggle-tiled-left\":\"['<Super>Left']\"},\"org.gnome.desktop.wm.keybindings\":{\"maximize\":\"['<Super>Up']\",\"unmaximize\":\"['<Super>Down', '<Alt>F5']\"},\"org.gnome.mutter\":{\"edge-tiling\":\"true\"}}";
       selected-layouts = [ [ "Layout 4" ] [ "Layout 4" ] [ "Layout 4" ] ];
       snap-assistant-animation-time = mkUint32 15;
+      span-multiple-tiles-activation-key = [ "-1" ];
       tile-preview-animation-time = mkUint32 15;
+      tiling-system-activation-key = [ "-1" ];
       window-border-color = "rgb(51,209,122)";
       window-border-width = mkUint32 2;
     };
@@ -254,8 +266,8 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.20000000298023224 0.8196079730987549 0.47843098640441895 1.0 ]) (mkTuple [ 0.9254900217056274 0.36862701177597046 0.36862701177597046 1.0 ]) ];
-      selected-color = mkTuple [ true 0.20000000298023224 0.8196078538894653 0.47843137383461 1.0 ];
+      custom-colors = [ (mkTuple [ 0.2 0.819608 0.478431 1.0 ]) (mkTuple [ 0.92549 0.368627 0.368627 1.0 ]) ];
+      selected-color = mkTuple [ true 0.2 0.819608 0.478431 1.0 ];
     };
 
     "org/gtk/settings/file-chooser" = {

@@ -60,7 +60,7 @@ in {
   imports = [
     "${nixVsCodeServer}/modules/vscode-server/home.nix"
     ./modules/atuin.nix
-    ../hosts/common/toms-guinix/dconf.nix
+    ../hosts/common/toms-guinix/dconf.nix # Gnome configuration, here bc it needs home manager and idk if i can move it
   ];
 
   programs.atuin-config = {
