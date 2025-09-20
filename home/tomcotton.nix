@@ -55,7 +55,7 @@
     sha256 = "sha256-ouuA8LVBXzrbYwPW2vNjh7fC9H2UBud/1tUiIM5vPvM="; # Replace with the correct SHA256
   };
 in {
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 
   imports = [
     "${nixVsCodeServer}/modules/vscode-server/home.nix"
