@@ -9,7 +9,7 @@
 in {
   environment.systemPackages = with pkgs; [
     gnomeExtensions.tiling-shell
-
+    dconf2nix
   ];
   fonts.packages = with pkgs; [
     font-awesome

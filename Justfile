@@ -93,3 +93,6 @@ check:
         mv flake.nix.bak flake.nix
         exit $check_status
     fi
+
+w-dconfdump:
+  dconf dump / | dconf2nix > hosts/common/toms-guinix/dconf.nix
