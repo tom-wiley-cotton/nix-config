@@ -189,14 +189,6 @@ with lib.hm.gvariant;
       last-folder-path = "/home/tomcotton/nix-config/hosts/common/toms-guinix";
     };
 
-    "org/gnome/portal/filechooser/org/gnome/Settings" = {
-      last-folder-path = "/home/tomcotton/nix-config/hosts/common/toms-guinix";
-    };
-
-    "org/gnome/portal/filechooser/org/gnome/tweaks" = {
-      last-folder-path = "/home/tomcotton/nix-config/hosts/common/toms-guinix";
-    };
-
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-schedule-automatic = false;
     };
