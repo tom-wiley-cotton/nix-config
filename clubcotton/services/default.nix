@@ -23,6 +23,7 @@
     ./sabnzbd
     ./scanner
     ./syncoid
+    ./toms-darwin
     ./wallabag
     ./webdav
   ];
