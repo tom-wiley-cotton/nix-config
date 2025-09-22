@@ -227,3 +227,9 @@ cmd yank-basename-without-extension %{{
 }}
 
 map bc yank-paths
+
+cmd bat-to-less ${{
+    bat $f | less
+}}
+
+map i $bat $f --pager="less -R"
