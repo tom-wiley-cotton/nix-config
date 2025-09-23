@@ -355,6 +355,9 @@ in {
             # `command` is needed in case `lfcd` is aliased to `lf`
             cd "$(command lf -print-last-dir "$@")"
         }
+
+        # For some reason this was aliased to vi, seems regresive
+        unalias nvim 
       '';
       plugins = [
         "brew"
