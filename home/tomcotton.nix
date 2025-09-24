@@ -428,6 +428,8 @@ in {
   #  programs.zoxide.enable = true;
 
   programs.neovim = {
+    plugins = [
+    ];
     extraConfig = ''
       filetype on
       filetype plugin on
@@ -493,7 +495,6 @@ in {
       " Wildmenu will ignore files with these extensions.
       set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
     '';
-    plugins = [ ];
   };
 
   programs.ssh = {
@@ -522,6 +523,7 @@ in {
     rhash
     restic
     lf
+    vimv
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm
