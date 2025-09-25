@@ -435,7 +435,7 @@ in {
       filetype plugin on
       filetype indent on
       syntax on
-      set relativenumber
+      set number relativenumber
       " Highlight cursor line underneath the cursor horizontally.
       set cursorline
 
