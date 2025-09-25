@@ -23,7 +23,7 @@ in {
 
   config = {
     # Apply Optional Configuration
-
+       
     nixpkgs.overlays = let
       p11KitOverlay = final: prev: {
         p11-kit = prev.p11-kit.overrideAttrs (oldAttrs: {
@@ -55,6 +55,7 @@ in {
     # These are packages are just for darwin systems
     environment.systemPackages = [
       pkgs.kind
+      pkgs.xcode-install
     ];
 
     nixpkgs.config.allowUnfree = true;
