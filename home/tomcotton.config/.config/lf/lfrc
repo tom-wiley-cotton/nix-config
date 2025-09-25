@@ -249,3 +249,4 @@ map r
 map rr rename
 map ra bulk-rename
 
+map . push :cd<space>  
