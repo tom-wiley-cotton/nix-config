@@ -19,8 +19,8 @@ set ifs "\n"
 
 # === Low Level Changes ===
 
-# Use bat to color pager
-map i $bat $f --pager="less -R"
+# Use bat to color pager 
+# map i $bat $f --pager="less -R"
 
 # use enter for shell commands
 map <enter> shell-pipe
