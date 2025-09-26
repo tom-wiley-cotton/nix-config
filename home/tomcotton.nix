@@ -260,7 +260,7 @@ in {
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [ 
+    extensions = with pkgs.vscode-extensions; [
       asvetliakov.vscode-neovim
       ms-vscode.cpptools
       bbenoist.nix
@@ -272,7 +272,7 @@ in {
       ms-dotnettools.csharp
       ms-dotnettools.csdevkit
       saoudrizwan.claude-dev
-      ms-dotnettools.vscode-dotnet-runtime 
+      ms-dotnettools.vscode-dotnet-runtime
       mechatroner.rainbow-csv
       ms-python.vscode-pylance
       ms-python.python
@@ -294,8 +294,21 @@ in {
           # This property will be used to generate settings.json:
           # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
           "editor.formatOnSave" = true;
+          "files.autoSave" = "onFocusChange";
           # "extensions.autoCheckUpdates" = false;
-          # "extensions.autoUpdate" = false;
+          "extensions.autoUpdate" = false;
+          "files.trimFinalNewlines" = true;
+          "files.trimTrailingWhitespace" = true;
+          "[latex]" = {
+            "editor.wordWrap" = "on";
+          };
+          "[markdown]" = {
+            "editor.quickSuggestions" = {
+              "other" = true;
+              "comments" = true;
+              "strings" = true;
+            };
+          };
       keybindings = [
           # See https://code.visualstudio.com/docs/getstarted/keybindings#_advanced-customization
           {
@@ -306,7 +319,7 @@ in {
       ];
       # WARNING! Adding a new extension appears to uninstall all previous YOLO extensions
       # Changing this config may result in extensions dissapearing
-      # Issue: https://github.com/nix-community/home-manager/issues/7719 
+      # Issue: https://github.com/nix-community/home-manager/issues/7719
       # Removing ~/.vscode or ~/'Library/Application Support/Code' will help
       # Removing ~/.vscode/extensions/extensions.json may help
       # https://search.nixos.org/packages?channel=25.05&query=vscode-extensions
@@ -318,7 +331,7 @@ in {
       # URL on the [extension marketplace
       # website](https://marketplace.visualstudio.com/vscode).
       # extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
-      #   ms-dotnettools.vscode-dotnet-runtime 
+      #   ms-dotnettools.vscode-dotnet-runtime
       #   ms-vscode.cpptools
       #   ms-vscode.cpptools-extension-pack
       #   ms-vscode.cpptools-themes
@@ -461,7 +474,7 @@ in {
         }
 
         # For some reason this was aliased to vi, seems regresive
-        unalias nvim 
+        unalias nvim
       '';
       plugins = [
         "brew"
