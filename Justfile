@@ -55,7 +55,7 @@ nix-all:
 
 build-all:
   for i in `(nix flake show --json | jq -r '.nixosConfigurations |keys[]' | grep -v admin ) 2>/dev/null `; do echo $i; nix build ".#nixosConfigurations.$i.config.system.build.toplevel" || exit; done
-  
+
 
 vm:
   nix run '.#nixosConfigurations.nixos.config.system.build.nixos-shell'
@@ -71,18 +71,18 @@ gc generations="5d":
 check:
     #!/usr/bin/env bash
     set -euo pipefail
-    
+
     # Create temporary file
     temp_file=$(mktemp)
     trap 'rm -f "$temp_file"' EXIT
-    
+
     # Copy original file and comment out nixinate
     sed 's/^    apps.nixinate/    # apps.nixinate/' flake.nix > "$temp_file"
-    
+
     # Backup original and move temp file into place
     cp flake.nix flake.nix.bak
     mv "$temp_file" flake.nix
-    
+
     # Run check and store result
     if nix flake check; then
         check_status=$?
@@ -95,4 +95,4 @@ check:
     fi
 
 w-dconfdump:
-  dconf dump / | dconf2nix > hosts/common/toms-guinix/dconf.nix
+  dconf dump / | dconf2nix > tmp/w-dconf.nix

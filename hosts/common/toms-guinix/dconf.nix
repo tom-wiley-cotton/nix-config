@@ -5,35 +5,6 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
-    "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/gnome/desktop/wm/keybindings/";
-      saved-view = "/org/gnome/desktop/wm/keybindings/";
-      window-height = 956;
-      window-is-maximized = false;
-      window-width = 1038;
-    };
-
-    "org/gnome/Console" = {
-      last-window-maximised = false;
-      last-window-size = mkTuple [ 732 528 ];
-    };
-
-    "org/gnome/Extensions" = {
-      window-height = 795;
-      window-maximized = false;
-      window-width = 944;
-    };
-
-    "org/gnome/Geary" = {
-      migrated-config = true;
-      window-height = 697;
-      window-width = 556;
-    };
-
-    "org/gnome/Music" = {
-      window-maximized = true;
-    };
-
     "org/gnome/calendar" = {
       active-view = "month";
       window-maximized = true;
