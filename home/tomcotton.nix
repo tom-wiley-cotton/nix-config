@@ -257,8 +257,71 @@ in {
   services.vscode-server.enable = true;
   services.vscode-server.installPath = "$HOME/.vscode-server";
 
-  programs.vscode = {
+  programs.vscode.profiles.default = {
     enable = true;
+    userSettings = {
+        # This property will be used to generate settings.json:
+        # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
+        "editor.formatOnSave" = true;
+    };
+    keybindings = [
+        # See https://code.visualstudio.com/docs/getstarted/keybindings#_advanced-customization
+        {
+            key = "shift+cmd+j";
+            command = "workbench.action.focusActiveEditorGroup";
+            when = "terminalFocus";
+        }
+    ];
+    # `vscode-marketplace` is one of the properties that the `nix-vscode-extensions`
+    # overlay added to nixpkgs. Any VSCode extension in the marketplace should be
+    # accessible from `pkgs.vscode-marketplace.$AUTHOR.$EXTENSION`, where
+    # `$AUTHOR.$EXTENSION` is the same as the `itemName` property in the extension’s
+    # URL on the [extension marketplace
+    # website](https://marketplace.visualstudio.com/vscode).
+    extensions = with pkgs.vscode-marketplace; [
+      ms-dotnettools.vscode-dotnet-runtime 
+      ms-vscode.cpptools
+      ms-vscode.cpptools-extension-pack
+      ms-vscode.cpptools-themes
+      ms-dotnettools.csharp
+      ms-dotnettools.csdevkit
+      forrcaho.chuck
+      xaver.clang-format
+      xaver.clang-format
+      Anthropic.claude-code
+      saoudrizwan.claude-dev
+      CmajorSoftware.cmajor-tools
+      twxs.cmake
+      ms-vscode.cmake-tools
+      vadimcn.vscode-lldb
+      ms-azuretools.vscode-containers
+      Continue.continue
+      ms-vscode-remote.remote-containers
+      ms-azuretools.vscode-docker
+      docker.docker
+      DavidSchuldenfrei.gtest-adapter
+      justusadam.language-haskell
+      James-Yu.latex-workshop
+      valentjn.vscode-ltex
+      ms-vscode.makefile-tools
+      bbenoist.Nix
+      Antyos.openscad
+      ms-python.vscode-pylance
+      ms-python.python
+      ms-python.debugpy
+      ms-python.vscode-python-envs
+      mechatroner.rainbow-csv
+      ms-vscode-remote.remote-ssh
+      ms-vscode-remote.remote-ssh-edit
+      ms-vscode.remote-server
+      ms-vscode-remote.vscode-remote-extensionpack
+      ms-vscode.remote-explorer
+      tidalcycles.vscode-tidalcycles
+      visualstudiotoolsforunity.vstuc
+      asvetliakov.vscode-neovim
+      canadaduane.vscode-kmonad
+      OliverKovacs.word-count
+    ];
   };
 
   xdg = {
