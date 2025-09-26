@@ -92,10 +92,6 @@
       pkgs = genPkgs system;
       unstablePkgs = genUnstablePkgs system;
     
-    # vscode extensions configuration
-    nixpkgs.overlays = [
-      nix-vscode-extensions.overlays.default
-    ];
     in
       nixos-generators.nixosGenerate
       {
@@ -248,6 +244,7 @@
     darwinSystem = system: hostName: username: let
       pkgs = genDarwinPkgs system;
       unstablePkgs = genUnstablePkgs system;
+      overlays = [ nix-vscode-extensions.overlays.default ];
     in
       nix-darwin.lib.darwinSystem
       {
