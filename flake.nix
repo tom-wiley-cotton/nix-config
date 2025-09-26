@@ -35,6 +35,8 @@
     };
 
     musnix = { url = "github:musnix/musnix"; };
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = inputs @ {
@@ -53,6 +55,7 @@
     vscode-server,
     disko,
     isd,
+    nix-vscode-extensions,
     ...
   }: let
     localPackages = system: let
@@ -88,6 +91,7 @@
     nixosVM = system: hostName: usernames: let
       pkgs = genPkgs system;
       unstablePkgs = genUnstablePkgs system;
+    
     in
       nixos-generators.nixosGenerate
       {
@@ -240,6 +244,7 @@
     darwinSystem = system: hostName: username: let
       pkgs = genDarwinPkgs system;
       unstablePkgs = genUnstablePkgs system;
+      overlays = [ nix-vscode-extensions.overlays.default ];
     in
       nix-darwin.lib.darwinSystem
       {

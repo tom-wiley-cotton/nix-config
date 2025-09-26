@@ -72,6 +72,18 @@ in {
   # list of programs
   # https://mipmip.github.io/home-manager-option-search
 
+  home.file."dotfiles" = {
+    enable = true;
+    recursive = true;
+    source = ./tomcotton.config;
+    target = "tmp/..";
+  };
+  home.file."dummy" = {
+    enable = true;
+    source = ./tomcotton.config/tmp/dummy;
+    target = "tmp/dummy";
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -246,50 +258,126 @@ in {
   services.vscode-server.enable = true;
   services.vscode-server.installPath = "$HOME/.vscode-server";
 
-  # TODO: add ~/bin
-  # code --remote ssh-remote+<remoteHost> <remotePath>
-
-  home.file."dotfiles" = {
+  programs.vscode = {
     enable = true;
-    recursive = true;
-    source = ./tomcotton.config;
-    target = "tmp/..";
+    mutableExtensionsDir = false;
+    extensions = with pkgs.vscode-extensions; [
+      asvetliakov.vscode-neovim
+      ms-vscode.cpptools
+      bbenoist.nix
+      ms-vscode.cpptools-extension-pack
+      xaver.clang-format
+      twxs.cmake
+      ms-vscode.cmake-tools
+      james-yu.latex-workshop
+      ms-dotnettools.csharp
+      ms-dotnettools.csdevkit
+      saoudrizwan.claude-dev
+      ms-dotnettools.vscode-dotnet-runtime
+      mechatroner.rainbow-csv
+      ms-python.vscode-pylance
+      ms-python.python
+      ms-python.debugpy
+      antyos.openscad
+      ms-vscode.makefile-tools
+      valentjn.vscode-ltex
+      vadimcn.vscode-lldb
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "chuck";
+        publisher = "forrcaho";
+        version = "1.0.1";
+        sha256 = "sha256-gqcN7eam0YnBNQ2z7tA7Fo7PbXnJV0lX9TqcEbnMDL8=";
+      }
+    ];
+  profiles.default = {
+      userSettings = {
+          # This property will be used to generate settings.json:
+          # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
+          "editor.formatOnSave" = true;
+          "files.autoSave" = "onFocusChange";
+          # "extensions.autoCheckUpdates" = false;
+          "extensions.autoUpdate" = false;
+          "files.trimFinalNewlines" = true;
+          "files.trimTrailingWhitespace" = true;
+          "[latex]" = {
+            "editor.wordWrap" = "on";
+          };
+          "[markdown]" = {
+            "editor.quickSuggestions" = {
+              "other" = true;
+              "comments" = true;
+              "strings" = true;
+            };
+          };
+      keybindings = [
+          # See https://code.visualstudio.com/docs/getstarted/keybindings#_advanced-customization
+          {
+              key = "shift+cmd+j";
+              command = "workbench.action.focusActiveEditorGroup";
+              when = "terminalFocus";
+          }
+      ];
+      # WARNING! Adding a new extension appears to uninstall all previous YOLO extensions
+      # Changing this config may result in extensions dissapearing
+      # Issue: https://github.com/nix-community/home-manager/issues/7719
+      # Removing ~/.vscode or ~/'Library/Application Support/Code' will help
+      # Removing ~/.vscode/extensions/extensions.json may help
+      # https://search.nixos.org/packages?channel=25.05&query=vscode-extensions
+
+      # `vscode-marketplace` is one of the properties that the `nix-vscode-extensions`
+      # overlay added to nixpkgs. Any VSCode extension in the marketplace should be
+      # accessible from `pkgs.vscode-marketplace.$AUTHOR.$EXTENSION`, where
+      # `$AUTHOR.$EXTENSION` is the same as the `itemName` property in the extension’s
+      # URL on the [extension marketplace
+      # website](https://marketplace.visualstudio.com/vscode).
+      # extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
+      #   ms-dotnettools.vscode-dotnet-runtime
+      #   ms-vscode.cpptools
+      #   ms-vscode.cpptools-extension-pack
+      #   ms-vscode.cpptools-themes
+      #   ms-dotnettools.csharp
+      #   ms-dotnettools.csdevkit
+      #   forrcaho.chuck
+      #   xaver.clang-format
+      #   xaver.clang-format
+      #   Anthropic.claude-code
+      #   saoudrizwan.claude-dev
+      #   CmajorSoftware.cmajor-tools
+      #   twxs.cmake
+      #   ms-vscode.cmake-tools
+      #   vadimcn.vscode-lldb
+      #   ms-azuretools.vscode-containers
+      #   Continue.continue
+      #   ms-vscode-remote.remote-containers
+      #   ms-azuretools.vscode-docker
+      #   docker.docker
+      #   DavidSchuldenfrei.gtest-adapter
+      #   justusadam.language-haskell
+      #   James-Yu.latex-workshop
+      #   valentjn.vscode-ltex
+      #   ms-vscode.makefile-tools
+      #   bbenoist.Nix
+      #   Antyos.openscad
+      #   ms-python.vscode-pylance
+      #   ms-python.python
+      #   ms-python.debugpy
+      #   ms-python.vscode-python-envs
+      #   mechatroner.rainbow-csv
+      #   ms-vscode-remote.remote-ssh
+      #   ms-vscode-remote.remote-ssh-edit
+      #   ms-vscode.remote-server
+      #   ms-vscode-remote.vscode-remote-extensionpack
+      #   ms-vscode.remote-explorer
+      #   tidalcycles.vscode-tidalcycles
+      #   visualstudiotoolsforunity.vstuc
+      #   asvetliakov.vscode-neovim
+      #   canadaduane.vscode-kmonad
+      #   OliverKovacs.word-count
+      # ];
+      };
+    };
   };
-  home.file."dummy" = {
-    enable = true;
-    source = ./tomcotton.config/tmp/dummy;
-    target = "tmp/dummy";
-  };
-  # home.file."rose-pine-hyprcursor" = {
-  #   enable = true;
-  #   source = rose-pine-hyprcursor;
-  #   target = ".local/share/icons/rose-pine-hyprcursor";
-  # };
-
-  # home.file."oh-my-zsh-custom" = {
-  #   enable = true;
-  #   source = ./oh-my-zsh-custom;
-  #   target = ".oh-my-zsh-custom";
-  # };
-
-  # home.file.".config/karabiner" = {
-  #   enable = true;
-  #   force = true;
-  #   source = tomcotton.config/karabiner.json;
-  #   target = ".config/karabiner/karabiner.json";
-  # };
-
-  # home.file.".config/hypr" = {
-  #   enable = true;
-  #   source = tomcotton.config/hypr;
-  #   target = ".config/hypr";
-  # };
-  
-  # home.file.".config/waybar" = {
-  #   enable = true;
-  #   source = tomcotton.config/waybar;
-  #   target = ".config/waybar";
-  # };
 
   xdg = {
     enable = true;
@@ -331,8 +419,8 @@ in {
       export XDG_CONFIG_HOME="$HOME/.config"
       export LESS="-iMSx4 -FXR"
       export PAGER=less
-      export EDITOR=nano
       export FULLNAME='Thomas Wiley Cotton'
+      export EDITOR=nvim
       export EMAIL=thomaswileycotton@gmail.com
       export GOPATH=$HOME/go
       export PATH=$GOPATH/bin:$PATH
@@ -385,6 +473,9 @@ in {
             # `command` is needed in case `lfcd` is aliased to `lf`
             cd "$(command lf -print-last-dir "$@")"
         }
+
+        # For some reason this was aliased to vi, seems regresive
+        unalias nvim
       '';
       plugins = [
         "brew"
@@ -413,6 +504,7 @@ in {
       watch = "viddy ";
       # Automatically run `go test` for a package when files change.
       py3 = "python3";
+      vi = "nvim";
     };
 
     initContent = ''
@@ -449,9 +541,82 @@ in {
 
   programs.eza.enable = true;
   programs.home-manager.enable = true;
-  #  programs.neovim.enable = true;
+  programs.neovim.enable = true;
   programs.nix-index.enable = true;
   #  programs.zoxide.enable = true;
+
+  programs.neovim = {
+    plugins = [
+    ];
+    extraConfig = ''
+      filetype on
+      filetype plugin on
+      filetype indent on
+      syntax on
+      set number relativenumber
+      " Highlight cursor line underneath the cursor horizontally.
+      set cursorline
+
+      " Highlight cursor line underneath the cursor vertically.
+      set cursorcolumn
+
+      " Set shift width to 4 spaces.
+      set shiftwidth=4
+
+      " Set tab width to 4 columns.
+      set tabstop=4
+
+      " Use space characters instead of tabs.
+      set expandtab
+
+      " Do not save backup files.
+      set nobackup
+
+      " Do not let cursor scroll below or above N number of lines when scrolling.
+      set scrolloff=10
+
+      " Do not wrap lines. Allow long lines to extend as far as the line goes.
+      set nowrap
+
+      " While searching though a file incrementally highlight matching characters as you type.
+      set incsearch
+
+      " Ignore capital letters during search.
+      set ignorecase
+
+      " Override the ignorecase option if searching for capital letters.
+      " This will allow you to search specifically for capital letters.
+      set smartcase
+
+      " Show partial command you type in the last line of the screen.
+      set showcmd
+
+      " Show the mode you are on the last line.
+      set showmode
+
+      " Show matching words during a search.
+      set showmatch
+
+      " Use highlighting when doing a search.
+      set hlsearch
+
+      " Set the commands to save in history default number is 20.
+      set history=1000
+
+      " Enable auto completion menu after pressing TAB.
+      set wildmenu
+
+      " Make wildmenu behave like similar to Bash completion.
+      set wildmode=list:longest
+
+      " There are certain files that we would never want to edit with Vim.
+      " Wildmenu will ignore files with these extensions.
+      set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+      " Use system keyboard
+      set clipboard=unnamedplus
+    '';
+  };
 
   programs.ssh = {
     enable = true;
@@ -479,6 +644,7 @@ in {
     rhash
     restic
     lf
+    vimv
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm

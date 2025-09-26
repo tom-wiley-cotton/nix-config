@@ -17,6 +17,41 @@ set shellopts '-eu'
 # commands accordingly.
 set ifs "\n"
 
+# === Low Level Changes ===
+
+# Use bat to color pager 
+# map i $bat $f --pager="less -R"
+
+# use enter for shell commands
+map <enter> shell-pipe
+
+# show the result of execution of previous commands
+map ` !true
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# dedicated keys for file opener actions
+# map o &mimeopen $f
+map O $mimeopen --ask $f
+
+# define a custom 'open' command
+# This command is called when current file is not a directory. You may want to
+# use either file extensions and/or mime types here. Below uses an editor for
+# text files and a file opener for the rest.
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# === Visual Changes ===
+
+# mkdir command. See wiki if you want it to select created dir
+map a :push %mkdir<space>
+
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
@@ -56,40 +91,44 @@ set cursorpreviewfmt ""
 # Set active cursor color
 set cursoractivefmt "\033[38;2;0;0;0;48;2;255;218;185m"
 
-# use enter for shell commands
-map <enter> shell-pipe
+# === File Operations ===
 
-# show the result of execution of previous commands
-map ` !true
-
-# execute current file (must be executable)
-map x $$f
-map X !$f
-
-# dedicated keys for file opener actions
-# map o &mimeopen $f
-map O $mimeopen --ask $f
-
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-cmd open &{{
-    case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
-    esac
+# eza file information
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
 }}
 
-# mkdir command. See wiki if you want it to select created dir
-map a :push %mkdir<space>
+set info custom
+
+cmd on-load &{{
+    cd "$(dirname "$1")" || exit 1
+    [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" = false ] || exit 0
+
+    cmds=""
+
+    for file in "$@"; do
+        case "$file" in
+            */.git|*/.git/*) continue;;
+        esac
+
+        status=$(git status --porcelain --ignored -- "$file" | cut -c1-2 | head -n1)
+
+        if [ -n "$status" ]; then
+            cmds="${cmds}addcustominfo ${file} \"$status\"; "
+        else
+            cmds="${cmds}addcustominfo ${file} ''; "
+        fi
+    done
+
+    lf -remote "send $id :$cmds"
+}}
 
 # define a custom 'rename' command without prompt for overwrite
 # cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 # map r push :rename<space>
 
 # make sure trash folder exists
-# %mkdir -p ~/.trash
+%mkdir -p ~/.trash
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
@@ -105,7 +144,7 @@ cmd trash %set -f; mv -t ~/.trash $fx
 # }}
 
 # use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
+map <delete> trash
 # map <delete> delete
 
 # extract the current file with the right command
@@ -140,11 +179,6 @@ cmd zip ${{
     rm -rf $1
 }}
 
-# eza file information
-cmd on-select &{{
-    lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
-}}
-
 # git stuff
 cmd git_branch ${{
     git branch | fzf | xargs git checkout
@@ -155,31 +189,6 @@ map gb :git_branch
 map gp $clear; git pull --rebase || true; echo "press ENTER"; read ENTER
 map gs $clear; git status; echo "press ENTER"; read ENTER
 map gl $clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
-set info custom
-
-cmd on-load &{{
-    cd "$(dirname "$1")" || exit 1
-    [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" = false ] || exit 0
-
-    cmds=""
-
-    for file in "$@"; do
-        case "$file" in
-            */.git|*/.git/*) continue;;
-        esac
-
-        status=$(git status --porcelain --ignored -- "$file" | cut -c1-2 | head -n1)
-
-        if [ -n "$status" ]; then
-            cmds="${cmds}addcustominfo ${file} \"$status\"; "
-        else
-            cmds="${cmds}addcustominfo ${file} ''; "
-        fi
-    done
-
-    lf -remote "send $id :$cmds"
-}}
 
 # mac quick look 
 # map <space> &qlmanage -p "$f" 2>/dev/null 1>/dev/null
@@ -227,3 +236,38 @@ cmd yank-basename-without-extension %{{
 }}
 
 map bc yank-paths
+
+# vimv opens files in an editor, allows you to edit them, then renames the files
+cmd bulk-rename ${{
+    vimv -- $(basename -a -- $fx)
+    lf -remote "send $id :load; unselect"
+}}
+
+# Unmap default rename
+map r
+# Map default and bulk renames
+map rr rename
+map ra bulk-rename
+
+map . push :cd<space>  
+
+# Use ripgrep to search and select a file
+cmd fzf_search ${{
+    cmd="rg --column --line-number --no-heading --color=always --smart-case"
+    fzf --ansi --disabled --layout=reverse --header="Search in files" --delimiter=: \
+        --bind="start:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind="change:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind='enter:become(lf -remote "send $id select \"$(printf "%s" {1} | sed '\''s/\\/\\\\/g;s/"/\\"/g'\'')\"")' \
+        --preview='cat -- {1}' # Use your favorite previewer here (bat, source-highlight, etc.), for example:
+        #--preview-window='+{2}-/2' \
+        #--preview='bat --color=always --highlight-line={2} -- {1}'
+        # Alternatively you can even use the same previewer you've configured for lf
+        #--preview='~/.config/lf/cleaner; ~/.config/lf/previewer {1} "$FZF_PREVIEW_COLUMNS" "$FZF_PREVIEW_LINES" "$FZF_PREVIEW_LEFT" "$FZF_PREVIEW_TOP"'
+}}
+# Unmap default f
+map f
+# Remap previous finds
+map ff find
+map fF find-back
+# map rg
+map fg :fzf_search
