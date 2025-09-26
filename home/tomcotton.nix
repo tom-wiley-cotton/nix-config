@@ -259,8 +259,30 @@ in {
 
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = true;
-    profiles.default = {
+    mutableExtensionsDir = false;
+    extensions = with pkgs.vscode-extensions; [ 
+      asvetliakov.vscode-neovim
+      ms-vscode.cpptools
+      bbenoist.nix
+      ms-vscode.cpptools-extension-pack
+      xaver.clang-format
+      twxs.cmake
+      ms-vscode.cmake-tools
+      james-yu.latex-workshop
+      ms-dotnettools.csharp
+      ms-dotnettools.csdevkit
+      saoudrizwan.claude-dev
+      ms-dotnettools.vscode-dotnet-runtime 
+      mechatroner.rainbow-csv
+      ms-python.vscode-pylance
+      ms-python.python
+      ms-python.debugpy
+      antyos.openscad
+      ms-vscode.makefile-tools
+      valentjn.vscode-ltex
+      vadimcn.vscode-lldb
+    ];
+  profiles.default = {
       userSettings = {
           # This property will be used to generate settings.json:
           # https://code.visualstudio.com/docs/getstarted/settings#_settingsjson
@@ -281,28 +303,7 @@ in {
       # Removing ~/.vscode or ~/'Library/Application Support/Code' will help
       # Removing ~/.vscode/extensions/extensions.json may help
       # https://search.nixos.org/packages?channel=25.05&query=vscode-extensions
-      extensions = with pkgs.vscode-extensions; [ 
-        asvetliakov.vscode-neovim
-        ms-vscode.cpptools
-        bbenoist.nix
-        ms-vscode.cpptools-extension-pack
-        xaver.clang-format
-        twxs.cmake
-        ms-vscode.cmake-tools
-        james-yu.latex-workshop
-        ms-dotnettools.csharp
-        ms-dotnettools.csdevkit
-        saoudrizwan.claude-dev
-        ms-dotnettools.vscode-dotnet-runtime 
-        mechatroner.rainbow-csv
-        ms-python.vscode-pylance
-        ms-python.python
-        ms-python.debugpy
-        antyos.openscad
-        ms-vscode.makefile-tools
-        valentjn.vscode-ltex
-        vadimcn.vscode-lldb
-      ];
+
       # `vscode-marketplace` is one of the properties that the `nix-vscode-extensions`
       # overlay added to nixpkgs. Any VSCode extension in the marketplace should be
       # accessible from `pkgs.vscode-marketplace.$AUTHOR.$EXTENSION`, where
