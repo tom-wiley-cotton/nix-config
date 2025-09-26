@@ -281,6 +281,13 @@ in {
       ms-vscode.makefile-tools
       valentjn.vscode-ltex
       vadimcn.vscode-lldb
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "chuck";
+        publisher = "forrcaho";
+        version = "1.0.1";
+        sha256 = "sha256-gqcN7eam0YnBNQ2z7tA7Fo7PbXnJV0lX9TqcEbnMDL8=";
+      }
     ];
   profiles.default = {
       userSettings = {
