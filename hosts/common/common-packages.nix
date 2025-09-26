@@ -101,7 +101,7 @@
       wireguard-tools
       viddy
       vim
-      vscode
+      # vscode
       yq
       zsh
       zsh-syntax-highlighting
