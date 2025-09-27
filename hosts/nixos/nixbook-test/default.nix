@@ -18,6 +18,7 @@
     ../../common/toms-guinix/toms-desktop.nix
     ../../common/toms-guinix/toms-guipkgs.nix
     ../../common/toms-guinix/toms-proaudio.nix
+    ../../common/toms-guinix/toms-windows-vm.nix
   ];
 
   services.clubcotton = {
