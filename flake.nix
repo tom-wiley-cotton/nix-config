@@ -347,7 +347,7 @@
       dns-01 = nixosSystem "x86_64-linux" "dns-01" ["bcotton"];
       octoprint = nixosSystem "x86_64-linux" "octoprint" ["bcotton" "tomcotton"];
       frigate-host = nixosSystem "x86_64-linux" "frigate-host" ["bcotton"];
-      toms-laptop-01 = nixosSystem "x86_64-linux" "toms-laptop-01" ["tomcotton"];
+      nixbook-test = nixosSystem "x86_64-linux" "nixbook-test" ["tomcotton"];
       # nixos = nixosSystem "x86_64-linux" "nixos" ["bcotton" "tomcotton"];
       # k3s-01 = nixosSystem "x86_64-linux" "k3s-01" ["bcotton"];
       # k3s-02 = nixosSystem "x86_64-linux" "k3s-02" ["bcotton"];
