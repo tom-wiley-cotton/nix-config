@@ -10,8 +10,10 @@ in {
   environment.systemPackages = with pkgs; [
     gnome-tweaks
     gnomeExtensions.tiling-shell
+    gnomeExtensions.clipboard-history
     dconf2nix # used to make a nix expression from the dconf bin
     dconf-editor
+    wl-clipboard
   ];
   fonts.packages = with pkgs; [
     font-awesome

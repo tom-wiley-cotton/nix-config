@@ -613,8 +613,7 @@ in {
       " Wildmenu will ignore files with these extensions.
       set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-      " Use system keyboard
-      set clipboard=unnamedplus
+      set clipboard+=unnamedplus
     '';
   };
 
