@@ -95,4 +95,6 @@ check:
     fi
 
 w-dconfdump:
-  dconf dump / | dconf2nix > tmp/w-dconf.nix
+  dconf dump / > tmp/w-dconf
+w-dconf2nix:
+  dconf2nix -i tmp/w-dconf -o tmp/w-dconf.nix
