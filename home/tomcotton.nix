@@ -299,7 +299,7 @@ in {
           "extensions.autoUpdate" = false;
           "files.trimFinalNewlines" = true;
           "files.trimTrailingWhitespace" = true;
-	        "editor.lineNumbers" = "relitave";
+	        "editor.lineNumbers" = "relative";
           "[latex]" = {
             "editor.wordWrap" = "on";
           };
