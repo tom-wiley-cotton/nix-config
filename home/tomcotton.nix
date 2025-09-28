@@ -289,10 +289,10 @@ in {
         sha256 = "sha256-gqcN7eam0YnBNQ2z7tA7Fo7PbXnJV0lX9TqcEbnMDL8=";
       }
       {
-        name = "tidal-strudel";
-        publisher = "roipoussiere";
-        version = "0.2.1";
-        sha256 = "sha256-m73MKYHEvCmE17wgphUc7l5Xpuf7YaDGp+EBKHr8E28=";
+        name = "vscode-tidalcycles";
+        publisher = "tidalcycles";
+        version = "2.0.2";
+        sha256 = "sha256-TfRLJZcMpoBJuXitbRmacbglJABZrMGtSNXAbjSfLaQ=";
       }
     ];
     profiles.default = {
@@ -315,6 +315,9 @@ in {
             "comments" = true;
             "strings" = true;
           };
+        };
+        "files.associations" = {
+          "*.tidal" = "haskell";
         };
       };
       keybindings = [

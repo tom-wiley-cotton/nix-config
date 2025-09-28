@@ -100,6 +100,8 @@ in {
         "pkgconf"
         "openjdk"
         "docker-compose"
+        "ghcup"
+        "cabal-install"
       ];
       casks = [
         "hiddenbar"
@@ -135,7 +137,6 @@ in {
         "qmk-toolbox"
         "ghostty"
         "sonic-visualiser"
-        "supercollider"
       ];
       masApps = {
         # "Xcode" = 497799835;
