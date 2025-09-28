@@ -281,6 +281,7 @@ in {
       ms-vscode.makefile-tools
       valentjn.vscode-ltex
       vadimcn.vscode-lldb
+      justusadam.language-haskell
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "chuck";
