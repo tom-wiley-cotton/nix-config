@@ -23,7 +23,6 @@ in {
 
   config = {
     # Apply Optional Configuration
-       
     nixpkgs.overlays = let
       p11KitOverlay = final: prev: {
         p11-kit = prev.p11-kit.overrideAttrs (oldAttrs: {
@@ -128,7 +127,6 @@ in {
         "visual-studio-code"
         "vlc"
         "zoom"
-        # "supercollider"
         # "unity-hub"
         # "epic-games"
         "bitwarden"
@@ -137,6 +135,7 @@ in {
         "qmk-toolbox"
         "ghostty"
         "sonic-visualiser"
+        "supercollider"
       ];
       masApps = {
         # "Xcode" = 497799835;

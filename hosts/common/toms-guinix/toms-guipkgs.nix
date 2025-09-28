@@ -8,7 +8,6 @@
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in {
   environment.systemPackages = with pkgs; [
-    kmonad
     bitwarden-desktop
     obsidian
     discord

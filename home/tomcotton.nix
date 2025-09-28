@@ -288,6 +288,12 @@ in {
         version = "1.0.1";
         sha256 = "sha256-gqcN7eam0YnBNQ2z7tA7Fo7PbXnJV0lX9TqcEbnMDL8=";
       }
+      {
+        name = "tidal-strudel";
+        publisher = "roipoussiere";
+        version = "0.2.1";
+        sha256 = "sha256-m73MKYHEvCmE17wgphUc7l5Xpuf7YaDGp+EBKHr8E28=";
+      }
     ];
     profiles.default = {
       userSettings = {
