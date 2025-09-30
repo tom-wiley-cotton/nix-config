@@ -262,7 +262,7 @@ in {
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       asvetliakov.vscode-neovim
-      ms-vscode.cpptools
+      # ms-vscode.cpptools
       bbenoist.nix
       ms-vscode.cpptools-extension-pack
       xaver.clang-format
@@ -294,6 +294,12 @@ in {
         publisher = "tidalcycles";
         version = "2.0.2";
         sha256 = "sha256-TfRLJZcMpoBJuXitbRmacbglJABZrMGtSNXAbjSfLaQ=";
+      }
+      {
+        name = "cpptools";
+        publisher = "ms-vscode";
+        version = "1.27.7";
+        sha256 = "sha256-/usZ8oaelNF2jdYWSKLEcFVPAxMk8T/7u3xR4t4NCjM=";
       }
     ];
     profiles.default = {
