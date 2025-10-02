@@ -533,6 +533,7 @@ in {
       # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
       # vimPlugins.nvim-tree-lua
       vimPlugins.catppuccin-nvim
+      vimPlugins.vim-pencil;
    ];
   };
 
