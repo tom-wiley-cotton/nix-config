@@ -9,6 +9,7 @@ macos-option-as-alt = true
 background = #282c34
 foreground = #abb2bf
 cursor-color = #528bff
+cursor-text = #f1edda
 
 # Colors
 palette = 0=#282c34

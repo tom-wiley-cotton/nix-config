@@ -529,38 +529,11 @@ in {
       vimPlugins.vimtex
       vimPlugins.nvim-notify
       vimPlugins.vim-mundo
-      vimPlugins.lf-nvim
-    {
-      plugin = pkgs.vimPlugins.lf-nvim;
-      config = ''
-        -- This feature will not work if the plugin is lazy-loaded
-        vim.g.lf_netrw = 1
-
-        require("lf").setup({
-            escape_quit = false,
-            border = "rounded",
-        })
-
-        vim.keymap.set("n", "<M-o>", "<Cmd>Lf<CR>")
-
-        vim.api.nvim_create_autocmd({
-            event = "User",
-            pattern = "LfTermEnter",
-            callback = function(a)
-                vim.api.nvim_buf_set_keymap(a.buf, "t", "q", "q", {nowait = true})
-            end,
-      '';
-    }
-    {
-      plugin = pkgs.vimPlugins.toggleterm-nvim;
-      config = ''
-        packadd! toggleterm-nvim.lua
-        lua << END
-        require("toggleterm").setup{}
-        END
-      '';
-    }
-    ];
+      # vimPlugins.lf-nvim
+      # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
+      # vimPlugins.nvim-tree-lua
+      vimPlugins.catppuccin-nvim
+   ];
   };
 
   programs.ssh = {

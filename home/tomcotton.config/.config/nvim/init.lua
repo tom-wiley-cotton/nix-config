@@ -26,6 +26,11 @@ vim.opt.shiftwidth = 4
 -- Set tab width to 4 columns.
 vim.opt.tabstop = 4
 
+vim.opt.termguicolors = true
+vim.cmd([[
+  hi Cursor guibg=white
+]])
+
 -- Use space characters instead of tabs.
 vim.opt.expandtab = true
 
@@ -33,7 +38,7 @@ vim.opt.expandtab = true
 vim.opt.backup = false
 
 -- Do not let cursor scroll below or above N number of lines when scrolling.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 12
 
 -- Do not wrap lines. Allow long lines to extend as far as the line goes.
 vim.opt.wrap = false
@@ -76,11 +81,9 @@ vim.opt.wildignore = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.x
 -- Use system clipboard
 vim.opt.clipboard:append('unnamedplus')
 
--- fugitave
-vim.opt.statusline = "%f %h%m%r%=%{exists('*FugitiveStatusline')?FugitiveStatusline():''} %-14.(%l,%c%V%) %P"
-
 -- FzfLua mappings under <leader>f
-vim.keymap.set('n', '<leader>fz', '<cmd>FzfLua files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<CR>', { desc = 'Find files' })
+vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua oldfiles<cr>", { desc = "Fuzzy search opened files history" })
 vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
@@ -90,29 +93,57 @@ vim.keymap.set('n', '<leader>fk', '<cmd>FzfLua keymaps<CR>', { desc = 'Keymaps' 
 vim.keymap.set('n', '<leader>fs', '<cmd>FzfLua git_status<CR>', { desc = 'Git status' })
 vim.keymap.set('n', '<leader>fm', '<cmd>FzfLua marks<CR>', { desc = 'Marks' })
 
--- Lf.neovim
-vim.keymap.set('n', '<leader>ff', '<cmd>Lf<CR>', { desc = 'List Files' })
--- Sample configuration is supplied
-use({
-    "lmburns/lf.nvim",
-    config = function()
-        -- This feature will not work if the plugin is lazy-loaded
-        vim.g.lf_netrw = 1
-
-        require("lf").setup({
-            escape_quit = false,
-            border = "rounded",
-        })
-
-        vim.keymap.set("n", "<M-o>", "<Cmd>Lf<CR>")
-
-        vim.api.nvim_create_autocmd({
-            event = "User",
-            pattern = "LfTermEnter",
-            callback = function(a)
-                vim.api.nvim_buf_set_keymap(a.buf, "t", "q", "q", {nowait = true})
-            end,
-        })
-    end,
-    requires = {"toggleterm.nvim"}
-})
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'gruvbox-material',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        'WinEnter',
+        'BufEnter',
+        'BufWritePost',
+        'SessionLoadPost',
+        'FileChangedShellPost',
+        'VimResized',
+        'Filetype',
+        'CursorMoved',
+        'CursorMovedI',
+        'ModeChanged',
+      },
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = { "fugitive" },
+}
