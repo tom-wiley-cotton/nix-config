@@ -326,7 +326,7 @@ in {
         "files.associations" = {
           "*.tidal" = "haskell";
         };
-        "tidalcycles.bootTidalPath" = "/Users/tomcotton/Documents/tidal-cycles/pure-tides/BootFiles/BootTidal.hs";
+        "tidalcycles.bootTidalPath" = "/Users/tomcotton/tidal-cycles/BootFiles/BootTidal.hs";
       };
       keybindings = [
         # See https://code.visualstudio.com/docs/getstarted/keybindings#_advanced-customization
