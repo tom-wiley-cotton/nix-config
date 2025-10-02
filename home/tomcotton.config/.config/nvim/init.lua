@@ -1,3 +1,7 @@
+-- leader key is spacebar
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Enable filetype detection, plugins, and indent
 vim.cmd('filetype on')
 vim.cmd('filetype plugin on')
@@ -71,3 +75,44 @@ vim.opt.wildignore = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.x
 
 -- Use system clipboard
 vim.opt.clipboard:append('unnamedplus')
+
+-- fugitave
+vim.opt.statusline = "%f %h%m%r%=%{exists('*FugitiveStatusline')?FugitiveStatusline():''} %-14.(%l,%c%V%) %P"
+
+-- FzfLua mappings under <leader>f
+vim.keymap.set('n', '<leader>fz', '<cmd>FzfLua files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
+vim.keymap.set('n', '<leader>fo', '<cmd>FzfLua oldfiles<CR>', { desc = 'Old files' })
+vim.keymap.set('n', '<leader>fc', '<cmd>FzfLua commands<CR>', { desc = 'Commands' })
+vim.keymap.set('n', '<leader>fk', '<cmd>FzfLua keymaps<CR>', { desc = 'Keymaps' })
+vim.keymap.set('n', '<leader>fs', '<cmd>FzfLua git_status<CR>', { desc = 'Git status' })
+vim.keymap.set('n', '<leader>fm', '<cmd>FzfLua marks<CR>', { desc = 'Marks' })
+
+-- Lf.neovim
+vim.keymap.set('n', '<leader>ff', '<cmd>Lf<CR>', { desc = 'List Files' })
+-- Sample configuration is supplied
+use({
+    "lmburns/lf.nvim",
+    config = function()
+        -- This feature will not work if the plugin is lazy-loaded
+        vim.g.lf_netrw = 1
+
+        require("lf").setup({
+            escape_quit = false,
+            border = "rounded",
+        })
+
+        vim.keymap.set("n", "<M-o>", "<Cmd>Lf<CR>")
+
+        vim.api.nvim_create_autocmd({
+            event = "User",
+            pattern = "LfTermEnter",
+            callback = function(a)
+                vim.api.nvim_buf_set_keymap(a.buf, "t", "q", "q", {nowait = true})
+            end,
+        })
+    end,
+    requires = {"toggleterm.nvim"}
+})
