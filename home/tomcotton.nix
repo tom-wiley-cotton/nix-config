@@ -523,19 +523,19 @@ in {
         p.json
         p.python
         p.bash
-        # p.markdown
+        p.markdown
+        p.markdown-inline
         p.latex
       ]))
       vimPlugins.nvim-cmp
       vimPlugins.vim-fugitive
       vimPlugins.gitsigns-nvim
-      # vimPlugins.mini-diff
       vimPlugins.barbar-nvim
       vimPlugins.fzf-lua
       vimPlugins.vim-commentary
       vimPlugins.nvim-autopairs
       vimPlugins.vim-sandwich
-      vimPlugins.lualine-nvim # requires customization
+      vimPlugins.lualine-nvim 
       vimPlugins.which-key-nvim
       vimPlugins.markdown-preview-nvim
       vimPlugins.markdown-nvim
@@ -545,7 +545,6 @@ in {
       # vimPlugins.lf-nvim
       # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
       # vimPlugins.nvim-tree-lua
-      vimPlugins.catppuccin-nvim
       vimPlugins.vim-pencil
       vimPlugins.nvim-web-devicons
    ];
