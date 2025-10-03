@@ -1,4 +1,4 @@
-im.fn['pencil#init']()
+vim.fn['pencil#init']()
 -- Set these keymaps only for the current buffer
 -- vim.keymap.set with buffer = 0 makes the mapping local to this file
 vim.keymap.set('n', 'j', 'gj', { buffer = 0, noremap = true })

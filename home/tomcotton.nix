@@ -515,6 +515,17 @@ in {
 
   programs.neovim = {
     plugins = with pkgs; [
+      (vimPlugins.nvim-treesitter.withPlugins (p: [
+        p.c
+        p.cpp
+        p.lua
+        p.nix
+        p.json
+        p.python
+        p.bash
+        # p.markdown
+        p.latex
+      ]))
       vimPlugins.nvim-cmp
       vimPlugins.vim-fugitive
       vimPlugins.gitsigns-nvim
@@ -526,7 +537,6 @@ in {
       vimPlugins.vim-sandwich
       vimPlugins.lualine-nvim # requires customization
       vimPlugins.which-key-nvim
-      vimPlugins.nvim-treesitter.withAllGrammars
       vimPlugins.markdown-preview-nvim
       vimPlugins.markdown-nvim
       vimPlugins.vimtex
@@ -571,7 +581,6 @@ in {
     restic
     lf
     vimv
-    pulsar
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm
