@@ -3,6 +3,7 @@
   pkgs,
   lib,
   unstablePkgs,
+  inputs,
   ...
 }: let
   # See https://haseebmajid.dev/posts/2023-07-10-setting-up-tmux-with-nix-home-manager/
@@ -513,29 +514,208 @@ in {
   programs.nix-index.enable = true;
   #  programs.zoxide.enable = true;
 
-  programs.neovim = {
-    plugins = with pkgs; [
-      vimPlugins.nvim-cmp
-      vimPlugins.vim-fugitive
-      vimPlugins.fzf-lua
-      vimPlugins.vim-commentary
-      vimPlugins.nvim-autopairs
-      vimPlugins.vim-sandwich
-      vimPlugins.lualine-nvim # requires customization
-      vimPlugins.which-key-nvim
-      vimPlugins.nvim-treesitter.withAllGrammars
-      vimPlugins.markdown-preview-nvim
-      vimPlugins.markdown-nvim
-      vimPlugins.vimtex
-      vimPlugins.nvim-notify
-      vimPlugins.vim-mundo
-      # vimPlugins.lf-nvim
-      # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
-      # vimPlugins.nvim-tree-lua
-      vimPlugins.catppuccin-nvim
-      vimPlugins.vim-pencil;
-   ];
+  programs.nixvim = {
+    opts = {
+      number = true;         # Show line numbers
+      relativenumber = true; # Show relative line numbers
+    };
+    extraPlugins = with pkgs.vimPlugins; [
+      nvim-cmp
+      vim-fugitive # :G for git controls, <leader> g
+      fzf-lua
+      vim-commentary
+      nvim-autopairs
+      vim-sandwich
+      lualine-nvim # requires customization
+      which-key-nvim
+      nvim-treesitter.withAllGrammars
+      markdown-preview-nvim
+      markdown-nvim
+      vimtex
+      nvim-notify
+      vim-mundo
+      lf-nvim
+      lf-vim # works, but doesn't let me change files, fzf is more used
+      nvim-tree-lua
+      catppuccin-nvim
+      vim-pencil
+      ];
+    extraConfigLua = ''
+-- leader key is spacebar
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Enable filetype detection, plugins, and indent
+vim.cmd('filetype on')
+vim.cmd('filetype plugin on')
+vim.cmd('filetype indent on')
+
+-- Enable syntax highlighting
+vim.cmd('syntax on')
+
+-- Set line numbers with relative numbering
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Highlight cursor line underneath the cursor horizontally.
+vim.opt.cursorline = true
+
+-- Highlight cursor line underneath the cursor vertically.
+vim.opt.cursorcolumn = true
+
+-- Set shift width to 4 spaces.
+vim.opt.shiftwidth = 4
+
+-- Set tab width to 4 columns.
+vim.opt.tabstop = 4
+
+vim.opt.termguicolors = true
+vim.cmd([[
+  hi Cursor guibg=white
+]])
+
+-- Use space characters instead of tabs.
+vim.opt.expandtab = true
+
+-- Do not save backup files.
+vim.opt.backup = false
+
+-- Do not let cursor scroll below or above N number of lines when scrolling.
+vim.opt.scrolloff = 12
+
+-- Do not wrap lines. Allow long lines to extend as far as the line goes.
+vim.opt.wrap = false
+
+-- While searching though a file incrementally highlight matching characters as you type.
+vim.opt.incsearch = true
+
+-- Ignore capital letters during search.
+vim.opt.ignorecase = true
+
+-- Override the ignorecase option if searching for capital letters.
+-- This will allow you to search specifically for capital letters.
+vim.opt.smartcase = true
+
+-- Show partial command you type in the last line of the screen.
+vim.opt.showcmd = true
+
+-- Show the mode you are on the last line.
+vim.opt.showmode = true
+
+-- Show matching words during a search.
+vim.opt.showmatch = true
+
+-- Use highlighting when doing a search.
+vim.opt.hlsearch = true
+
+-- Set the commands to save in history default number is 20.
+vim.opt.history = 1000
+
+-- Enable auto completion menu after pressing TAB.
+vim.opt.wildmenu = true
+
+-- Make wildmenu behave like similar to Bash completion.
+vim.opt.wildmode = 'list:longest'
+
+-- There are certain files that we would never want to edit with Vim.
+-- Wildmenu will ignore files with these extensions.
+vim.opt.wildignore = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx'
+
+-- Use system clipboard
+vim.opt.clipboard:append('unnamedplus')
+
+-- FzfLua mappings under <leader>f
+vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<CR>', { desc = 'Find files' })
+vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua oldfiles<cr>", { desc = "Fuzzy search opened files history" })
+vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
+vim.keymap.set('n', '<leader>fo', '<cmd>FzfLua oldfiles<CR>', { desc = 'Old files' })
+vim.keymap.set('n', '<leader>fc', '<cmd>FzfLua commands<CR>', { desc = 'Commands' })
+vim.keymap.set('n', '<leader>fk', '<cmd>FzfLua keymaps<CR>', { desc = 'Keymaps' })
+vim.keymap.set('n', '<leader>fs', '<cmd>FzfLua git_status<CR>', { desc = 'Git status' })
+vim.keymap.set('n', '<leader>fm', '<cmd>FzfLua marks<CR>', { desc = 'Marks' })
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'gruvbox-material',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        'WinEnter',
+        'BufEnter',
+        'BufWritePost',
+        'SessionLoadPost',
+        'FileChangedShellPost',
+        'VimResized',
+        'Filetype',
+        'CursorMoved',
+        'CursorMovedI',
+        'ModeChanged',
+      },
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = { "fugitive" },
+}
+    '';
   };
+
+#   programs.neovim = {
+#     plugins = with pkgs; [
+#       vimPlugins.nvim-cmp
+#       vimPlugins.vim-fugitive # :G for git controls, <leader> g
+#       vimPlugins.fzf-lua
+#       vimPlugins.vim-commentary
+#       vimPlugins.nvim-autopairs
+#       vimPlugins.vim-sandwich
+#       vimPlugins.lualine-nvim # requires customization
+#       vimPlugins.which-key-nvim
+#       vimPlugins.nvim-treesitter.withAllGrammars
+#       vimPlugins.markdown-preview-nvim
+#       vimPlugins.markdown-nvim
+#       vimPlugins.vimtex
+#       vimPlugins.nvim-notify
+#       vimPlugins.vim-mundo
+#       # vimPlugins.lf-nvim
+#       # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
+#       # vimPlugins.nvim-tree-lua
+#       vimPlugins.catppuccin-nvim
+#       vimPlugins.vim-pencil
+#    ];
+#   };
 
   programs.ssh = {
     enable = true;

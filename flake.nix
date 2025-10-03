@@ -37,6 +37,14 @@
     musnix = { url = "github:musnix/musnix"; };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    nixvim = {
+        url = "github:nix-community/nixvim";
+        # If you are not running an unstable channel of nixpkgs, select the corresponding branch of Nixvim.
+        # url = "github:nix-community/nixvim/nixos-25.05";
+
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -56,6 +64,7 @@
     disko,
     isd,
     nix-vscode-extensions,
+    nixvim,
     ...
   }: let
     localPackages = system: let
@@ -267,7 +276,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${username} = {
-              imports = [./home/${username}.nix];
+              imports = [
+                ./home/${username}.nix
+                nixvim.homeModules.nixvim
+                ];
             };
             home-manager.extraSpecialArgs = {inherit unstablePkgs;};
           }
