@@ -517,6 +517,9 @@ in {
     plugins = with pkgs; [
       vimPlugins.nvim-cmp
       vimPlugins.vim-fugitive
+      vimPlugins.gitsigns-nvim
+      # vimPlugins.mini-diff
+      vimPlugins.barbar-nvim
       vimPlugins.fzf-lua
       vimPlugins.vim-commentary
       vimPlugins.nvim-autopairs
@@ -533,8 +536,12 @@ in {
       # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
       # vimPlugins.nvim-tree-lua
       vimPlugins.catppuccin-nvim
-      vimPlugins.vim-pencil;
+      vimPlugins.vim-pencil
+      vimPlugins.nvim-web-devicons
    ];
+    extraConfig = ''
+      :luafile ~/.config/nvim/lua/init.lua
+    '';
   };
 
   programs.ssh = {

@@ -147,3 +147,95 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = { "fugitive" },
 }
+
+local keymap = vim.keymap
+
+keymap.set("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git: show status" })
+keymap.set("n", "<leader>gw", "<cmd>Gwrite<cr>", { desc = "Git: add file" })
+keymap.set("n", "<leader>gc", "<cmd>Git commit<cr>", { desc = "Git: commit changes" })
+keymap.set("n", "<leader>gpl", "<cmd>Git pull<cr>", { desc = "Git: pull changes" })
+keymap.set("n", "<leader>gpu", "<cmd>15 split|term git push<cr>", { desc = "Git: push changes" })
+keymap.set("v", "<leader>gb", ":Git blame<cr>", { desc = "Git: blame selected line" })
+
+-- convert git to Git in command line mode
+-- vim.fn["utils#Cabbrev"]("git", "Git")
+
+-- require('mini.diff').setup()
+
+require('gitsigns').setup()
+
+-- fugative
+keymap.set("n", "<leader>gbn", function()
+  vim.ui.input({ prompt = "Enter a new branch name" }, function(user_input)
+    if user_input == nil or user_input == "" then
+      return
+    end
+
+    local cmd_str = string.format("G checkout -b %s", user_input)
+    vim.cmd(cmd_str)
+  end)
+end, {
+  desc = "Git: create new branch",
+})
+
+keymap.set("n", "<leader>gf", ":Git fetch ", { desc = "Git: prune branches" })
+keymap.set("n", "<leader>gbd", ":Git branch -D ", { desc = "Git: delete branch" })
+
+-- barbar controls
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- Move to previous/next
+map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+
+-- Re-order to previous/next
+map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
+map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
+
+-- Goto buffer in position...
+map('n', '<leader>t1', '<Cmd>BufferGoto 1<CR>', opts)
+map('n', '<leader>t2', '<Cmd>BufferGoto 2<CR>', opts)
+map('n', '<leader>t3', '<Cmd>BufferGoto 3<CR>', opts)
+map('n', '<leader>t4', '<Cmd>BufferGoto 4<CR>', opts)
+map('n', '<leader>t5', '<Cmd>BufferGoto 5<CR>', opts)
+map('n', '<leader>t6', '<Cmd>BufferGoto 6<CR>', opts)
+map('n', '<leader>t7', '<Cmd>BufferGoto 7<CR>', opts)
+map('n', '<leader>t8', '<Cmd>BufferGoto 8<CR>', opts)
+map('n', '<leader>t9', '<Cmd>BufferGoto 9<CR>', opts)
+map('n', '<leader>t0', '<Cmd>BufferLast<CR>', opts)
+
+-- Pin/unpin buffer
+map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+
+-- Goto pinned/unpinned buffer
+--                 :BufferGotoPinned
+--                 :BufferGotoUnpinned
+
+-- Close buffer
+map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+
+-- Wipeout buffer
+--                 :BufferWipeout
+
+-- Close commands
+--                 :BufferCloseAllButCurrent
+--                 :BufferCloseAllButPinned
+--                 :BufferCloseAllButCurrentOrPinned
+--                 :BufferCloseBuffersLeft
+--                 :BufferCloseBuffersRight
+
+-- Magic buffer-picking mode
+map('n', '<leader>ts', '<Cmd>BufferPick<CR>', opts)
+map('n', '<leader>tc', '<Cmd>BufferPickDelete<CR>', opts)
+
+-- Sort automatically by...
+map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
+map('n', '<leader>bn', '<Cmd>BufferOrderByName<CR>', opts)
+map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
+map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
+map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+
+-- Other:
+-- :BarbarEnable - enables barbar (enabled by default)
+-- :BarbarDisable - very bad command, should never be used
