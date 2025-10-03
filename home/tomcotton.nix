@@ -571,6 +571,7 @@ in {
     restic
     lf
     vimv
+    pulsar
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm
