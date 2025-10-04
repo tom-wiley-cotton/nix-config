@@ -61,6 +61,7 @@ in {
   imports = [
     "${nixVsCodeServer}/modules/vscode-server/home.nix"
     ./modules/atuin.nix
+    inputs.nixvim.homeModules.nixvim
   ];
 
   programs.atuin-config = {
@@ -515,6 +516,7 @@ in {
   #  programs.zoxide.enable = true;
 
   programs.nixvim = {
+    nixpkgs.useGlobalPackages = true;
     opts = {
       number = true;         # Show line numbers
       relativenumber = true; # Show relative line numbers
@@ -534,9 +536,9 @@ in {
       vimtex
       nvim-notify
       vim-mundo
-      lf-nvim
-      lf-vim # works, but doesn't let me change files, fzf is more used
-      nvim-tree-lua
+      # lf-nvim
+      # lf-vim # works, but doesn't let me change files, fzf is more used
+      # nvim-tree-lua
       catppuccin-nvim
       vim-pencil
       ];
@@ -769,7 +771,7 @@ map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 --                 :BufferCloseBuffersRight
 
 -- Magic buffer-picking mode
-map('n', '<leader>ts', '<Cmd>BufferPick<CR>', opts)
+map('n', '<leader>tt', '<Cmd>BufferPick<CR>', opts)
 map('n', '<leader>tc', '<Cmd>BufferPickDelete<CR>', opts)
 
 -- Sort automatically by...

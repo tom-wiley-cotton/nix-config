@@ -39,9 +39,9 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     nixvim = {
-        url = "github:nix-community/nixvim";
+        # url = "github:nix-community/nixvim";
         # If you are not running an unstable channel of nixpkgs, select the corresponding branch of Nixvim.
-        # url = "github:nix-community/nixvim/nixos-25.05";
+        url = "github:nix-community/nixvim/nixos-25.05";
 
         inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -100,7 +100,7 @@
     nixosVM = system: hostName: usernames: let
       pkgs = genPkgs system;
       unstablePkgs = genUnstablePkgs system;
-    
+
     in
       nixos-generators.nixosGenerate
       {
@@ -278,10 +278,10 @@
             home-manager.users.${username} = {
               imports = [
                 ./home/${username}.nix
-                nixvim.homeModules.nixvim
                 ];
             };
-            home-manager.extraSpecialArgs = {inherit unstablePkgs;};
+            # Add inputs to extraSpecialArgs so nixvim can be accessed
+            home-manager.extraSpecialArgs = {inherit unstablePkgs inputs;};
           }
           ./hosts/common/common-packages.nix
           ./hosts/common/darwin-common.nix
