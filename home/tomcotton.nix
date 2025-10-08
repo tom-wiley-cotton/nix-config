@@ -514,8 +514,15 @@ in {
   #  programs.zoxide.enable = true;
 
   programs.neovim = { # https://nixos.wiki/wiki/Neovim
-    plugins = with pkgs; [
-      (vimPlugins.nvim-treesitter.withPlugins (p: [
+    plugins = [
+      {
+        plugin = pkgs.vimPlugins.dashboard-nvim;
+        config = ''
+          :luafile ~/.config/nvim/lua/init.lua
+          :luafile ~/.config/nvim/lua/dashboard.lua
+        ''; # INIT.LUA MUST COME FIRST! INCLUDE IT IN THE "COFIG" FOR THE FIRST PLUGIN
+      }
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
         p.c
         p.cpp
         p.lua
@@ -527,26 +534,22 @@ in {
         p.markdown-inline
         p.latex
       ]))
-      vimPlugins.nvim-cmp
-      vimPlugins.vim-fugitive
-      # vimPlugins.gitsigns-nvim
-      vimPlugins.barbar-nvim
-      vimPlugins.fzf-lua
-      vimPlugins.vim-commentary
-      vimPlugins.nvim-autopairs
-      vimPlugins.vim-sandwich
-      vimPlugins.lualine-nvim 
-      vimPlugins.which-key-nvim
-      vimPlugins.markdown-preview-nvim
-      vimPlugins.markdown-nvim
-      vimPlugins.vimtex
-      vimPlugins.nvim-notify
-      vimPlugins.vim-mundo
-      # vimPlugins.lf-nvim
-      # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
-      # vimPlugins.nvim-tree-lua
-      vimPlugins.vim-pencil
-      vimPlugins.nvim-web-devicons
+      {
+        plugin = pkgs.vimPlugins.vim-fugitive;
+        config = ":luafile ~/.config/nvim/lua/fugitive.lua";
+      }
+      {
+        plugin = pkgs.vimPlugins.barbar-nvim;
+        config = ":luafile ~/.config/nvim/lua/barbar.lua";
+      }
+      {
+        plugin = pkgs.vimPlugins.fzf-lua;
+        config = ":luafile ~/.config/nvim/lua/fzf.lua";
+      }
+      {
+        plugin = pkgs.vimPlugins.lualine-nvim;
+        config = ":luafile ~/.config/nvim/lua/lualine.lua";
+      }
       {
         plugin = pkgs.vimPlugins.vim-signify;
         config = "set updatetime=100";
@@ -555,9 +558,59 @@ in {
         plugin = pkgs.vimPlugins.toggleterm-nvim;
         config = ":luafile ~/.config/nvim/lua/toggleterm.lua";
       }
+      {
+        plugin = pkgs.vimPlugins.nvim-cmp;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.vim-commentary;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-autopairs;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.vim-sandwich;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.which-key-nvim;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.markdown-preview-nvim;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.markdown-nvim;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.vimtex;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-notify;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.vim-mundo;
+        config = "";
+      }
+      # vimPlugins.lf-nvim
+      # vimPlugins.lf-vim # works, but doesn't let me change files, fzf is more used
+      # vimPlugins.nvim-tree-lua
+      {
+        plugin = pkgs.vimPlugins.vim-pencil;
+        config = "";
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-web-devicons;
+        config = "";
+      }
    ];
     extraConfig = ''
-      :luafile ~/.config/nvim/lua/init.lua
     '';
   };
 
