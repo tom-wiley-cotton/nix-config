@@ -261,7 +261,7 @@ in {
     enable = true;
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
-      asvetliakov.vscode-neovim
+      # asvetliakov.vscode-neovim
       # ms-vscode.cpptools
       bbenoist.nix
       ms-vscode.cpptools-extension-pack
@@ -513,7 +513,7 @@ in {
   programs.nix-index.enable = true;
   #  programs.zoxide.enable = true;
 
-  programs.neovim = {
+  programs.neovim = { # https://nixos.wiki/wiki/Neovim
     plugins = with pkgs; [
       (vimPlugins.nvim-treesitter.withPlugins (p: [
         p.c
@@ -529,7 +529,7 @@ in {
       ]))
       vimPlugins.nvim-cmp
       vimPlugins.vim-fugitive
-      vimPlugins.gitsigns-nvim
+      # vimPlugins.gitsigns-nvim
       vimPlugins.barbar-nvim
       vimPlugins.fzf-lua
       vimPlugins.vim-commentary
@@ -547,6 +547,14 @@ in {
       # vimPlugins.nvim-tree-lua
       vimPlugins.vim-pencil
       vimPlugins.nvim-web-devicons
+      {
+        plugin = pkgs.vimPlugins.vim-signify;
+        config = "set updatetime=100";
+      }
+      {
+        plugin = pkgs.vimPlugins.toggleterm-nvim;
+        config = ":luafile ~/.config/nvim/lua/toggleterm.lua";
+      }
    ];
     extraConfig = ''
       :luafile ~/.config/nvim/lua/init.lua
@@ -580,6 +588,7 @@ in {
     restic
     lf
     vimv
+    subversion
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm

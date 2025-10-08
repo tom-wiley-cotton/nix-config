@@ -137,6 +137,7 @@ in {
         "qmk-toolbox"
         "ghostty"
         "sonic-visualiser"
+        "blackhole-16ch"
       ];
       masApps = {
         # "Xcode" = 497799835;

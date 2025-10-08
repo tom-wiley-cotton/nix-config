@@ -161,8 +161,7 @@ keymap.set("v", "<leader>gb", ":Git blame<cr>", { desc = "Git: blame selected li
 -- vim.fn["utils#Cabbrev"]("git", "Git")
 
 -- require('mini.diff').setup()
-
-require('gitsigns').setup()
+-- require('gitsigns').setup()
 
 -- fugative
 keymap.set("n", "<leader>gbn", function()
@@ -194,16 +193,16 @@ map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
 map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
 
 -- Goto buffer in position...
-map('n', '<leader>t1', '<Cmd>BufferGoto 1<CR>', opts)
-map('n', '<leader>t2', '<Cmd>BufferGoto 2<CR>', opts)
-map('n', '<leader>t3', '<Cmd>BufferGoto 3<CR>', opts)
-map('n', '<leader>t4', '<Cmd>BufferGoto 4<CR>', opts)
-map('n', '<leader>t5', '<Cmd>BufferGoto 5<CR>', opts)
-map('n', '<leader>t6', '<Cmd>BufferGoto 6<CR>', opts)
-map('n', '<leader>t7', '<Cmd>BufferGoto 7<CR>', opts)
-map('n', '<leader>t8', '<Cmd>BufferGoto 8<CR>', opts)
-map('n', '<leader>t9', '<Cmd>BufferGoto 9<CR>', opts)
-map('n', '<leader>t0', '<Cmd>BufferLast<CR>', opts)
+map('n', '<leader>b1', '<Cmd>BufferGoto 1<CR>', opts)
+map('n', '<leader>b2', '<Cmd>BufferGoto 2<CR>', opts)
+map('n', '<leader>b3', '<Cmd>BufferGoto 3<CR>', opts)
+map('n', '<leader>b4', '<Cmd>BufferGoto 4<CR>', opts)
+map('n', '<leader>b5', '<Cmd>BufferGoto 5<CR>', opts)
+map('n', '<leader>b6', '<Cmd>BufferGoto 6<CR>', opts)
+map('n', '<leader>b7', '<Cmd>BufferGoto 7<CR>', opts)
+map('n', '<leader>b8', '<Cmd>BufferGoto 8<CR>', opts)
+map('n', '<leader>b9', '<Cmd>BufferGoto 9<CR>', opts)
+map('n', '<leader>b0', '<Cmd>BufferLast<CR>', opts)
 
 -- Pin/unpin buffer
 map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
@@ -226,8 +225,8 @@ map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 --                 :BufferCloseBuffersRight
 
 -- Magic buffer-picking mode
-map('n', '<leader>ts', '<Cmd>BufferPick<CR>', opts)
-map('n', '<leader>tc', '<Cmd>BufferPickDelete<CR>', opts)
+map('n', '<leader>t', '<Cmd>BufferPick<CR>', opts)
+map('n', '<leader>dt', '<Cmd>BufferPickDelete<CR>', opts)
 
 -- Sort automatically by...
 map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
@@ -249,4 +248,3 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = { 'ruby', 'markdown' },
   }
 }
-
