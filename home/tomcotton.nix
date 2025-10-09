@@ -263,7 +263,7 @@ in {
     enable = true;
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
-      asvetliakov.vscode-neovim
+      # asvetliakov.vscode-neovim
       # ms-vscode.cpptools
       bbenoist.nix
       ms-vscode.cpptools-extension-pack
@@ -848,6 +848,7 @@ require'nvim-treesitter.configs'.setup {
     restic
     lf
     vimv
+    subversion
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm
