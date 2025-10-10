@@ -271,6 +271,9 @@
           ./overlays.nix
           ./hosts/darwin/${hostName} # ip address, host specific stuff
           home-manager.darwinModules.home-manager
+
+          # Error: error: The option `home' does not exist 
+          # nixvim.homeModules.nixvim
           {
             networking.hostName = hostName;
             home-manager.useGlobalPkgs = true;
@@ -278,10 +281,10 @@
             home-manager.users.${username} = {
               imports = [
                 ./home/${username}.nix
+                nixvim.homeManagerModules.nixvim
                 ];
             };
-            # Add inputs to extraSpecialArgs so nixvim can be accessed
-            home-manager.extraSpecialArgs = {inherit unstablePkgs inputs;};
+            home-manager.extraSpecialArgs = {inherit unstablePkgs;};
           }
           ./hosts/common/common-packages.nix
           ./hosts/common/darwin-common.nix
