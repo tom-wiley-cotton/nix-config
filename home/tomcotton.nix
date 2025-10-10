@@ -523,6 +523,7 @@ in {
       relativenumber = true; # Show relative line numbers
     };
     extraPlugins = with pkgs.vimPlugins; [
+      dashboard-nvim
       nvim-cmp
       vim-fugitive # :G for git controls, <leader> g
       fzf-lua
@@ -542,17 +543,28 @@ in {
       # nvim-tree-lua
       catppuccin-nvim
       vim-pencil
+      vim-signify
+      barbar-nvim
+      nvim-web-devicons
       ];
     extraConfigLua = ''
-require("core")
+-- require "core"
+-- require "dashboard"
 
-require("dashboard")
-require("fugitive")
-require("barbar")
-require("fzf")
-require("lualine")
-require("toggleterm")
+-- :luafile ~/.config/nvim/lua/core.lua
+-- :luafile ~/.config/nvim/lua/dashboard.lua
+
+-- require "dashboard-config"
+-- require "fugitive"
+-- require "barbar"
+-- require "fzf"
+-- require "lualine"
+-- require "toggleterm"
 '';
+    extraConfigVim = ''
+      autocmd VimEnter * ++once luafile ~/.config/nvim/lua/core.lua
+      autocmd VimEnter * ++once luafile ~/.config/nvim/lua/dashboard.lua
+    '';
   };
 
 #   programs.neovim = {

@@ -1,6 +1,6 @@
 local api = vim.api
 local keymap = vim.keymap
-local dashboard = require("dashboard")
+-- local dashboard = require("dashboard")
 
 local conf = {}
 conf.header = {
@@ -81,25 +81,25 @@ conf.center = {
     key = "<Leader> f g",
   },
   {
-    icon = "  ",
+    icon = "  ",
     desc = "Open Nvim config                        ",
     action = "tabnew $MYVIMRC | tcd %:p:h",
     key = "<Leader> e v",
   },
   {
-    icon = "  ",
+    icon = "  ",
     desc = "Git with Fugitive                       ",
     action = "",
     key = "<leader> g",
   },
   {
-    icon = "  ",
+    icon = "  ",
     desc = "Open Terminal                           ",
     action = "",
     key = "CTRL-T",
   },
   {
-    icon = "  ",
+    icon = "  ",
     desc = "Switch Tabs                             ",
     action = "",
     key = "<leader> <number> or t",
@@ -112,7 +112,7 @@ conf.center = {
   },
 }
 
-dashboard.setup {
+require("dashboard").setup {
   theme = "doom",
   shortcut_type = "number",
   config = conf,
