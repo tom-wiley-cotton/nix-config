@@ -5,3 +5,4 @@ nixos.qcow2
 .aider*
 .DS_Store
 tmp/
+Session.vim
