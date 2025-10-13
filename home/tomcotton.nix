@@ -559,6 +559,7 @@ in {
     lf
     vimv
     subversion
+    devenv
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm

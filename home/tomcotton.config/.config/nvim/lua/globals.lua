@@ -38,7 +38,8 @@ vim.opt.expandtab = true
 vim.opt.backup = false
 
 -- Do not let cursor scroll below or above N number of lines when scrolling.
-vim.opt.scrolloff = 12
+-- vim.opt.scrolloff = 25
+-- scrolloff now set by smart-scrolloff-nvim
 
 -- Do not wrap lines. Allow long lines to extend as far as the line goes.
 vim.opt.wrap = false
@@ -80,3 +81,4 @@ vim.opt.wildignore = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.x
 
 -- Use system clipboard
 vim.opt.clipboard:append('unnamedplus')
+

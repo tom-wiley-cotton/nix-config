@@ -81,6 +81,12 @@ conf.center = {
     key = "<Leader> f g",
   },
   {
+      icon = "󰈞  ",
+      desc = "File tree with Lf",
+      action = "<cmd>Lf<cr>",
+      key = "<leader> f l",
+  },
+  {
     icon = "  ",
     desc = "Open Nvim config                        ",
     action = "tabnew $MYVIMRC | tcd %:p:h",

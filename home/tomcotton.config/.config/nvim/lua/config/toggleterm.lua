@@ -18,5 +18,6 @@ require'toggleterm'.setup({
    border = "Normal",
    background = "Normal",
   },
+  escape_quit = true,
  },
 })
