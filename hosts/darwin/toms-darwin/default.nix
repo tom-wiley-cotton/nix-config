@@ -68,6 +68,10 @@ in {
       "nixos-test"
       "apple-virt"
     ];
+    nix.settings.trusted-users = [ 
+      "root"
+      "tomcotton"
+    ];
 
     # Keyboard
     system.keyboard.enableKeyMapping = false;
@@ -201,8 +205,8 @@ in {
       NSGlobalDomain.PMPrintingExpandedStateForPrint2 = true;
       NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
       NSGlobalDomain.ApplePressAndHoldEnabled = false;
-      NSGlobalDomain.InitialKeyRepeat = 25;
-      NSGlobalDomain.KeyRepeat = 4;
+      NSGlobalDomain.InitialKeyRepeat = 20;
+      NSGlobalDomain.KeyRepeat = 2;
       NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
       LaunchServices.LSQuarantine = false; # disables "Are you sure?" for new apps
       loginwindow.GuestEnabled = false;
