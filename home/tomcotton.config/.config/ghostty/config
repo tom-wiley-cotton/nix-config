@@ -5,7 +5,7 @@ window-padding-x = 10
 window-padding-y = 10
 macos-option-as-alt = true
 
-theme = Gruvbox Material
+theme = Gruvbox Material Dark
 
 # Theme
 # background = #282c34
