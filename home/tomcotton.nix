@@ -282,6 +282,8 @@ in {
       valentjn.vscode-ltex
       vadimcn.vscode-lldb
       justusadam.language-haskell
+      sainnhe.gruvbox-material
+      # jdinhlife.gruvbox
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "chuck";
@@ -327,6 +329,11 @@ in {
           "*.tidal" = "haskell";
         };
         "tidalcycles.bootTidalPath" = "/Users/tomcotton/tidal-cycles/BootFiles/BootTidal.hs";
+        "workbench.colorTheme" = "Gruvbox Material Dark";
+        "gruvboxMaterial.darkContrast" = "hard";
+        "gruvboxMaterial.highContrast" = true;
+        # "gruvboxMaterial.darkPalette" = "original";
+        # "gruvboxMaterial.darkWorkbench" = "original";
       };
       keybindings = [
         # See https://code.visualstudio.com/docs/getstarted/keybindings#_advanced-customization
@@ -560,6 +567,7 @@ in {
     vimv
     subversion
     devenv
+    arduino-cli
     # claude-code
     # python3Packages.libtmux
     # kubernetes-helm

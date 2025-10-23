@@ -142,6 +142,7 @@ in {
         "ghostty"
         "sonic-visualiser"
         "blackhole-16ch"
+        "arduino-ide"
       ];
       masApps = {
         # "Xcode" = 497799835;
