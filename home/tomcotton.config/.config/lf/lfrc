@@ -266,10 +266,6 @@ cmd fzf_search ${{
         # Alternatively you can even use the same previewer you've configured for lf
         #--preview='~/.config/lf/cleaner; ~/.config/lf/previewer {1} "$FZF_PREVIEW_COLUMNS" "$FZF_PREVIEW_LINES" "$FZF_PREVIEW_LEFT" "$FZF_PREVIEW_TOP"'
 }}
-# Unmap default f
-map f
-# Remap previous finds
-map ff find
-map fF find-back
+
 # map rg
-map fg :fzf_search
+map bg :fzf_search
