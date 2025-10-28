@@ -143,6 +143,9 @@ in {
         "sonic-visualiser"
         "blackhole-16ch"
         "arduino-ide"
+        "utm" # Virtualization based on QEMU
+        "wine-stable"
+        "xcodes-app" # Manages downloads enabling of xcode versions
       ];
       masApps = {
         # "Xcode" = 497799835;
